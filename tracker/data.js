@@ -11,8 +11,8 @@ window.TRACKER = {
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
     level: 39, gold: 28,
-    stats: { Health: 1522, Mana: 1331, Armor: 2502, Strength: 137, Stamina: 116, "Attack power": 397 },
-    professions: { Mining: [190, 225], Blacksmithing: [150, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
+    stats: { Health: 1707, Mana: 1415, Armor: 2506, Strength: 140, Stamina: 129, "Attack power": 421 },
+    professions: { Mining: [194, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
@@ -181,7 +181,7 @@ window.TRACKER = {
       { name: "Protector's Chain Helm", stats: "+11 Stamina, +7 defense", how: "craft", bs: 125, at: 37 },
       { name: "Serpentbane Crown", stats: "mail", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
       { name: "Heavy Mithril Helm", stats: "469 armor, +15 Stamina (plate)", how: "craft", bs: 220, at: 45 } ] },
-    { slot: "Neck", cur: "Roadwatcher's Confidence", ilvl: 20, targets: [
+    { slot: "Neck", cur: "Abomination Chain", ilvl: 42, targets: [
       { name: "Dragon's Blood Necklace", stats: "+12 Stamina, +8 block value", how: "quest", from: "smcath", src: "Into the Scarlet Monastery", at: 37 },
       { name: "Abomination Chain", stats: "", how: "drop", from: "rfd", src: "Glutton", at: 37 },
       { name: "Jarkal's Enhancing Necklace", stats: "+10 Stamina, +12 spell power", how: "quest", from: "ulda", src: "necklace chain", at: 41 } ] },
@@ -217,7 +217,7 @@ window.TRACKER = {
       { name: "Defiler's Talisman", stats: "+8 Stamina", how: "buy", src: "Defilers vendor in Hammerfall, Arathi (Horde version of Talisman of Arathor, about 1g 50s; may need Arathi Basin reputation)", at: 37 },
       { name: "Heart of the Primeval", stats: "", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 },
       { name: "Rune of Perfection / Rune of Duty", stats: "+8 Stamina", how: "buy", src: "Warsong Gulch vendor, about 4g", at: 40 } ] },
-    { slot: "Main hand", cur: "Outlaw Sabre", ilvl: 32, targets: [
+    { slot: "Main hand", cur: "Vanquisher's Sword", ilvl: 44, targets: [
       { name: "Vanquisher's Sword", stats: "", how: "quest", from: "rfd", src: "Bring the End", at: 37 },
       { name: "Dreadfrost Saber", stats: "", how: "drop", from: "drowned", src: "Captain Dreadrise", at: 37 },
       { name: "Runed Mithril Hammer", stats: "+7 Stamina, +4 defense", how: "craft", bs: 220, at: 45 } ] },
@@ -236,7 +236,7 @@ window.TRACKER = {
 
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
-    "Which Razorfen Downs rewards you took and equipped (Vanquisher's Sword? Dragonclaw Ring?) and any drops",
+    "Your current gold",
     "Whether you picked up The Drowned City and finished Enemies in the Water at Grom'gol",
     "First Aid: did you buy the Expert book?"
   ]
