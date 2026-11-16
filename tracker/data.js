@@ -59,9 +59,9 @@ window.TRACKER = {
       note: "The entrance is in a sea cave: zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses: Zul'Alai, Var'Taka, Primeval Elemental, Captain Dreadrise, Deathless Marrow, Min'loth the Serpent, plus rares Umbra and Gill.",
       quests: [
         { id: 95775, name: "The Drowned City", lvl: 30, giver: "Kin'weelay", zone: "Stranglethorn Vale", area: "Grom'gol", way: "32.2 27.8", isNew: true,
-          pre: "Do The Vile Reef from Kin'weelay first.", task: "Dungeon objective, shown in the quest text." },
+          pre: "The Vile Reef is done, so Kin'weelay should offer this now.", task: "Dungeon objective, shown in the quest text." },
         { id: 95776, name: "The Only Good Brinescale...", lvl: 30, giver: "Commander Aggro'gosh", zone: "Stranglethorn Vale", area: "Grom'gol", way: "32.2 28.8", isNew: true,
-          pre: "The Vile Reef, then Enemies in the Water.", task: "Dungeon objective, shown in the quest text." },
+          pre: "The Vile Reef is done. Next is Enemies in the Water, then this.", task: "Dungeon objective, shown in the quest text." },
         { id: 96774, name: "Ancient Gurubashi Idol", lvl: 30, giver: "Mazu'kon", zone: "Mulgore", area: "Skywatcher Plateau (same plateau as Sutara for RFD)", isNew: true,
           task: "Recover the idol inside. Pick this up on the same trip as The Coldbringer's Eye." },
         { id: 95789, name: "Shady Saltseers", lvl: 34, giver: "Krazek", zone: "Stranglethorn Vale", area: "Booty Bay", way: "27.0 77.2", isNew: true,
@@ -236,7 +236,7 @@ window.TRACKER = {
 
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
-    "Whether Bring the End or An Unholy Alliance is already in your log",
+    "Whether Bring the End is already in your log",
     "First Aid: did you buy the Expert book?"
   ]
 };
