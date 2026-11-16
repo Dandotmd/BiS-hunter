@@ -10,7 +10,7 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 37, gold: 28,
+    level: 39, gold: 28,
     stats: { Health: 1522, Mana: 1331, Armor: 2502, Strength: 137, Stamina: 116, "Attack power": 397 },
     professions: { Mining: [190, 225], Blacksmithing: [150, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
@@ -30,7 +30,7 @@ window.TRACKER = {
     { id: "excav", name: "Excavation Site: Wetlands", zone: "Wetlands", range: [26, 33], hard: 24, ready: 26, isNew: true, unknown: true,
       note: "You haven't said whether you ran this. Optional at 37.", quests: [] },
 
-    { id: "rfd", name: "Razorfen Downs", zone: "The Barrens (south, by the Great Lift)", range: [37, 46], hard: 35, ready: 37,
+    { id: "rfd", name: "Razorfen Downs", zone: "The Barrens (south, by the Great Lift)", range: [37, 46], hard: 35, ready: 37, done: true,
       guide: "https://www.wowhead.com/forever/guide/razorfen-downs-dungeon-overview-location-rewards",
       note: "Fly to Camp Taurajo, ride south, turn east before the Great Lift. The last boss is the hard part at 37: tank Amnennar facing his tent, stack the group on you for Frost Nova, and kill the spectres as they spawn. Bring a disease cleanse for Withered Spearhides.",
       quests: [
@@ -236,7 +236,8 @@ window.TRACKER = {
 
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
-    "Whether Bring the End is already in your log",
+    "Which Razorfen Downs rewards you took and equipped (Vanquisher's Sword? Dragonclaw Ring?) and any drops",
+    "Whether you picked up The Drowned City and finished Enemies in the Water at Grom'gol",
     "First Aid: did you buy the Expert book?"
   ]
 };
