@@ -10,7 +10,7 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 37, gold: null,
+    level: 37, gold: 28,
     stats: { Health: 1522, Mana: 1331, Armor: 2502, Strength: 137, Stamina: 116, "Attack power": 397 },
     professions: { Mining: [190, 225], Blacksmithing: [150, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
@@ -26,8 +26,7 @@ window.TRACKER = {
     { id: "rfk", name: "Razorfen Kraul", zone: "The Barrens", range: [29, 38], hard: 26, ready: 29, done: true, quests: [] },
     { id: "smgy", name: "Scarlet Monastery: Graveyard", zone: "Tirisfal Glades", range: [30, 38], hard: 26, ready: 30, done: true, quests: [] },
     { id: "smlib", name: "Scarlet Monastery: Library", zone: "Tirisfal Glades", range: [33, 41], hard: 29, ready: 33, done: true, quests: [] },
-    { id: "dalaran", name: "City of Dalaran", zone: "Alterac Mountains", range: [28, 35], hard: 26, ready: 28, isNew: true, unknown: true,
-      note: "You haven't said whether you ran this. At 37 it gives little, so it is optional. Needs an attunement started in Hillsbrad.", quests: [] },
+    { id: "dalaran", name: "City of Dalaran", zone: "Alterac Mountains", range: [28, 35], hard: 26, ready: 28, isNew: true, done: true, quests: [] },
     { id: "excav", name: "Excavation Site: Wetlands", zone: "Wetlands", range: [26, 33], hard: 24, ready: 26, isNew: true, unknown: true,
       note: "You haven't said whether you ran this. Optional at 37.", quests: [] },
 
@@ -78,7 +77,7 @@ window.TRACKER = {
       note: "You hold the Scarlet Key, which opens this wing and the Cathedral. Herod is one of four kills for Into the Scarlet Monastery.",
       quests: [
         { id: 1048, name: "Into the Scarlet Monastery", lvl: 33, giver: "Varimathras", zone: "Undercity", area: "Royal Quarter", way: "56.6 92.6", shared: "smcath", seed: "have",
-          task: "Kill Herod here. Whitemane and Mograine are in the Cathedral. Check that Houndmaster Loksey (Library) is credited; if not, one more Library run.",
+          task: "Kill Herod here. Whitemane and Mograine are in the Cathedral. Houndmaster Loksey is already dead.",
           reward: "Dragon's Blood Necklace (best tank neck near 38), Sword of Omen or Prophetic Cane" }
       ],
       loot: ["Herod's Shoulder, mail (35%)", "Scarlet Leggings, mail (15%)", "Raging Berserker's Helm, mail (35%)"] },
@@ -230,16 +229,14 @@ window.TRACKER = {
   milestones: [
     { at: 40, id: "plate", name: "Train plate armor", detail: "Opens Carapace of Tuten'kash, Icemetal Barbute and the Krol'dok Warplate set." },
     { at: 40, id: "mount", name: "Warhorse quest", detail: "Take Report to Danitha from Garen Largo, your trainer in Undercity, and ride to Bandarion Keep. It is a one-step class quest with no gold fee, so do it before paying for anything in Brill." },
-    { at: 40, id: "dualspec", name: "Dual specialization (50g)", detail: "Keep Protection for dungeons. Retribution for solo play was a suggestion, not something you have decided." },
+    { at: 40, id: "dualspec", name: "Dual specialization (50g)", detail: "You have about 28g of the 50g. Mining ore and selling crafted Warder's pieces are your quickest income. Keep Protection for dungeons. Retribution for solo play was a suggestion, not something you have decided." },
     { at: 35, id: "firstaid", name: "Expert First Aid book", detail: "Expert First Aid – Under Wraps from Balai Lok'Wein in Brackenwall Village, or the auction house. At First Aid 225, Doctor Gregory Victor in Hammerfall gives the Triage quest." },
     { at: 50, id: "classq50", name: "Level 50 class quest", detail: "Sends you into the Sunken Temple." }
   ],
 
   unknowns: [
-    "Your gold (decides whether dual spec at 40 is affordable)",
-    "Whether you ran City of Dalaran and Excavation Site: Wetlands",
+    "Whether you ran Excavation Site: Wetlands",
     "Whether Bring the End or An Unholy Alliance is already in your log",
-    "Whether Houndmaster Loksey is credited on Into the Scarlet Monastery",
     "First Aid: did you buy the Expert book?"
   ]
 };
