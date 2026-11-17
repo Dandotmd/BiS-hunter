@@ -208,7 +208,7 @@ window.TRACKER = {
     { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
       { name: "Dusty Mail Boots", stats: "270 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 33%", at: 37 },
       { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
-    { slot: "Ring 1", cur: "Purified Ring (caster stats)", ilvl: 30, targets: [
+    { slot: "Ring 1", cur: "Purified Ring (caster stats)", ilvl: 44, targets: [
       { name: "Dragonclaw Ring", stats: "", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
       { name: "Knucklebone Ring", stats: "", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 } ] },
     { slot: "Ring 2", cur: "Tundra Ring of the Knight", ilvl: 33, targets: [
