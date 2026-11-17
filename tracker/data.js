@@ -10,7 +10,7 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 39, gold: 28,
+    level: 40, gold: 28,
     stats: { Health: 1707, Mana: 1415, Armor: 2506, Strength: 140, Stamina: 129, "Attack power": 421 },
     professions: { Mining: [194, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
@@ -54,7 +54,7 @@ window.TRACKER = {
              "Silky Spider Cape (Tuten'kash, 33%)", "Savage Boar's Guard, shield (Ragglesnout, rare spawn)",
              "At 40 with plate: Carapace of Tuten'kash, chest (33%) and Icemetal Barbute, helm (Amnennar, 20%)"] },
 
-    { id: "drowned", name: "The Drowned City", zone: "Off the Stranglethorn coast, south of the Haunted Isle", range: [35, 42], hard: 33, ready: 37, isNew: true,
+    { id: "drowned", name: "The Drowned City", zone: "Off the Stranglethorn coast, south of the Haunted Isle", range: [35, 42], hard: 33, ready: 37, isNew: true, done: true,
       guide: "https://www.wowhead.com/forever/guide/the-drowned-city-dungeon-overview-location-rewards",
       note: "The entrance is an underwater cave west of the Vile Reef, around 21.4, 27.9; swim out from Grom'gol. Players advise 37–38 at the earliest: bosses are 37–40. Zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses: Zul'Alai, Var'Taka, Primeval Elemental, Captain Dreadrise, Deathless Marrow, Min'loth the Serpent, plus rares Umbra and Gill.",
       quests: [
@@ -237,7 +237,7 @@ window.TRACKER = {
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
     "Your current gold",
-    "Whether you picked up The Drowned City and finished Enemies in the Water at Grom'gol",
+    "What you got from the Drowned City (drops, quest rewards) — or log out so the armory updates",
     "First Aid: did you buy the Expert book?"
   ]
 };
