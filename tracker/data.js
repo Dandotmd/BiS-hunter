@@ -73,7 +73,7 @@ window.TRACKER = {
              "Knucklebone Ring (Deathless Marrow)", "Linken's Boots of Iron, mail (Primeval Elemental)", "Heart of the Primeval, trinket (Primeval Elemental)",
              "Berserker Shackles, mail wrist (Zul'Alai)", "Dreadfrost Saber, 1H sword (Captain Dreadrise)", "Waterlogged Burial Shroud, cloak (Primeval Elemental)"] },
 
-    { id: "smarm", name: "Scarlet Monastery: Armory", zone: "Tirisfal Glades", range: [32, 42], hard: 30, ready: 35,
+    { id: "smarm", name: "Scarlet Monastery: Armory", zone: "Tirisfal Glades", range: [32, 42], hard: 30, ready: 35, done: true,
       note: "You hold the Scarlet Key, which opens this wing and the Cathedral. Herod is one of four kills for Into the Scarlet Monastery.",
       quests: [
         { id: 1048, name: "Into the Scarlet Monastery", lvl: 33, giver: "Varimathras", zone: "Undercity", area: "Royal Quarter", way: "56.6 92.6", shared: "smcath", seed: "have",
@@ -82,7 +82,7 @@ window.TRACKER = {
       ],
       loot: ["Herod's Shoulder, mail (35%)", "Scarlet Leggings, mail (15%)", "Raging Berserker's Helm, mail (35%)"] },
 
-    { id: "smcath", name: "Scarlet Monastery: Cathedral", zone: "Tirisfal Glades", range: [35, 45], hard: 34, ready: 38,
+    { id: "smcath", name: "Scarlet Monastery: Cathedral", zone: "Tirisfal Glades", range: [35, 45], hard: 34, ready: 38, done: true,
       note: "Finishes Into the Scarlet Monastery. Fairbanks is in a hidden side room; ask the group to kill him for the boots.",
       quests: [
         { id: 1048, name: "Into the Scarlet Monastery", lvl: 33, giver: "Varimathras", zone: "Undercity", area: "Royal Quarter", way: "56.6 92.6", shared: "smarm", seed: "have",
@@ -208,7 +208,7 @@ window.TRACKER = {
     { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
       { name: "Dusty Mail Boots", stats: "270 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 33%", at: 37 },
       { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
-    { slot: "Ring 1", cur: "Seal of Sylvanas", ilvl: 29, targets: [
+    { slot: "Ring 1", cur: "Purified Ring (caster stats)", ilvl: 30, targets: [
       { name: "Dragonclaw Ring", stats: "", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
       { name: "Knucklebone Ring", stats: "", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 } ] },
     { slot: "Ring 2", cur: "Tundra Ring of the Knight", ilvl: 33, targets: [
@@ -221,7 +221,7 @@ window.TRACKER = {
       { name: "Vanquisher's Sword", stats: "", how: "quest", from: "rfd", src: "Bring the End", at: 37 },
       { name: "Dreadfrost Saber", stats: "", how: "drop", from: "drowned", src: "Captain Dreadrise", at: 37 },
       { name: "Runed Mithril Hammer", stats: "+7 Stamina, +4 defense", how: "craft", bs: 220, at: 45 } ] },
-    { slot: "Shield", cur: "Marbled Buckler", ilvl: 36, targets: [
+    { slot: "Shield", cur: "Aegis of the Scarlet Commander (assumed)", ilvl: 44, targets: [
       { name: "Aegis of the Scarlet Commander", stats: "1548 armor, +8 Stamina, +7 Strength", how: "drop", from: "smcath", src: "Scarlet Commander Mograine", at: 38 },
       { name: "Maw of Min'loth", stats: "", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 } ] }
   ],
@@ -237,7 +237,8 @@ window.TRACKER = {
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
     "Your current gold",
-    "What you got from the Drowned City (drops, quest rewards) — or log out so the armory updates",
+    "Which shield dropped in Scarlet Monastery, and whether you turned in Into the Scarlet Monastery for the necklace",
+    "Whether plate is trained",
     "First Aid: did you buy the Expert book?"
   ]
 };
