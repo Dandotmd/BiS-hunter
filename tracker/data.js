@@ -56,14 +56,14 @@ window.TRACKER = {
 
     { id: "drowned", name: "The Drowned City", zone: "Off the Stranglethorn coast, south of the Haunted Isle", range: [35, 42], hard: 33, ready: 37, isNew: true,
       guide: "https://www.wowhead.com/forever/guide/the-drowned-city-dungeon-overview-location-rewards",
-      note: "The entrance is in a sea cave: zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses: Zul'Alai, Var'Taka, Primeval Elemental, Captain Dreadrise, Deathless Marrow, Min'loth the Serpent, plus rares Umbra and Gill.",
+      note: "The entrance is an underwater cave west of the Vile Reef, around 21.4, 27.9; swim out from Grom'gol. Players advise 37–38 at the earliest: bosses are 37–40. Zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses: Zul'Alai, Var'Taka, Primeval Elemental, Captain Dreadrise, Deathless Marrow, Min'loth the Serpent, plus rares Umbra and Gill.",
       quests: [
         { id: 95775, name: "The Drowned City", lvl: 30, giver: "Kin'weelay", zone: "Stranglethorn Vale", area: "Grom'gol", way: "32.2 27.8", isNew: true,
-          pre: "The Vile Reef is done, so Kin'weelay should offer this now.", task: "Dungeon objective, shown in the quest text." },
+          pre: "All from Kin'weelay, in order: The Vile Reef (done) → The Gurubashi Legends of Old → Locating the Lost City.", task: "Make rubbings of the four Tablets of I'lalai inside.", reward: "8,450 XP; follow-up A Tale Spun Around the Fire (Master Gadrin, Sen'jin Village) gives I'lalai Flayer, a 1H axe" },
         { id: 95776, name: "The Only Good Brinescale...", lvl: 30, giver: "Commander Aggro'gosh", zone: "Stranglethorn Vale", area: "Grom'gol", way: "32.2 28.8", isNew: true,
-          pre: "The Vile Reef is done. Next is Enemies in the Water, then this.", task: "Dungeon objective, shown in the quest text." },
+          pre: "The Vile Reef (done) → The Gurubashi Legends of Old → Locating the Lost City (all Kin'weelay) → Enemies in the Water (Aggro'gosh: 10 Brinescale Tridents from Skirmishers outside the entrance).", task: "Kill Var'Taka.", reward: "Tidesoaked Leggings or Naga Priestess's Mantle, 9,500 XP" },
         { id: 96774, name: "Ancient Gurubashi Idol", lvl: 30, giver: "Mazu'kon", zone: "Mulgore", area: "Skywatcher Plateau (same plateau as Sutara for RFD)", isNew: true,
-          task: "Recover the idol inside. Pick this up on the same trip as The Coldbringer's Eye." },
+          task: "The idol drops from the Deathless Marrow fight." },
         { id: 95789, name: "Shady Saltseers", lvl: 34, giver: "Krazek", zone: "Stranglethorn Vale", area: "Booty Bay", way: "27.0 77.2", isNew: true,
           task: "Dungeon objective, shown in the quest text.", reward: "Saltseer's Helm" },
         { id: 95791, name: "The Saltseer Captain", lvl: 34, giver: "Krazek", zone: "Stranglethorn Vale", area: "Booty Bay", way: "27.0 77.2", isNew: true,
