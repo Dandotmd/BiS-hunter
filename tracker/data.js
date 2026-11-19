@@ -93,7 +93,7 @@ window.TRACKER = {
 
     { id: "kroldok", name: "Krol'dok Stronghold", zone: "Riverglades, directly north of Sunnyglade", range: [40, 45], hard: 37, ready: 40, isNew: true,
       guide: "https://www.wowhead.com/forever/guide/kroldok-stronghold-dungeon-overview-location-rewards",
-      note: "Bosses in order: Slavecrusher Grox, Twilight Commander Zarmok, War Handler Ashka, Nar'gurk, Bossman Toof, Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45. All three Horde dungeon quests sit at the end of one long Rom'gar chain; tell Claude which step you are on.",
+      note: "Bosses in order: Slavecrusher Grox, Twilight Commander Zarmok, War Handler Ashka, Nar'gurk, Bossman Toof, Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45. All three Horde dungeon quests sit at the end of one long Rom'gar chain; you are on step 4 of 14, Digging for Answers (as of Nov 19).",
       quests: [
         { id: 94975, name: "A Token of Vengeance", lvl: 38, giver: "Da'grosh", zone: "Riverglades", area: "hut beside the fortress", way: "33.4 38.0", isNew: true,
           pre: "Rom'gar chain, 14 steps: (1) A Message in Blood + Food for the Taking, Krom'rosh → (2) Show Them How It's Done → (3) Encroaching Twilight + Twilight Missives → (4) Digging for Answers, Tran'gul in the tower behind Krom'rosh; cave at 49.9 47.0 → (5) The Purple Ones + Sickening Lights → (6) Twilight No More!, then talk to Tran'gul → (7) Land of Giants, sends you to Bolderok → (8) Unworthy Champion + Might Makes Right → (9) Clugfist's Decree, hand in to Krom'rosh → (10) The Wayward Warrior, find Da'grosh at 33 38 → (11) Carving a Path + Break Their Chains + Rumblings of Discontent → (12) Bring Me His Head → (13) accept A Token of Vengeance and It Is Time, Brother... → (14) turn in It Is Time, Brother... to open Eye of Mugg and Tome of Twilight.", task: "Collect 15 Cultist Ears from Twilight's Hammer mobs inside.", reward: "Semblance of Twilight" },
@@ -238,7 +238,6 @@ window.TRACKER = {
 
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
-    "Which step of the Rom'gar chain you are on",
     "Your current gold after buying dual spec",
     "Which shield dropped in Scarlet Monastery, and whether you turned in Into the Scarlet Monastery for the necklace",
     "Whether plate is trained",
