@@ -10,7 +10,7 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 40, gold: 28,
+    level: 42, gold: null,
     stats: { Health: 1707, Mana: 1415, Armor: 2506, Strength: 140, Stamina: 129, "Attack power": 421 },
     professions: { Mining: [194, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
@@ -91,22 +91,22 @@ window.TRACKER = {
       loot: ["Aegis of the Scarlet Commander, shield (Mograine) — best shield through level 40", "Dusty Mail Boots (Fairbanks, 33%)",
              "Triune Amulet, neck (Whitemane, 40%)", "Hand of Righteousness, 1H mace (Whitemane, 20%)"] },
 
-    { id: "kroldok", name: "Krol'dok Stronghold", zone: "Riverglades", range: [40, 45], hard: 37, ready: 40, isNew: true,
-      note: "An ogre stronghold in Riverglades; final boss Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45, so this is your main gear dungeon after you train plate at 40. The Horde chain starts with Krom'rosh in Rom'gar, which you can begin at 38.",
+    { id: "kroldok", name: "Krol'dok Stronghold", zone: "Riverglades, directly north of Sunnyglade", range: [40, 45], hard: 37, ready: 40, isNew: true,
+      guide: "https://www.wowhead.com/forever/guide/kroldok-stronghold-dungeon-overview-location-rewards",
+      note: "Bosses in order: Slavecrusher Grox, Twilight Commander Zarmok, War Handler Ashka, Nar'gurk, Bossman Toof, Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45. All three Horde dungeon quests sit at the end of one long Rom'gar chain; tell Claude which step you are on.",
       quests: [
-        { id: 94975, name: "A Token of Vengeance", lvl: 38, giver: "Da'grosh", zone: "Riverglades", area: "Krol'dok Stronghold outskirts", way: "33.4 38.0", isNew: true,
-          pre: "Krom'rosh's quest series in Rom'gar (59.4 45.6), ending with The Wayward Warrior.", task: "Dungeon objective, shown in the quest text." },
-        { id: 94972, name: "Tome of Twilight", lvl: 38, giver: "Tran'gul", zone: "Riverglades", area: "Rom'gar", way: "59.4 44.0", isNew: true,
-          pre: "Krom'rosh's quest series, ending with The Wayward Warrior.", task: "Recover the tome inside." },
+        { id: 94975, name: "A Token of Vengeance", lvl: 38, giver: "Da'grosh", zone: "Riverglades", area: "hut beside the fortress", way: "33.4 38.0", isNew: true,
+          pre: "Rom'gar chain, 14 steps: (1) A Message in Blood + Food for the Taking, Krom'rosh → (2) Show Them How It's Done → (3) Encroaching Twilight + Twilight Missives → (4) Digging for Answers, Tran'gul in the tower behind Krom'rosh; cave at 49.9 47.0 → (5) The Purple Ones + Sickening Lights → (6) Twilight No More!, then talk to Tran'gul → (7) Land of Giants, sends you to Bolderok → (8) Unworthy Champion + Might Makes Right → (9) Clugfist's Decree, hand in to Krom'rosh → (10) The Wayward Warrior, find Da'grosh at 33 38 → (11) Carving a Path + Break Their Chains + Rumblings of Discontent → (12) Bring Me His Head → (13) accept A Token of Vengeance and It Is Time, Brother... → (14) turn in It Is Time, Brother... to open Eye of Mugg and Tome of Twilight.", task: "Collect 15 Cultist Ears from Twilight's Hammer mobs inside.", reward: "Semblance of Twilight" },
         { id: 94968, name: "Eye of Mugg", lvl: 38, giver: "Krom'rosh", zone: "Riverglades", area: "Rom'gar", way: "59.4 45.6", isNew: true,
-          pre: "Krom'rosh's quest series, ending with The Wayward Warrior.", task: "Kill Overlord Mugg." },
-        { id: 94973, name: "Krol'dok Moulding", lvl: 38, giver: "Drops from Tunk", zone: "Inside the dungeon", isNew: true,
-          task: "Loot the item from Tunk to start it. Leads to Key Ingredients.", where: "inside" },
-        { id: 96771, name: "Vengeance of the Highborne", lvl: 37, giver: "Ranath Nightstride", zone: "Alterac Mountains", area: "Dalaran", way: "17.8 66.0", isNew: true,
-          task: "Unconfirmed for Horde: the other Dalaran dungeon quests are Alliance-side. Check whether he offers it to you.", unsure: true }
+          pre: "Same chain; opens when you turn in It Is Time, Brother... (step 14).", task: "Kill Overlord Mugg (last boss) and loot the eye.", reward: "Rock on Stick (1H mace), Stick No Rock or Bigger Rock on Bigger Stick" },
+        { id: 94972, name: "Tome of Twilight", lvl: 38, giver: "Tran'gul", zone: "Riverglades", area: "Rom'gar, inside the building", way: "59.4 44.0", isNew: true,
+          pre: "Same chain; opens when you turn in It Is Time, Brother... (step 14).", task: "Kill Nar'gurk and loot the tome.", reward: "Indoctrinated Choker or Convert's Bindings" },
+        { id: 94973, name: "Krol'dok Moulding", lvl: 38, giver: "Drops from Tunk", zone: "Inside the dungeon", area: "the blacksmith beside War Handler Ashka", isNew: true,
+          task: "Kill Tunk and loot the moulding. Take it to Kreza Darkthon in Riverglades for Key Ingredients: 4 Thick Leather and 12 Iron Bars. Bring those along to finish it the same day.", where: "inside", reward: "Krol'dok Compound Key" }
       ],
-      loot: ["Krol'dok Warplate Chest (+13 defense)", "Krol'dok Warplate Gauntlets (+15 parry)", "Krol'dok Warplate Legplates (+19 Stamina, +8 defense)",
-             "Krol'dok Warplate Helmet and Pauldrons", "Zarmok's Plated Signet, ring (block value, hit) — source likely here, not confirmed"] },
+      loot: ["Krol'dok Warplate Chest and Helmet, plate (Nar'gurk)", "Worgbinder's Treads, plate feet (War Handler Ashka)", "Zarmok's Plated Signet, ring: Stamina, block value, hit (Twilight Commander Zarmok)",
+             "Krol'dok Warplate Gauntlets, Legplates and Pauldrons are bind-on-equip drops: check the auction house too", "Slavecrusher Scepter, 1H mace (Slavecrusher Grox)",
+             "Band of Bossman, ring, and Toofbreaker, 1H mace (Bossman Toof)", "Emblem of Slamming, trinket (Overlord Mugg)", "Chain of the Corruptor, neck (Nar'gurk)"] },
 
     { id: "ulda", name: "Uldaman", zone: "Badlands", range: [41, 51], hard: 39, ready: 41,
       note: "Fly to Kargath. Start the necklace chain from the Shattered Necklace, which drops off Shadowforge mobs outside the portal; it ends in Jarkal's Enhancing Necklace, a top tank neck for 40–45. The full chain takes two visits unless your group clears to Archaedas.",
@@ -194,23 +194,25 @@ window.TRACKER = {
     { slot: "Chest", cur: "Mutant Scale Breastplate", ilvl: 23, targets: [
       { name: "Green Iron Hauberk", stats: "358 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 37 },
       { name: "Carapace of Tuten'kash", stats: "plate", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
-      { name: "Krol'dok Warplate Chest", stats: "490 armor, +13 defense, +10 Stamina", how: "drop", from: "kroldok", at: 45 } ] },
+      { name: "Krol'dok Warplate Chest", stats: "490 armor, +13 defense, +10 Stamina", how: "drop", from: "kroldok", src: "Nar'gurk", at: 42 } ] },
     { slot: "Wrist", cur: "Undead Knight's Bracers", ilvl: 36, targets: [
       { name: "Berserker Shackles", stats: "mail", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
       { name: "Warder's Wristguards", stats: "231 armor, +8 defense, +11 Stamina (plate)", how: "craft", bs: 225, at: 45 } ] },
     { slot: "Hands", cur: "Warsong Gauntlets", ilvl: 27, targets: [
       { name: "Warder's Gauntlet", stats: "+10 Stamina, +7 defense", how: "craft", bs: 175, at: 37 },
-      { name: "Krol'dok Warplate Gauntlets", stats: "300 armor, +15 parry, +9 Stamina", how: "drop", from: "kroldok", at: 40 } ] },
+      { name: "Krol'dok Warplate Gauntlets", stats: "300 armor, +15 parry, +9 Stamina", how: "drop", from: "kroldok", src: "bind-on-equip drop, or auction house", at: 40 } ] },
     { slot: "Waist", cur: "Twilight Lord Girdle", ilvl: 30, targets: [
       { name: "Warder's Belt", stats: "+10 Stamina, +7 defense", how: "craft", bs: 150, at: 37 } ] },
     { slot: "Legs", cur: "Dual Reinforced Leggings", ilvl: 37, targets: [
-      { name: "Krol'dok Warplate Legplates", stats: "429 armor, +19 Stamina, +8 defense", how: "drop", from: "kroldok", at: 45 } ] },
+      { name: "Krol'dok Warplate Legplates", stats: "429 armor, +19 Stamina, +8 defense", how: "drop", from: "kroldok", src: "bind-on-equip drop, or auction house", at: 42 } ] },
     { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
       { name: "Dusty Mail Boots", stats: "270 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 33%", at: 37 },
-      { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
+      { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 },
+      { name: "Worgbinder's Treads", stats: "plate", how: "drop", from: "kroldok", src: "War Handler Ashka", at: 42 } ] },
     { slot: "Ring 1", cur: "Purified Ring (caster stats)", ilvl: 44, targets: [
       { name: "Dragonclaw Ring", stats: "", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
-      { name: "Knucklebone Ring", stats: "", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 } ] },
+      { name: "Knucklebone Ring", stats: "", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
+      { name: "Zarmok's Plated Signet", stats: "+9 Stamina, +11 block value, +5 hit", how: "drop", from: "kroldok", src: "Twilight Commander Zarmok", at: 42 } ] },
     { slot: "Ring 2", cur: "Tundra Ring of the Knight", ilvl: 33, targets: [
       { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", at: 45 } ] },
     { slot: "Trinkets", cur: "Both slots empty", ilvl: 0, targets: [
@@ -229,14 +231,15 @@ window.TRACKER = {
   milestones: [
     { at: 40, id: "plate", name: "Train plate armor", detail: "Opens Carapace of Tuten'kash, Icemetal Barbute and the Krol'dok Warplate set." },
     { at: 40, id: "mount", name: "Warhorse quest", detail: "Take Report to Danitha from Garen Largo, your trainer in Undercity, and ride to Bandarion Keep. It is a one-step class quest with no gold fee, so do it before paying for anything in Brill." },
-    { at: 40, id: "dualspec", name: "Dual specialization (50g)", detail: "You have about 28g of the 50g. Mining ore and selling crafted Warder's pieces are your quickest income. Keep Protection for dungeons. Retribution for solo play was a suggestion, not something you have decided." },
+    { at: 40, id: "dualspec", name: "Dual specialization (50g)", detail: "Bought. Protection stays the main spec; second spec undecided, leaning shockadin over Retribution." },
     { at: 35, id: "firstaid", name: "Expert First Aid book", detail: "Expert First Aid – Under Wraps from Balai Lok'Wein in Brackenwall Village, or the auction house. At First Aid 225, Doctor Gregory Victor in Hammerfall gives the Triage quest." },
     { at: 50, id: "classq50", name: "Level 50 class quest", detail: "Sends you into the Sunken Temple." }
   ],
 
   unknowns: [
     "Whether you ran Excavation Site: Wetlands",
-    "Your current gold",
+    "Which step of the Rom'gar chain you are on",
+    "Your current gold after buying dual spec",
     "Which shield dropped in Scarlet Monastery, and whether you turned in Into the Scarlet Monastery for the necklace",
     "Whether plate is trained",
     "First Aid: did you buy the Expert book?"
