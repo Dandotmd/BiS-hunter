@@ -68,6 +68,7 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 - Wants facts checked, not recalled. Twice this session the assistant got things wrong from Classic data (Uldaman quests assumed inside the instance when they were in the outdoor dig site; Necklace Recovery order). User pushed back both times and was right. **Verify against Forever sources before routing.**
 - Give reasons for suggestions; no filler.
 - Dislikes Arathi Highlands. Favourite later zones: Plaguelands, Winterspring.
+- **Blacksmithing is on hold until level 60** (user, 2026-11-20). Don't route crafting or plan-buying stops; gear comes from drops, quests and the AH. `data.js` has `deferCrafting: true`.
 
 ---
 
@@ -77,6 +78,7 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfang Keep (all four per user, for Legacy), Gnomeregan, Razorfen Kraul, SM Graveyard / Library / Armory / Cathedral, City of Dalaran, Razorfen Downs, The Drowned City, Krol'dok Stronghold (all four Horde quests), **Uldaman** (one run, all quests including Platinum Discs).
 
 ### In progress
+- **Zul'Farrak quests in log (user screenshot, 11-20):** Scarab Shells, Troll Temper, Tiara of the Deep. Not in log: Divino-matic Rod (Bilgewhizzle, Gadgetzan, right beside Trenton), Zum'rah's Head (Mulgore), plus the three skipped chains.
 - **Necklace Recovery chain:** Deliver the Gems turned in to Dran Droffers (Orgrimmar). **Take 3 still to turn in to Jarkal Mossmeld in Kargath** for Jarkal's Enhancing Necklace (+10 Stamina, +1 Intellect, +12 spell power; confirmed on Wowhead Forever). Confirm with user.
 
 ### Next
@@ -86,7 +88,7 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
    - Experienced Spelunker (1 point): **Blackfathom Deeps** (24-32, kill Aku'mai). It's the only dungeon on that list not done yet.
    - Either way you need the final-boss kill. Whether solo kills count is not confirmed.
    - Also check the window for Journeyman Blacksmithing (150) and Experienced Paladin (level 45).
-3. **Warder's Gauntlet is mail, not a trainer recipe.** Plans come from Gor'mak (Barrens 49.8 29.7) for 60 Merchant's Favor at Friendly with Durotar Supply and Logistics. It still beats the ilvl 27 hands (+10 Sta, +7 def).
+3. Blacksmithing deferred to 60; crafted gear targets show "after 60" in the tracker.
 4. Maraudon (46-55, Classic data) after ZF. Shadowshard Fragments can be picked up now (Uthel'nay, Orgrimmar, level 38).
 5. The level 50 paladin class quest (Forging the Mightstone) is **Alliance only** right now, so it is not a reason to go to Sunken Temple.
 
@@ -102,9 +104,6 @@ User was in Thunder Bluff after turning in the Platinum Discs.
 **Orgrimmar**
 - Uthel'nay (39.2 86.3): **Shadowshard Fragments** (Maraudon, for later)
 - Deino (38.4 85.8): **Tabetha's Task**. Take it: sources disagree on whether the Tiara needs it.
-
-**The Barrens (only if Friendly with Durotar Supply and Logistics)**
-- Gor'mak (49.8 29.7): Plans: Warder's Gauntlet (BS 175, 60 Merchant's Favor)
 
 **Kargath**
 - Jarkal: turn in **Necklace Recovery, Take 3**
@@ -137,17 +136,16 @@ Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins ca
 1. **Chest (ilvl 23):**
    - Best: Krol'dok Warplate Chest (plate, +13 def, Nar'gurk 26%).
    - Or Carapace of Tuten'kash (plate, RFD).
-   - Fallback: Green Iron Hauberk (mail, 238 armor; skill 155 or 180, sources disagree).
-2. **Hands (ilvl 27):** Warder's Gauntlet (mail, Gor'mak plans, see Section 3) or Krol'dok Warplate Gauntlets (plate, +1% parry, BoE, AH).
+2. **Hands (ilvl 27):** Krol'dok Warplate Gauntlets (plate, +1% parry, BoE, AH). Warder's Gauntlet is crafted: after 60.
 3. **Feet (28):**
-   - **Warder's Boots** (plate, +13 Sta, +9 def, BS 200; source of the plans unknown).
-   - Or Dusty Mail Boots (mail, +14 Sta).
+   - Dusty Mail Boots (mail, +14 Sta, SM Cathedral).
+   - Warder's Boots (BS 200) is crafted: after 60.
    - Worgbinder's Treads is a Str/Int item: **not** a tank target.
-4. **Waist (30):** Warder's Belt (mail, BS 150, trainer). Later: Girdle of Extracted Answers (plate, Alcaz Prison).
+4. **Waist (30):** Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Warder's Belt is crafted: after 60.
 5. **Head (34):**
    - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
    - Protector's Chain Helm is a level 25 item: dropped.
-   - Real upgrade: Heavy Mithril Helm (plate, requires 42, BS 220, plans are a world drop).
+   - Serpentbane Crown (mail, +16 Sta, Drowned City) is the only non-crafted target listed; look for drops in ZF/Maraudon.
 6. **Neck:** Jarkal's Enhancing Necklace (pending turn-in).
 7. **Ring 2 is a caster ring:**
    - Blood Ritual Ring (ZF).
@@ -170,9 +168,7 @@ Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found a
 3. Into the Scarlet Monastery: turned in? Neck is still Abomination Chain, so which reward?
 4. Expert First Aid book bought?
 5. Second spec plan (shockadin?).
-6. Has Blacksmithing passed 175?
-7. Durotar Supply and Logistics reputation (Friendly unlocks Gor'mak's Warder's plans).
-8. Did solo dungeon kills count in the Legacy window?
+6. Did solo dungeon kills count in the Legacy window?
 
 ---
 

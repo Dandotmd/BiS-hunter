@@ -229,7 +229,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
   function dById(id) { return T.dungeons.filter(function (d) { return d.id === id; })[0]; }
   function tReady(t) {
     if (t.at > S.char.level) return false;
-    if (t.how === "craft") return S.char.blacksmithing >= t.bs;
+    if (t.how === "craft") return !T.deferCrafting && S.char.blacksmithing >= t.bs;
     if (t.from) { var st = dStatus(dById(t.from)); return st === "now" || st === "hard" || st === "done"; }
     return true;
   }
@@ -275,7 +275,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
     var bs = S.char.blacksmithing, crafts = [];
     T.gear.forEach(function (g) { g.targets.forEach(function (t) { if (t.how === "craft" && !S.prog["g_" + slug(t.name)]) crafts.push({ g: g, t: t }); }); });
     var can = crafts.filter(function (c) { return c.t.bs <= bs && c.t.at <= L; }), nxt = crafts.filter(function (c) { return c.t.bs > bs; }).sort(function (a, b) { return a.t.bs - b.t.bs; });
-    if (can.length || nxt.length) out.push({ k: "Blacksmithing " + bs, t: can.length ? "Craft your own upgrades today" : "Level Blacksmithing for tank gear",
+    if (!T.deferCrafting && (can.length || nxt.length)) out.push({ k: "Blacksmithing " + bs, t: can.length ? "Craft your own upgrades today" : "Level Blacksmithing for tank gear",
       b: "Several best-in-slot tank pieces are crafted. Check your trainer for the recipes; Mining " + S.char.mining + " covers the ore.",
       l: can.map(function (c) { return "<b>" + esc(c.t.name) + "</b> (" + c.g.slot + ", skill " + c.t.bs + ") — " + esc(c.t.stats); })
         .concat(nxt.slice(0, 3).map(function (c) { return '<span class="muted">At ' + c.t.bs + ": " + esc(c.t.name) + " (" + c.g.slot + (c.t.at > L ? ", level " + c.t.at : "") + ")</span>"; })) });
@@ -340,7 +340,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
         '<div class="gt">' + g.targets.map(function (t) {
           var k = "g_" + slug(t.name), got = !!S.prog[k], rdy = tReady(t);
           return '<div class="t1' + (got ? " got" : "") + '"><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (got ? " checked" : "") + '><label for="' + k + '"><b>' + esc(t.name) + "</b>" + (t.stats ? " — " + esc(t.stats) : "") + ' <span class="muted small">' + esc(srcText(t)) + "</span></label>" +
-            (got ? "" : '<span class="tag' + (rdy ? " go" : "") + '">' + (rdy ? "get now" : t.at > L ? "level " + t.at : t.how === "craft" ? "skill " + t.bs : "soon") + "</span>") + "</div>";
+            (got ? "" : '<span class="tag' + (rdy ? " go" : "") + '">' + (rdy ? "get now" : t.how === "craft" && T.deferCrafting ? "after 60" : t.at > L ? "level " + t.at : t.how === "craft" ? "skill " + t.bs : "soon") + "</span>") + "</div>";
         }).join("") + "</div></div>";
     }).join("");
   }

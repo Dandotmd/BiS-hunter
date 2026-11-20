@@ -5,6 +5,8 @@
    Quests are filtered to what a Horde Undead Paladin can take. */
 window.TRACKER = {
   checked: "2026-11-20",
+  /* Blacksmithing is on hold until max level (user, 2026-11-20): crafted targets stay listed but never count as "get now". */
+  deferCrafting: true,
 
   /* Baseline snapshot. The live tracker overrides level / professions / gold from its saved state. */
   character: {
@@ -18,7 +20,8 @@ window.TRACKER = {
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
-      "Skip zones you dislike (Arathi); favourites later on: the Plaguelands and Winterspring"
+      "Skip zones you dislike (Arathi); favourites later on: the Plaguelands and Winterspring",
+      "Blacksmithing on hold until level 60"
     ]
   },
 
@@ -272,7 +275,6 @@ window.TRACKER = {
     "Whether you turned in Into the Scarlet Monastery: your neck is still Abomination Chain, so which reward did you take?",
     "First Aid: did you buy the Expert book?",
     "Second spec: still leaning shockadin? The armory shows all 34 points in Protection",
-    "Reputation with Durotar Supply and Logistics (Friendly unlocks the Warder's Gauntlet and Pauldrons plans from Gor'mak)",
     "Do solo dungeon kills count for Legacy? Check the Legacy window after your first solo run"
   ]
 };
