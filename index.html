@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Danadin's Road to 60</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column, phone first. Focus list on top, then dungeon route, gear, milestones. */
+:root {
+  --bg: #f3f1f6; --surface: #ffffff; --sunk: #e9e6ef; --line: #d6d1e0;
+  --fg: #1f1b2b; --muted: #645d75;
+  --accent: #6a4bb0; --accent-fg: #ffffff; --gold: #8a6712;
+  --good: #1f7a4d; --warn: #9a5b00; --bad: #a8323a; --idle: #7b7590;
+  --display: "Alegreya Sans SC", "Trebuchet MS", sans-serif;
+  --body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15121d; --surface: #1f1b2a; --sunk: #191522; --line: #353047;
+  --fg: #ebe7f3; --muted: #a39cb6;
+  --accent: #b39cf0; --accent-fg: #1a1528; --gold: #d9b45a;
+  --good: #5fcf96; --warn: #e6a94a; --bad: #f0818a; --idle: #8b84a0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15121d; --surface: #1f1b2a; --sunk: #191522; --line: #353047;
+  --fg: #ebe7f3; --muted: #a39cb6;
+  --accent: #b39cf0; --accent-fg: #1a1528; --gold: #d9b45a;
+  --good: #5fcf96; --warn: #e6a94a; --bad: #f0818a; --idle: #8b84a0; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; margin: 0; text-wrap: balance; letter-spacing: .02em }
+h1 { font-size: 30px; line-height: 1.1 }
+h2 { font-size: 22px; }
+h3 { font-size: 18px; }
+p { margin: 0 }
+a { color: var(--accent) }
+button { font: inherit; color: inherit; cursor: pointer }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.muted { color: var(--muted) } .small { font-size: 13px }
+section { display: flex; flex-direction: column; gap: 12px; min-width: 0 }
+.sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+
+/* header */
+.who { display: flex; flex-direction: column; gap: 10px }
+.sub { color: var(--muted) }
+.lvl { display: flex; align-items: center; gap: 12px; flex-wrap: wrap }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden }
+.stepper button { border: 0; background: transparent; width: 40px; height: 40px; font-size: 20px }
+.stepper button:hover { background: var(--sunk) }
+.stepper .n { font: 700 22px var(--display); min-width: 92px; text-align: center; font-variant-numeric: tabular-nums }
+.track { position: relative; height: 22px; background: var(--sunk); border: 1px solid var(--line); border-radius: 4px; overflow: hidden }
+.track i { position: absolute; inset: 0 auto 0 0; background: var(--accent); opacity: .85 }
+.track b { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--gold) }
+.ticks { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--muted) }
+.profs { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13px }
+.profs label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted) }
+.profs input { width: 58px; font: 500 13px var(--mono); padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg) }
+.save { font-size: 12px; color: var(--muted) }
+
+/* focus */
+.focus { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden }
+.focus > li { padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line) }
+.focus > li:first-child { border-top: 0; background: color-mix(in srgb, var(--accent) 9%, var(--surface)) }
+.focus .k { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--gold) }
+.focus .t { font-weight: 600 }
+.focus ul { margin: 4px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 3px }
+
+/* pills */
+.pill { display: inline-block; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap }
+.p-done { color: var(--good) } .p-now { color: var(--accent-fg); background: var(--accent); border-color: var(--accent) }
+.p-hard { color: var(--warn) } .p-prep { color: var(--gold) } .p-later { color: var(--idle) } .p-unk { color: var(--bad) }
+.new { font: 500 10px var(--mono); color: var(--gold); letter-spacing: .06em; text-transform: uppercase }
+
+/* dungeons */
+.dlist { display: flex; flex-direction: column; gap: 8px }
+details.d { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); min-width: 0 }
+details.d[data-st="done"], details.d[data-st="later"] { background: transparent }
+details.d > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center }
+details.d > summary::-webkit-details-marker { display: none }
+.dn { font-weight: 600; min-width: 0 }
+details.d[data-st="done"] .dn { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line) }
+.dm { grid-column: 1 / -1; font-size: 13px; color: var(--muted); display: flex; gap: 4px 12px; flex-wrap: wrap }
+.dm .r { font-family: var(--mono) }
+.dbody { padding: 0 14px 14px; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 12px }
+.qs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px }
+.q { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start }
+.qb { width: 78px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: var(--sunk); font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted) }
+.qb[data-s="have"] { border-color: var(--gold); color: var(--gold); background: transparent }
+.qb[data-s="done"] { border-color: var(--good); color: var(--good); background: transparent }
+.qt { min-width: 0; display: flex; flex-direction: column; gap: 2px }
+.qn { font-weight: 600 } .qn a { color: inherit; text-decoration-color: var(--line) }
+.q[data-s="done"] .qn { color: var(--muted); text-decoration: line-through }
+.way { font: 12px var(--mono); border: 1px dashed var(--line); background: transparent; border-radius: 5px; padding: 1px 6px; color: var(--fg) }
+.pre { color: var(--warn); font-size: 13px }
+.rew { color: var(--gold); font-size: 13px }
+.loot { margin: 0; padding-left: 18px; font-size: 13px; display: flex; flex-direction: column; gap: 2px }
+.lab { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+.btn { align-self: flex-start; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 12px; font-weight: 500 }
+.btn:hover { background: var(--sunk) }
+
+/* gear */
+.gear { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden }
+.g { display: grid; grid-template-columns: 96px 1fr; gap: 4px 12px; padding: 10px 14px; border-top: 1px solid var(--line) }
+.g:first-child { border-top: 0 }
+.gs { font: 700 15px var(--display); letter-spacing: .03em }
+.gc { font-size: 13px; color: var(--muted) }
+.weak { color: var(--bad); font-family: var(--mono); font-size: 12px }
+.gt { grid-column: 2; display: flex; flex-direction: column; gap: 6px; min-width: 0 }
+.t1 { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap }
+.t1 input { accent-color: var(--good); width: 16px; height: 16px; flex: none; position: relative; top: 2px }
+.t1 label { min-width: 0; flex: 1 1 200px }
+.t1.got label { color: var(--muted); text-decoration: line-through }
+.tag { font: 500 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: 4px; background: var(--sunk); color: var(--muted); white-space: nowrap }
+.tag.go { background: var(--good); color: var(--bg) }
+@media (max-width: 480px) { .g { grid-template-columns: 1fr } .gt { grid-column: 1 } .qb { width: 64px } }
+
+.ms { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px }
+.ms li { display: grid; grid-template-columns: auto 1fr; gap: 10px }
+.ms input { accent-color: var(--good); width: 18px; height: 18px; margin-top: 3px }
+.plain { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px }
+footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px }
+</style></head><body>
+
+<div class="wrap">
+  <header class="who">
+    <div>
+      <h1 id="name">Danadin Lightbrindan</h1>
+      <p class="sub" id="sub"></p>
+    </div>
+    <div class="lvl">
+      <div class="stepper" role="group" aria-label="Character level">
+        <button id="lvl-down" aria-label="Level down">−</button>
+        <span class="n" id="lvl-n">Level 37</span>
+        <button id="lvl-up" aria-label="Level up">+</button>
+      </div>
+      <span class="save" id="save" role="status"></span>
+    </div>
+    <div>
+      <div class="track" aria-hidden="true"><i id="bar"></i><b style="left:66.67%"></b></div>
+      <div class="ticks"><span>1</span><span>20</span><span>40 mount · plate</span><span>60</span></div>
+    </div>
+    <div class="profs" id="profs"></div>
+  </header>
+
+  <section aria-labelledby="h-focus">
+    <div class="sechead"><h2 id="h-focus">Focus now</h2><span class="small muted" id="focus-sub"></span></div>
+    <ol class="focus" id="focus"></ol>
+  </section>
+
+  <section aria-labelledby="h-dung">
+    <div class="sechead"><h2 id="h-dung">Dungeon route</h2><span class="small muted">Tap a quest to cycle: need → in log → done</span></div>
+    <div class="dlist" id="dungeons"></div>
+  </section>
+
+  <section aria-labelledby="h-gear">
+    <div class="sechead"><h2 id="h-gear">Gear targets</h2><span class="small muted">Protection, weakest slots flagged</span></div>
+    <div class="gear" id="gear"></div>
+  </section>
+
+  <section aria-labelledby="h-ms">
+    <h2 id="h-ms">Milestones</h2>
+    <ul class="ms" id="ms"></ul>
+  </section>
+
+  <section aria-labelledby="h-unk">
+    <h2 id="h-unk">Tell Claude</h2>
+    <p class="muted small">Answers to these sharpen the plan.</p>
+    <ul class="plain" id="unk"></ul>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  var T = window.TRACKER, C = T.character;
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+
+  /* ---------- state ----------
+     char: { level, mining, blacksmithing, firstAid, gold }   progress: flat map, q_<id> / d_<id> / g_<slug> / m_<id> */
+  var S = { char: { level: C.level, mining: C.professions.Mining[0], blacksmithing: C.professions.Blacksmithing[0], firstAid: C.professions["First Aid"][0] }, prog: {} };
+  T.dungeons.forEach(function (d) {
+    if (d.done) S.prog["d_" + d.id] = "done";
+    d.quests.forEach(function (q) { if (q.seed) S.prog["q_" + q.id] = q.seed; });
+  });
+  /* Saving: local server (python server.py → state.json) first, then the claude.ai artifact db, then this browser only. */
+  var db = null, local = false, LS = "forever-tracker-v1", chain = Promise.resolve();
+  function say(t) { $("save").textContent = t; }
+  function lsLoad() { try { var j = JSON.parse(localStorage.getItem(LS) || "null"); if (j) { Object.assign(S.char, j.char || {}); Object.assign(S.prog, j.prog || {}); } } catch (e) {} }
+  function lsSave() { try { localStorage.setItem(LS, JSON.stringify(S)); } catch (e) {} }
+  function write(doc, patch) {
+    lsSave();
+    if (local) {
+      say("Saving…");
+      chain = chain.then(function () {
+        return fetch("api/state/" + doc, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(patch) })
+          .then(function (r) { if (!r.ok) throw new Error("server said " + r.status); });
+      }).then(function () { say("Saved to state.json"); }, function (e) { say("Could not save: " + ((e && e.message) || "is server.py running?")); });
+      return;
+    }
+    if (!db) { say("Saved in this browser only (start server.py to save to disk)"); return; }
+    say("Saving…");
+    chain = chain.then(function () {
+      var ref = db.doc("tracker/" + doc);
+      return ref.update(patch).catch(function () { return ref.set(doc === "character" ? S.char : S.prog); });
+    }).then(function () { say("Saved"); }, function (e) { say("Could not save: " + ((e && e.message) || "try again")); });
+  }
+  function setP(k, v) { if (v) S.prog[k] = v; else delete S.prog[k]; var p = {}; p[k] = v || ""; write("progress", p); render(); }
+  function setC(k, v) { S.char[k] = v; var p = {}; p[k] = v; write("character", p); render(); }
+
+  /* ---------- derived ---------- */
+  function dStatus(d) {
+    var L = S.char.level, p = S.prog["d_" + d.id];
+    if (p === "done") return "done";
+    if (d.unknown && !p) return "unk";
+    if (L >= d.ready) return "now";
+    if (L >= d.hard) return "hard";
+    if (L >= d.hard - 3) return "prep";
+    return "later";
+  }
+  var LABEL = { done: "Done", now: "Run now", hard: "Doable, hard", prep: "Gather quests", later: "Later", unk: "Did you run it?" };
+  function qState(q) { return S.prog["q_" + q.id] || ""; }
+  function pickups(d) { return d.quests.filter(function (q) { return !q.deferred && !q.unsure && q.where !== "inside" && !qState(q) && (q.lvl || 0) <= S.char.level; }); }
+  function slug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-"); }
+  function dById(id) { return T.dungeons.filter(function (d) { return d.id === id; })[0]; }
+  function tReady(t) {
+    if (t.at > S.char.level) return false;
+    if (t.how === "craft") return S.char.blacksmithing >= t.bs;
+    if (t.from) { var st = dStatus(dById(t.from)); return st === "now" || st === "hard" || st === "done"; }
+    return true;
+  }
+
+  /* ---------- render ---------- */
+  function wayBtn(q) { return q.way ? ' <button class="way" data-way="/way ' + esc(q.way) + '" title="Copy TomTom waypoint">' + esc(q.way) + "</button>" : ""; }
+
+  function renderHead() {
+    var L = S.char.level;
+    $("name").textContent = C.name;
+    $("sub").textContent = C.race + " " + C.spec + " " + C.cls + " · " + C.faction + " · " + C.realm + " · <" + C.guild + ">";
+    $("lvl-n").textContent = "Level " + L;
+    $("bar").style.width = (L / 60 * 100).toFixed(1) + "%";
+    var el = $("profs"), a = document.activeElement && document.activeElement.id;
+    if (!el.firstChild) {
+      el.innerHTML = [["mining", "Mining"], ["blacksmithing", "Blacksmithing"], ["firstAid", "First Aid"]].map(function (p) {
+        return '<label for="pf-' + p[0] + '">' + p[1] + ' <input id="pf-' + p[0] + '" type="number" min="1" max="300" inputmode="numeric" data-pf="' + p[0] + '"></label>';
+      }).join("");
+    }
+    ["mining", "blacksmithing", "firstAid"].forEach(function (k) { if (a !== "pf-" + k) $("pf-" + k).value = S.char[k]; });
+  }
+
+  function renderFocus() {
+    var L = S.char.level, out = [];
+    var open = T.dungeons.filter(function (d) { var s = dStatus(d); return s === "now" || s === "hard"; });
+    var next = open.filter(function (d) { return dStatus(d) === "now"; })[0] || open[0];
+    if (next) {
+      var pk = pickups(next), ins = next.quests.filter(function (q) { return q.where === "inside"; }).length;
+      out.push({ k: "Next run", t: next.name + " (" + next.range[0] + "–" + next.range[1] + ")",
+        b: pk.length ? "Pick up " + pk.length + " quest" + (pk.length > 1 ? "s" : "") + " first, then form the group." : (next.quests.length ? "Every outside quest is in your log. Form the group." : "No quests to gather. Form the group."),
+        l: pk.map(function (q) { return "<b>" + esc(q.name) + "</b> — " + esc(q.giver) + ", " + esc(q.zone) + wayBtn(q) + (q.pre ? ' <span class="pre">Needs: ' + esc(q.pre) + "</span>" : ""); })
+          .concat(ins ? [ins + " more start inside the dungeon."] : []) });
+    }
+    /* errands grouped by city/zone for everything runnable or coming up */
+    var soon = T.dungeons.filter(function (d) { var s = dStatus(d); return s === "now" || s === "hard" || s === "prep"; });
+    var byZone = {};
+    soon.forEach(function (d) { pickups(d).forEach(function (q) { (byZone[q.zone] = byZone[q.zone] || []).push({ q: q, d: d }); }); });
+    var zones = Object.keys(byZone).sort(function (a, b) { return byZone[b].length - byZone[a].length; });
+    if (zones.length) out.push({ k: "One trip per hub", t: "Quest pickups by location", b: "Everything you can accept at " + L + " for dungeons in range, grouped so each city is one stop.",
+      l: zones.map(function (z) { return "<b>" + esc(z) + ":</b> " + byZone[z].map(function (x) { return esc(x.q.name) + ' <span class="muted">(' + esc(x.d.name.replace("Scarlet Monastery: ", "SM ")) + ")</span>"; }).join("; "); }) });
+
+    /* crafting */
+    var bs = S.char.blacksmithing, crafts = [];
+    T.gear.forEach(function (g) { g.targets.forEach(function (t) { if (t.how === "craft" && !S.prog["g_" + slug(t.name)]) crafts.push({ g: g, t: t }); }); });
+    var can = crafts.filter(function (c) { return c.t.bs <= bs && c.t.at <= L; }), nxt = crafts.filter(function (c) { return c.t.bs > bs; }).sort(function (a, b) { return a.t.bs - b.t.bs; });
+    if (can.length || nxt.length) out.push({ k: "Blacksmithing " + bs, t: can.length ? "Craft your own upgrades today" : "Level Blacksmithing for tank gear",
+      b: "Several best-in-slot tank pieces are crafted. Check your trainer for the recipes; Mining " + S.char.mining + " covers the ore.",
+      l: can.map(function (c) { return "<b>" + esc(c.t.name) + "</b> (" + c.g.slot + ", skill " + c.t.bs + ") — " + esc(c.t.stats); })
+        .concat(nxt.slice(0, 3).map(function (c) { return '<span class="muted">At ' + c.t.bs + ": " + esc(c.t.name) + " (" + c.g.slot + (c.t.at > L ? ", level " + c.t.at : "") + ")</span>"; })) });
+
+    /* weakest slots with something obtainable now */
+    var weak = T.gear.filter(function (g) { return g.ilvl < L - 6; }).sort(function (a, b) { return a.ilvl - b.ilvl; }).slice(0, 4).map(function (g) {
+      var t = g.targets.filter(function (t) { return !S.prog["g_" + slug(t.name)] && tReady(t); })[0];
+      return t ? "<b>" + g.slot + "</b> (" + (g.ilvl ? "item level " + g.ilvl : "empty") + ") → " + esc(t.name) + ' <span class="muted">' + esc(srcText(t)) + "</span>" : null;
+    }).filter(Boolean);
+    if (weak.length) out.push({ k: "Gear", t: "Weakest slots you can fix now", b: "", l: weak });
+
+    /* milestones */
+    var ms = T.milestones.filter(function (m) { return !S.prog["m_" + m.id] && m.at - L <= 4; });
+    if (ms.length) out.push({ k: "Milestones", t: L < 40 ? (40 - L) + " level" + (40 - L > 1 ? "s" : "") + " to 40" : "Ready now", b: "",
+      l: ms.map(function (m) { return "<b>" + esc(m.name) + "</b>" + (m.at > L ? ' <span class="muted">at ' + m.at + "</span>" : "") + " — " + esc(m.detail); }) });
+
+    $("focus-sub").textContent = "Recomputed for level " + L;
+    $("focus").innerHTML = out.map(function (o) {
+      return '<li><span class="k">' + esc(o.k) + '</span><span class="t">' + esc(o.t) + "</span>" + (o.b ? "<span>" + esc(o.b) + "</span>" : "") + (o.l.length ? "<ul>" + o.l.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>" : "") + "</li>";
+    }).join("") || '<li><span class="t">Nothing queued.</span></li>';
+  }
+
+  function srcText(t) {
+    if (t.how === "craft") return "craft, Blacksmithing " + t.bs;
+    var d = t.from ? dById(t.from).name : "";
+    return (t.how === "quest" ? "quest: " : t.how === "buy" ? "buy: " : "") + [t.src, d].filter(Boolean).join(", ");
+  }
+
+  var openSet = null;
+  function renderDungeons() {
+    var box = $("dungeons");
+    if (openSet === null) { openSet = {}; var f = T.dungeons.filter(function (d) { return dStatus(d) === "now"; })[0]; if (f) openSet[f.id] = 1; }
+    else { openSet = {}; [].forEach.call(box.querySelectorAll("details[open]"), function (e) { openSet[e.dataset.id] = 1; }); }
+    box.innerHTML = T.dungeons.map(function (d) {
+      var st = dStatus(d), qs = d.quests.filter(function (q) { return !q.deferred; }), got = qs.filter(function (q) { return qState(q); }).length;
+      var body = "";
+      if (d.note) body += "<p>" + esc(d.note) + "</p>";
+      if (d.quests.length) body += '<div><div class="lab">Quests</div></div><ul class="qs">' + d.quests.map(function (q) {
+        var s = qState(q);
+        return '<li class="q" data-s="' + s + '"><button class="qb" data-q="' + esc(q.id) + '" data-s="' + s + '" aria-label="' + esc(q.name) + ": " + (s || "need") + '">' + (q.deferred ? "later" : s === "have" ? "in log" : s === "done" ? "done" : "need") + "</button>" +
+          '<div class="qt"><span class="qn">' + (typeof q.id === "number" ? '<a href="https://www.wowhead.com/forever/quest=' + q.id + '" target="_blank" rel="noopener">' + esc(q.name) + "</a>" : esc(q.name)) +
+          (q.isNew ? ' <span class="new">new</span>' : "") + (q.lvl ? ' <span class="muted small">min ' + q.lvl + "</span>" : "") + "</span>" +
+          '<span class="small"><span class="muted">' + esc(q.giver) + " · " + esc(q.zone) + (q.area ? ", " + esc(q.area) : "") + "</span>" + wayBtn(q) + "</span>" +
+          (q.pre ? '<span class="pre">Prerequisite: ' + esc(q.pre) + "</span>" : "") +
+          "<span>" + esc(q.task) + "</span>" + (q.reward ? '<span class="rew">Reward: ' + esc(q.reward) + "</span>" : "") + "</div></li>";
+      }).join("") + "</ul>";
+      if (d.loot && d.loot.length) body += '<div><div class="lab">Worth it for a tank</div><ul class="loot">' + d.loot.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></div>";
+      if (d.guide) body += '<a class="small" href="' + d.guide + '" target="_blank" rel="noopener">Wowhead guide</a>';
+      body += '<button class="btn" data-d="' + d.id + '">' + (st === "done" ? "Mark as not run" : "Mark dungeon done") + "</button>";
+      return '<details class="d" data-id="' + d.id + '" data-st="' + st + '"' + (openSet[d.id] ? " open" : "") + "><summary>" +
+        '<span class="dn">' + esc(d.name) + (d.isNew ? ' <span class="new">new</span>' : "") + '</span><span class="pill p-' + st + '">' + LABEL[st] + "</span>" +
+        '<span class="dm"><span class="r">' + d.range[0] + "–" + d.range[1] + "</span><span>" + esc(d.zone) + "</span>" + (qs.length && st !== "done" ? "<span>" + got + "/" + qs.length + " quests picked up</span>" : "") + "</span></summary>" +
+        '<div class="dbody">' + body + "</div></details>";
+    }).join("");
+  }
+
+  function renderGear() {
+    var L = S.char.level;
+    $("gear").innerHTML = T.gear.map(function (g) {
+      var weak = g.ilvl < L - 6;
+      return '<div class="g"><div><div class="gs">' + g.slot + '</div><div class="gc">' + esc(g.cur) + (g.ilvl ? " · " + g.ilvl : "") + "</div>" + (weak ? '<div class="weak">' + (g.ilvl ? (L - g.ilvl) + " levels behind" : "empty") + "</div>" : "") + "</div>" +
+        '<div class="gt">' + g.targets.map(function (t) {
+          var k = "g_" + slug(t.name), got = !!S.prog[k], rdy = tReady(t);
+          return '<div class="t1' + (got ? " got" : "") + '"><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (got ? " checked" : "") + '><label for="' + k + '"><b>' + esc(t.name) + "</b>" + (t.stats ? " — " + esc(t.stats) : "") + ' <span class="muted small">' + esc(srcText(t)) + "</span></label>" +
+            (got ? "" : '<span class="tag' + (rdy ? " go" : "") + '">' + (rdy ? "get now" : t.at > L ? "level " + t.at : t.how === "craft" ? "skill " + t.bs : "soon") + "</span>") + "</div>";
+        }).join("") + "</div></div>";
+    }).join("");
+  }
+
+  function renderRest() {
+    $("ms").innerHTML = T.milestones.slice().sort(function (a, b) { return a.at - b.at; }).map(function (m) {
+      var k = "m_" + m.id;
+      return '<li><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (S.prog[k] ? " checked" : "") + '><label for="' + k + '"><b>' + esc(m.name) + '</b> <span class="muted small">level ' + m.at + "</span><br><span class=\"small\">" + esc(m.detail) + "</span></label></li>";
+    }).join("");
+    $("unk").innerHTML = T.unknowns.map(function (u) { return "<li>" + esc(u) + "</li>"; }).join("");
+    $("foot").innerHTML = 'Game data checked ' + esc(T.checked) + ' against Wowhead, ForeverDB and Forever Codex. New-dungeon loot sources and anything past level 45 lean on Classic data and may differ in Forever. Gear snapshot from the <a href="' + C.armory + '" target="_blank" rel="noopener">armory</a>, read 2026-11-19 at level 43.';
+  }
+
+  function render() { renderHead(); renderFocus(); renderDungeons(); renderGear(); renderRest(); }
+
+  /* ---------- events ---------- */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.id === "lvl-up" && S.char.level < 60) return setC("level", S.char.level + 1);
+    if (b.id === "lvl-down" && S.char.level > 1) return setC("level", S.char.level - 1);
+    if (b.dataset.q) { e.preventDefault(); var k = "q_" + b.dataset.q, s = S.prog[k] || ""; return setP(k, s === "" ? "have" : s === "have" ? "done" : ""); }
+    if (b.dataset.d) { var dk = "d_" + b.dataset.d; return setP(dk, S.prog[dk] === "done" ? "no" : "done"); }
+    if (b.dataset.way) {
+      var txt = b.dataset.way, old = b.textContent;
+      var ok = function () { b.textContent = "copied"; setTimeout(function () { b.textContent = old; }, 900); };
+      try { navigator.clipboard.writeText(txt).then(ok, function () {}); } catch (err) {}
+    }
+  });
+  document.addEventListener("change", function (e) {
+    var t = e.target;
+    if (t.dataset.g) return setP(t.dataset.g, t.checked ? "1" : "");
+    if (t.dataset.pf) { var v = Math.max(1, Math.min(300, parseInt(t.value, 10) || 1)); return setC(t.dataset.pf, v); }
+  });
+
+  /* ---------- boot ---------- */
+  lsLoad(); render();
+  function clean(o) { var r = {}; Object.keys(o || {}).forEach(function (k) { if (o[k] !== "" && o[k] != null) r[k] = o[k]; }); return r; }
+  function applyProgress(data) {
+    /* seeded defaults stay unless the store says otherwise; "" or "no" clears */
+    var keep = {};
+    Object.keys(S.prog).forEach(function (k) { if (!(k in data)) keep[k] = S.prog[k]; });
+    S.prog = Object.assign(keep, clean(data));
+  }
+  function useArtifactDb() {
+    if (!(window.claude && window.claude.use)) { say("Saved in this browser only (start server.py to save to disk)"); return; }
+    window.claude.use("db").then(function (d) {
+      if (!d) { say("Saved on this device only"); return; }
+      db = d; say("");
+      db.doc("tracker/character").onSnapshot(function (s) { if (s.exists) { Object.assign(S.char, clean(s.data())); render(); } }, function () {});
+      db.doc("tracker/progress").onSnapshot(function (s) {
+        if (!s.exists) return;
+        applyProgress(s.data() || {});
+        render();
+      }, function () {});
+    });
+  }
+  var onServer = location.protocol === "http:" || location.protocol === "https:";
+  (onServer ? fetch("api/state", { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }) : Promise.reject())
+    .then(function (st) {
+      local = true;
+      Object.assign(S.char, clean(st.character));
+      applyProgress(st.progress || {});
+      lsSave(); render(); say("Loaded from state.json");
+    }, useArtifactDb);
+})();
+</script>
+</body></html>
