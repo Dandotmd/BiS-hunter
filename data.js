@@ -1,8 +1,10 @@
 /* Forever tracker data. Edit this file (or ask Claude to) when the plan changes.
-   Sources, checked 2026-11-19 (armory re-scanned at level 43): Wowhead Forever dungeon guides, ForeverDB, Forever Codex, wowarmory.gg.
+   Sources, re-checked 2026-11-20: Wowhead Forever (quest/item tooltips), Warcraft Tavern Forever, Conquest Capped,
+   Gfinity, Frostyboost, Method.gg, Warcraft Wiki; armory read 2026-11-19 at level 43.
+   "Classic data" in a note means no Forever source confirmed it yet.
    Quests are filtered to what a Horde Undead Paladin can take. */
 window.TRACKER = {
-  checked: "2026-11-19",
+  checked: "2026-11-20",
 
   /* Baseline snapshot. The live tracker overrides level / professions / gold from its saved state. */
   character: {
@@ -10,7 +12,7 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 43, gold: null,
+    level: 44, gold: null,
     stats: { Health: 1979, Mana: 1763, Armor: 3563, Strength: 145, Stamina: 144, "Attack power": 405 },
     professions: { Mining: [204, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
@@ -28,9 +30,11 @@ window.TRACKER = {
     { id: "smlib", name: "Scarlet Monastery: Library", zone: "Tirisfal Glades", range: [33, 41], hard: 29, ready: 33, done: true, quests: [] },
     { id: "dalaran", name: "City of Dalaran", zone: "Alterac Mountains", range: [28, 35], hard: 26, ready: 28, isNew: true, done: true, quests: [] },
     { id: "excav", name: "Excavation Site: Wetlands", zone: "Wetlands", range: [26, 33], hard: 24, ready: 26, isNew: true, unknown: true,
-      note: "Legacy: one of the last two dungeons you need for Novice Spelunker (you've done the other four). Well below your level, so try it solo.", quests: [] },
-    { id: "deadmines", name: "The Deadmines", zone: "Westfall", range: [10, 20], hard: 10, ready: 10, unknown: true,
-      note: "Legacy: the other dungeon left for Novice Spelunker. Entry level is 10, so a level 43 tank should be able to try it solo. Quests and loot are not tracked here.", quests: [], loot: [] },
+      note: "Legacy: one of the last two dungeons for Novice Spelunker (1 Legacy Point; you've done the other four). The credit is for killing the final boss, Relic Guardian; just entering doesn't count. Bosses: Saltspine, Shadetooth, Highland Horror, Relic Guardian. Entrance around 48.1, 56.5; the path starts at the meeting stone near Thelgen Rock (53.9, 65.4). Ride south from Hammerfall. Well below your level, so try it solo. Whether solo kills count isn't confirmed: check the Legacy window afterwards.", quests: [] },
+    { id: "deadmines", name: "The Deadmines", zone: "Westfall", range: [17, 26], hard: 14, ready: 17, unknown: true,
+      note: "Legacy: the other dungeon left for Novice Spelunker. Kill Edwin VanCleef (last boss) for the credit. Range is 17–26, so a level 44 tank can solo it. Quests and loot are not tracked here.", quests: [], loot: [] },
+    { id: "bfd", name: "Blackfathom Deeps", zone: "Ashenvale", range: [24, 32], hard: 22, ready: 24, unknown: true,
+      note: "Legacy: the only dungeon you're missing for Experienced Spelunker (1 Legacy Point). You have everything else on its list: Dalaran, Gnomeregan, Drowned City, all four SM wings, RFK and Krol'dok. Kill Aku'mai, the final boss. Solo it on the way to Novice Spelunker.", quests: [], loot: [] },
 
     { id: "rfd", name: "Razorfen Downs", zone: "The Barrens (south, by the Great Lift)", range: [37, 46], hard: 35, ready: 37, done: true,
       guide: "https://www.wowhead.com/forever/guide/razorfen-downs-dungeon-overview-location-rewards",
@@ -49,16 +53,16 @@ window.TRACKER = {
           task: "Talk to him twice. Everyone in the party must finish this before the escort starts.", where: "inside" },
         { id: 3525, name: "Extinguishing the Idol", lvl: 32, giver: "Belnistrasz", zone: "Inside the dungeon", area: "after Scourge of the Downs",
           task: "Protect Belnistrasz during his ritual; ends with Plaguemaw the Rotting. Tell the group you need it before starting.", where: "inside", reward: "Dragonclaw Ring" },
-        { id: "agamaggan", name: "Agamaggan's Blood", lvl: null, giver: "Longer chain", zone: "Later return",
-          task: "Its chain runs through Maraudon. Come back for it at 46+ instead of holding up this run.", deferred: true }
+        { id: "agamaggan", name: "Agamaggan's Blood", lvl: 35, giver: "Possibly Kog'thug the Brave", zone: "Unconfirmed",
+          task: "Locked behind the Word of the Woods chain (Woodwyrd). Only an Icy Veins search snippet mentions it, and no source links it to Maraudon. Unconfirmed: skip unless it shows up in game.", deferred: true }
       ],
       loot: ["Vanquisher's Sword (quest: Bring the End)", "Dragonclaw Ring (quest: Extinguishing the Idol)", "Abomination Chain, neck (Glutton)",
              "Silky Spider Cape (Tuten'kash, 33%)", "Savage Boar's Guard, shield (Ragglesnout, rare spawn)",
              "At 40 with plate: Carapace of Tuten'kash, chest (33%) and Icemetal Barbute, helm (Amnennar, 20%)"] },
 
-    { id: "drowned", name: "The Drowned City", zone: "Off the Stranglethorn coast, south of the Haunted Isle", range: [35, 42], hard: 33, ready: 37, isNew: true, done: true,
+    { id: "drowned", name: "The Drowned City", zone: "Sunken Hollow, past the Vile Reef, Stranglethorn coast", range: [35, 42], hard: 33, ready: 37, isNew: true, done: true,
       guide: "https://www.wowhead.com/forever/guide/the-drowned-city-dungeon-overview-location-rewards",
-      note: "The entrance is an underwater cave west of the Vile Reef, around 21.4, 27.9; swim out from Grom'gol. Players advise 37–38 at the earliest: bosses are 37–40. Zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses: Zul'Alai, Var'Taka, Primeval Elemental, Captain Dreadrise, Deathless Marrow, Min'loth the Serpent, plus rares Umbra and Gill.",
+      note: "The entrance is an underwater cave west of the Vile Reef, around 21.4, 27.9; swim out from Grom'gol. Players advise 37–38 at the earliest: bosses are 37–40. Zeppelin to Grom'gol or boat to Booty Bay. A long stretch is underwater, so bring a Warlock or Shaman for water breathing. Bosses in order: Zul'Alai, Var'Taka, Captain Dreadrise, Deathless Marrow, Primeval Elemental, Min'loth the Serpent. Rares: Umbra, Gill and \"Pyromancer\" Braxton.",
       quests: [
         { id: 95775, name: "The Drowned City", lvl: 30, giver: "Kin'weelay", zone: "Stranglethorn Vale", area: "Grom'gol", way: "32.2 27.8", isNew: true,
           pre: "All from Kin'weelay, in order: The Vile Reef (done) → The Gurubashi Legends of Old → Locating the Lost City.", task: "Make rubbings of the four Tablets of I'lalai inside.", reward: "8,450 XP; follow-up A Tale Spun Around the Fire (Master Gadrin, Sen'jin Village) gives I'lalai Flayer, a 1H axe" },
@@ -72,10 +76,10 @@ window.TRACKER = {
           task: "Dungeon objective, shown in the quest text." }
       ],
       loot: ["Viscera Spaulders, mail shoulders (Deathless Marrow)", "Maw of Min'loth, shield (Min'loth)", "Serpentbane Crown, mail helm (Min'loth)",
-             "Knucklebone Ring (Deathless Marrow)", "Linken's Boots of Iron, mail (Primeval Elemental)", "Heart of the Primeval, trinket (Primeval Elemental)",
+             "Knucklebone Ring (Deathless Marrow)", "Linken's Boots of Iron, mail (rare trash/any-boss drop, about 1%)", "Heart of the Primeval, trinket (Primeval Elemental; caster use effect)",
              "Berserker Shackles, mail wrist (Zul'Alai)", "Dreadfrost Saber, 1H sword (Captain Dreadrise)", "Waterlogged Burial Shroud, cloak (Primeval Elemental)"] },
 
-    { id: "smarm", name: "Scarlet Monastery: Armory", zone: "Tirisfal Glades", range: [32, 42], hard: 30, ready: 35, done: true,
+    { id: "smarm", name: "Scarlet Monastery: Armory", zone: "Tirisfal Glades", range: [36, 44], hard: 33, ready: 36, done: true,
       note: "You hold the Scarlet Key, which opens this wing and the Cathedral. Herod is one of four kills for Into the Scarlet Monastery.",
       quests: [
         { id: 1048, name: "Into the Scarlet Monastery", lvl: 33, giver: "Varimathras", zone: "Undercity", area: "Royal Quarter", way: "56.6 92.6", shared: "smcath", seed: "have",
@@ -84,18 +88,18 @@ window.TRACKER = {
       ],
       loot: ["Herod's Shoulder, mail (35%)", "Scarlet Leggings, mail (15%)", "Raging Berserker's Helm, mail (35%)"] },
 
-    { id: "smcath", name: "Scarlet Monastery: Cathedral", zone: "Tirisfal Glades", range: [35, 45], hard: 34, ready: 38, done: true,
+    { id: "smcath", name: "Scarlet Monastery: Cathedral", zone: "Tirisfal Glades", range: [38, 46], hard: 35, ready: 38, done: true,
       note: "Finishes Into the Scarlet Monastery. Fairbanks is in a hidden side room; ask the group to kill him for the boots.",
       quests: [
         { id: 1048, name: "Into the Scarlet Monastery", lvl: 33, giver: "Varimathras", zone: "Undercity", area: "Royal Quarter", way: "56.6 92.6", shared: "smarm", seed: "have",
           task: "Kill High Inquisitor Whitemane and Scarlet Commander Mograine.", reward: "Dragon's Blood Necklace (+12 Stamina, +8 block value)" }
       ],
-      loot: ["Aegis of the Scarlet Commander, shield (Mograine) — best shield through level 40", "Dusty Mail Boots (Fairbanks, 33%)",
+      loot: ["Aegis of the Scarlet Commander, shield (Mograine, 24%, requires 39)", "Dusty Mail Boots, mail, 180 armor, +14 Stamina (Fairbanks, 35%)",
              "Triune Amulet, neck (Whitemane, 40%)", "Hand of Righteousness, 1H mace (Whitemane, 20%)"] },
 
-    { id: "kroldok", name: "Krol'dok Stronghold", zone: "Riverglades, directly north of Sunnyglade", range: [40, 45], hard: 37, ready: 40, isNew: true, done: true,
+    { id: "kroldok", name: "Krol'dok Stronghold", zone: "Riverglades, on the hill north of Sunnyglade", range: [40, 45], hard: 37, ready: 40, isNew: true, done: true,
       guide: "https://www.wowhead.com/forever/guide/kroldok-stronghold-dungeon-overview-location-rewards",
-      note: "Bosses in order: Slavecrusher Grox, Twilight Commander Zarmok, War Handler Ashka, Nar'gurk, Bossman Toof, Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45. All three Horde dungeon quests sit at the end of one long Rom'gar chain; the armory (Nov 19) shows Rock on Stick, the Eye of Mugg reward, so the Rom'gar chain and Overlord Mugg are done.",
+      note: "Range: 40–45 per Wowhead and Icy Veins; Warcraft Tavern says 40–47. Entrance is a cave west of the fortress gates, around 37.5, 37.5. Bosses in order: Slavecrusher Grox, Twilight Commander Zarmok, War Handler Ashka, Nar'gurk, Bossman Toof, Overlord Mugg. The Krol'dok Warplate pieces are the best tank plate for levels 40–45. All three Horde dungeon quests sit at the end of one long Rom'gar chain; the armory (Nov 19) shows Rock on Stick, the Eye of Mugg reward, so the Rom'gar chain and Overlord Mugg are done.",
       quests: [
         { id: 94975, name: "A Token of Vengeance", lvl: 38, giver: "Da'grosh", zone: "Riverglades", area: "hut beside the fortress", way: "33.4 38.0", isNew: true,
           pre: "Rom'gar chain, 14 steps: (1) A Message in Blood + Food for the Taking, Krom'rosh → (2) Show Them How It's Done → (3) Encroaching Twilight + Twilight Missives → (4) Digging for Answers, Tran'gul in the tower behind Krom'rosh; cave at 49.9 47.0 → (5) The Purple Ones + Sickening Lights → (6) Twilight No More!, then talk to Tran'gul → (7) Land of Giants, sends you to Bolderok → (8) Unworthy Champion + Might Makes Right → (9) Clugfist's Decree, hand in to Krom'rosh → (10) The Wayward Warrior, find Da'grosh at 33 38 → (11) Carving a Path + Break Their Chains + Rumblings of Discontent → (12) Bring Me His Head → (13) accept A Token of Vengeance and It Is Time, Brother... → (14) turn in It Is Time, Brother... to open Eye of Mugg and Tome of Twilight.", task: "Collect 15 Cultist Ears from Twilight's Hammer mobs inside.", reward: "Semblance of Twilight" },
@@ -106,9 +110,10 @@ window.TRACKER = {
         { id: 94973, name: "Krol'dok Moulding", lvl: 38, giver: "Drops from Tunk", zone: "Inside the dungeon", area: "the blacksmith beside War Handler Ashka", isNew: true,
           task: "Kill Tunk and loot the moulding. Take it to Kreza Darkthon in Riverglades for Key Ingredients: 4 Thick Leather and 12 Iron Bars. Bring those along to finish it the same day.", where: "inside", reward: "Krol'dok Compound Key" }
       ],
-      loot: ["Krol'dok Warplate Chest and Helmet, plate (Nar'gurk)", "Worgbinder's Treads, plate feet (War Handler Ashka)", "Zarmok's Plated Signet, ring: Stamina, block value, hit (Twilight Commander Zarmok)",
-             "Krol'dok Warplate Gauntlets, Legplates and Pauldrons are bind-on-equip drops: check the auction house too", "Slavecrusher Scepter, 1H mace (Slavecrusher Grox)",
-             "Band of Bossman, ring, and Toofbreaker, 1H mace (Bossman Toof)", "Emblem of Slamming, trinket (Overlord Mugg)", "Chain of the Corruptor, neck (Nar'gurk)"] },
+      loot: ["Krol'dok Warplate Chest, plate, +13 defense (Nar'gurk, 26%)", "Krol'dok Warplate Helmet (Nar'gurk, 29%): Strength/Spirit, no defense, weak for tanking",
+             "Zarmok's Plated Signet, ring: Stamina, block value, hit (Twilight Commander Zarmok, 33%)",
+             "Krol'dok Warplate Gauntlets, Legplates and Pauldrons are bind-on-equip trash drops (1–4%): check the auction house", "Slavecrusher Scepter, 1H mace (Slavecrusher Grox)",
+             "Skip: Worgbinder's Treads (Strength/Intellect) and Band of Bossman (healer ring)", "Toofbreaker, 1H mace (Bossman Toof)", "Emblem of Slamming, trinket (Overlord Mugg)", "Chain of the Corruptor, neck (Nar'gurk)"] },
 
     { id: "ulda", name: "Uldaman", zone: "Badlands", range: [41, 51], hard: 39, ready: 41,
       note: "Fly to Kargath. Take Necklace Recovery from Dran Droffers in Orgrimmar before you go; the Shattered Necklace drops off Shadowforge mobs outside the portal, and the chain ends in Jarkal's Enhancing Necklace, a top tank neck for 40–45. The full chain takes two visits unless your group clears to Archaedas.",
@@ -123,54 +128,69 @@ window.TRACKER = {
           task: "Find the Tablet of Ryun'eh inside." },
         { id: 2283, name: "Necklace Recovery (chain)", lvl: 38, giver: "Dran Droffers", zone: "Orgrimmar", area: "The Drag", way: "59.6 36.5",
           task: "Take Necklace Recovery from Dran first, then loot the Shattered Necklace from Shadowforge mobs outside the portal. Chain: Take 2 (Remains of a Paladin inside, for the journal) → Translating the Journal (Jarkal, Kargath) → Find the Gems and Power Source (ruby in a barricaded Shadowforge area, topaz in a trogg-area urn, sapphire from Grimlok, power source from Archaedas) → Deliver the Gems (Dran) → Take 3 (Jarkal).",
-          reward: "Jarkal's Enhancing Necklace" },
+          reward: "Jarkal's Enhancing Necklace (+10 Stamina, +1 Intellect, +12 spell power). Take 3 is turned in to Jarkal Mossmeld, Kargath" },
         { id: 2278, name: "The Platinum Discs", lvl: 40, giver: "The Discs of Norgannon", zone: "Inside the dungeon", area: "room behind Archaedas",
           task: "Talk to the stone watcher, then take the discs to a sage in Thunder Bluff.", where: "inside" }
       ],
       loot: ["Jarkal's Enhancing Necklace (necklace chain)", "Stoneslayer / The Rockpounder are two-handers: skip for tanking", "Olaf's All Purpose Shield (The Lost Dwarves event)"] },
 
     { id: "zf", name: "Zul'Farrak", zone: "Tanaris", range: [44, 54], hard: 42, ready: 44,
-      note: "Someone needs the Mallet of Zul'Farrak (Hinterlands) to summon Gahz'rilla.",
+      note: "Most groups run it at 46–48. Someone needs the Mallet of Zul'Farrak (Hinterlands) to summon Gahz'rilla.",
       quests: [
-        { id: 2865, name: "Scarab Shells", lvl: 40, giver: "Tran'rek", zone: "Tanaris", area: "Gadgetzan", way: "51.5 26.8", pre: "Optional breadcrumb: Tran'rek, from Krazek in Booty Bay (sources disagree on whether it is required; try Tran'rek directly).", task: "5 Uncracked Scarab Shells from scarabs inside." },
-        { id: 3042, name: "Troll Temper", lvl: 40, giver: "Trenton Lighthammer", zone: "Tanaris", area: "Gadgetzan", way: "51.4 28.7", task: "20 Vials of Troll Temper from elite trolls inside." },
-        { id: 2768, name: "Divino-matic Rod", lvl: 40, giver: "Chief Engineer Bilgewhizzle", zone: "Tanaris", area: "Gadgetzan", way: "52.4 28.5", task: "Rescue the prisoners at the pyramid; loot the rod from Sergeant Bly." },
-        { id: 2846, name: "Tiara of the Deep", lvl: 40, giver: "Tabetha", zone: "Dustwallow Marsh", way: "46.0 57.1", pre: "Optional lead-in: Tabetha's Task from Deino in Orgrimmar (38.4 85.8) or a mage trainer.", task: "Kill Hydromancer Velratha." },
+        { id: 2865, name: "Scarab Shells", lvl: 40, giver: "Tran'rek", zone: "Tanaris", area: "Gadgetzan", way: "51.6 26.8", pre: "Possibly required: the breadcrumb Tran'rek, from Krazek in Booty Bay. Gfinity and Frostyboost say you need it; Conquest Capped and Warcraft Tavern say you don't. If you pass through Booty Bay, take it.", task: "5 Uncracked Scarab Shells from scarabs inside." },
+        { id: 3042, name: "Troll Temper", lvl: 40, giver: "Trenton Lighthammer", zone: "Tanaris", area: "Gadgetzan", way: "51.4 28.6", task: "20 Vials of Troll Temper from elite trolls inside." },
+        { id: 2768, name: "Divino-matic Rod", lvl: 40, giver: "Chief Engineer Bilgewhizzle", zone: "Tanaris", area: "Gadgetzan", way: "52.4 28.4", task: "Rescue the prisoners at the pyramid; loot the rod from Sergeant Bly." },
+        { id: 2846, name: "Tiara of the Deep", lvl: 40, giver: "Tabetha", zone: "Dustwallow Marsh", way: "46.0 57.1", pre: "Pick up Tabetha's Task from Deino in Orgrimmar (38.4 85.8) first. Sources disagree on whether it's required, and Deino is on your way anyway.", task: "Kill Hydromancer Velratha.", reward: "Gemshale Pauldrons (plate, +5 Strength, +10 Stamina, +8 Intellect) or Dank Shoulderpads, plus Spellshifter Rod" },
         { id: 3527, name: "The Prophecy of Mosh'aru", lvl: 40, giver: "Yeh'kinya", zone: "Tanaris", area: "Steamwheedle Port", way: "67.0 22.4", pre: "Screecher Spirits, from Yeh'kinya, done in Feralas.", task: "Both Mosh'aru Tablets, from Theka and Velratha." },
         { id: 2936, name: "The Spider God", lvl: 40, giver: "Master Gadrin", zone: "Durotar", area: "Sen'jin Village", way: "55.9 74.7", pre: "Venom Bottles chain from the Hinterlands.", task: "Read the Tablet of Theka." },
-        { id: 2770, name: "Gahz'rilla", lvl: 40, giver: "Wizzle Brassbolts", zone: "Thousand Needles", area: "Shimmering Flats", way: "78.1 77.1", pre: "The Brassbolts Brothers.", task: "Gahz'rilla's Electrified Scale. Someone in the group needs the Mallet of Zul'Farrak." },
-        { id: "zumrah", name: "Zum'rah's Head", lvl: 42, giver: "Mazu'kon", zone: "Mulgore", area: "Skywatcher Plateau", way: "32.4 20.6", task: "Kill Witch Doctor Zum'rah and bring back his head." }
+        { id: 2770, name: "Gahz'rilla", lvl: 40, giver: "Wizzle Brassbolts", zone: "Thousand Needles", area: "Shimmering Flats", way: "78.1 77.1", task: "Gahz'rilla's Electrified Scale. Someone in the group needs the Mallet of Zul'Farrak. (The Brassbolts Brothers lead-in is Alliance only.)" },
+        { id: "zumrah", name: "Zum'rah's Head", lvl: 42, giver: "Mazu'kon", zone: "Mulgore", area: "Skywatcher Plateau", way: "32.4 20.6", isNew: true, task: "Kill Witch Doctor Zum'rah and bring back his head.", reward: "About 10,100 XP, 65s, Earthen Ring and Darkspear reputation" }
       ],
-      loot: ["Blood Ritual Ring (+13 Stamina, +3 defense)", "Big Bad Pauldrons, plate (Chief Ukorz, 30%)", "Jang'thraze the Protector, 1H sword (10%)"] },
+      loot: ["Blood Ritual Ring, +13 Stamina, +3 defense, requires 43 (Witch Doctor Zum'rah, 25%)", "Big Bad Pauldrons, plate, 396 armor, +12 Strength, +12 Stamina, requires 45 (Chief Ukorz, about 25%)",
+             "Jang'thraze the Protector, 1H sword, absorb proc, requires 45 (rare drop; source unclear, possibly Ukorz)"] },
 
     { id: "mara", name: "Maraudon", zone: "Desolace", range: [46, 55], hard: 41, ready: 45,
-      note: "Three wings. Legends of Maraudon builds the Scepter of Celebras, a shortcut to the inner wing. This is also when you return for Agamaggan's Blood.",
+      note: "Three wings. Legends of Maraudon leads to The Scepter of Celebras, a shortcut to the inner wing. Maraudon wasn't in the Forever beta, so guides use Classic data for its range, levels and waypoints.",
       quests: [
-        { id: 7068, name: "Shadowshard Fragments", lvl: 39, giver: "Uthel'nay", zone: "Orgrimmar", area: "Valley of Spirits", way: "39.2 86.3", task: "10 fragments from the rumblers outside the portals.", where: "outside" },
-        { id: 7029, name: "Vyletongue Corruption", lvl: 41, giver: "Vark Battlescar", zone: "Desolace", area: "Shadowprey Village", way: "23.2 70.3", task: "Fill the vial at the orange pool, cleanse the plants." },
-        { id: 7028, name: "Twisted Evils", lvl: 41, giver: "Willow", zone: "Desolace", way: "62.2 39.6", task: "15 Theradric Crystal Carvings." },
-        { id: 7067, name: "The Pariah's Instructions", lvl: 39, giver: "Centaur Pariah", zone: "Desolace", area: "south, patrols", way: "50.4 86.7", task: "Assemble the Amulet of Union from the Khans." },
-        { id: 7044, name: "Legends of Maraudon", lvl: 41, giver: "Cavindra", zone: "Desolace", area: "outside the orange portal", task: "Leads into The Scepter of Celebras." },
-        { id: 7064, name: "Corruption of Earth and Seed", lvl: 45, giver: "Selendra", zone: "Desolace", area: "south of Shadowprey", way: "26.9 77.7", task: "Kill Princess Theradras, then take Seed of Life from Zaetar's Spirit." }
+        { id: 7068, name: "Shadowshard Fragments", lvl: 38, giver: "Uthel'nay", zone: "Orgrimmar", area: "Valley of Spirits", way: "39.2 86.3", task: "10 fragments from the rumblers outside the portals.", where: "outside", reward: "Zealous or Prodigious Shadowshard Pendant" },
+        { id: 7029, name: "Vyletongue Corruption", lvl: 41, giver: "Vark Battlescar", zone: "Desolace", area: "Shadowprey Village", way: "23.2 70.3", task: "Fill the vial at the orange pool, then cleanse 8 plants.", reward: "Woodseed Hoop, Sagebrush Girdle or Branchclaw Gauntlets" },
+        { id: 7028, name: "Twisted Evils", lvl: 41, giver: "Willow", zone: "Desolace", area: "Kormek's Hut", way: "62.2 39.6", task: "25 Theradric Crystal Carvings (Wowhead Forever; Classic-based guides say 15).", reward: "Acumen Robes, Sprightring Helm, Relentless Chain or Hulkstone Pauldrons" },
+        { id: 7067, name: "The Pariah's Instructions", lvl: 39, giver: "Centaur Pariah", zone: "Desolace", area: "south, patrols", way: "50.4 86.7", task: "Assemble the Amulet of Union from the Khans.", reward: "Mark of the Chosen" },
+        { id: 7044, name: "Legends of Maraudon", lvl: 41, giver: "Cavindra", zone: "Desolace", area: "outside the orange portal", task: "The Celebrian Rod and Celebrian Diamond; leads into The Scepter of Celebras." },
+        { id: 7064, name: "Corruption of Earth and Seed", lvl: 45, giver: "Selendra", zone: "Desolace", area: "south of Shadowprey", way: "26.9 77.7", task: "Kill Princess Theradras. Seed of Life (Zaetar's Spirit) is a separate follow-up.", reward: "Thrash Blade, Resurgence Rod or Verdant Keeper's Aim" }
       ], loot: [] },
 
     { id: "alcaz", name: "Alcaz Prison", zone: "Alcaz Island, Dustwallow Marsh", range: [48, 53], hard: 46, ready: 48, isNew: true,
-      note: "New in Forever. Quest and loot details are not published yet; this fills in before you reach 46.", quests: [], loot: [] },
+      guide: "https://www.warcrafttavern.com/forever/guides/alcaz-island-prison/",
+      note: "Range 48–53 (Warcraft Tavern says 48–55; final boss is level 51). The portal is in a building basement around 75, 15: take the path up the hill to the left of the dock. Bosses: Tidemistress Ca'zass, Overseer Wrex (his Overseer's Keyring opens the right side), Katerina the Cleaner, Zarla and Blazeroar, then The Questioner behind a locked door. The Kor'kron chain may start with Eitrigg in Orgrimmar (unconfirmed).",
+      quests: [
+        { id: "korkron", name: "The Missing Kor'kron (chain)", lvl: 48, giver: "Nazeer Bloodpike", zone: "Dustwallow Marsh", area: "Brackenwall Village", way: "35.2 30.7", isNew: true,
+          task: "Shareable. Chain: The Elite of the Elite → Right Place, Wrong Time → No Orc Left Behind." },
+        { id: "ulka", name: "Blood Red Bandanas / A Little Payback", lvl: 48, giver: "Sergeant Ulka", zone: "Dustwallow Marsh", area: "outside the prison", way: "70.3 19.0", isNew: true,
+          task: "Bandanas: 8 from mobs inside, turned in to Eitrigg in Grommash Hold. Payback: 15 Strashaz Soldiers, 8 Enchantresses and Ca'zass's head. Ulka also gives No Orc Left Behind (turned in to Commander Folkar inside).",
+          reward: "Payback: Kor'kron Battle Gauntlets, Naga Scale Spaulders or Marshdweller's Pants" },
+        { id: "folkar", name: "The Honor of the Kor'kron → Thrall Needs to Know", lvl: 48, giver: "Commander Folkar", zone: "Inside the dungeon", isNew: true, where: "inside",
+          task: "Then Bad News for Folkar (Perfumed Note after Blazeroar), then Thrall in Orgrimmar.", reward: "Fatebound Buckler (shield), Courier's Clasp or Dustwallow Dirk" },
+        { id: "ironchains", name: "The Man in the Iron Chains", lvl: 48, giver: "Inside the dungeon", zone: "Inside the dungeon", isNew: true, where: "inside",
+          task: "Kill The Questioner, take the Ornate Shackle Key to Mason Connery. Leads to More Valuable Than Gold → State Secrets." }
+      ],
+      loot: ["Girdle of Extracted Answers, plate waist, +12 Strength, +15 Stamina, damage on block (The Questioner)", "Fingerbreaker Stamp, trinket, +6 defense (The Questioner)",
+             "Fatebound Buckler, shield (quest: Thrall Needs to Know)", "Grips of Control, plate hands, caster stats (Overseer Wrex): skip"] },
 
     { id: "st", name: "Sunken Temple", zone: "Swamp of Sorrows", range: [50, 60], hard: 46, ready: 49,
-      note: "Might of Hakkar and Warrior's Embrace are top Protection Paladin picks at 50. The paladin class quest at 50 also sends you here.",
+      note: "Might of Hakkar (1H mace) and Warrior's Embrace (plate chest), both level 49 drops from the Avatar of Hakkar, are top Protection Paladin picks. The level 50 paladin class quest (Forging the Mightstone) is currently Alliance only: it starts in the Western Plaguelands, every NPC in it is hostile to Horde, and Horde trainers don't offer it. The level range is from Classic data.",
       quests: [
-        { id: 1445, name: "The Temple of Atal'Hakkar", lvl: 38, giver: "Fel'zerul", zone: "Swamp of Sorrows", area: "Stonard", way: "47.9 54.8", pre: "Three quests starting with Pool of Tears.", task: "20 Fetishes of Hakkar.", reward: "Guardian Talisman (+9 Stamina trinket)" },
-        { id: 1446, name: "Jammal'an the Prophet", lvl: 38, giver: "Atal'ai Exile", zone: "The Hinterlands", way: "33.8 75.2", task: "Head of Jammal'an." },
-        { id: 3446, name: "Into the Depths / Secret of the Circle", lvl: 46, giver: "Marvon Rivetseeker", zone: "Tanaris", way: "52.7 45.9", pre: "The Sunken Temple, from Witch Doctor Uzer'i in Feralas.", task: "Altar of Hakkar and the statue circle." },
-        { id: 3528, name: "The God Hakkar", lvl: 40, giver: "Yeh'kinya", zone: "Tanaris", area: "Steamwheedle Port", way: "67.0 22.4", pre: "Follows The Prophecy of Mosh'aru (Zul'Farrak).", task: "Summon and kill the Avatar of Hakkar." },
-        { id: 4146, name: "Zapper Fuel", lvl: 47, giver: "Liv Rizzlefix", zone: "The Barrens", area: "Ratchet", way: "62.4 38.7", pre: "Two quests starting with Larion and Muigin (Un'Goro).", task: "5 Atal'ai Haze." }
-      ], loot: [] },
+        { id: 1445, name: "The Temple of Atal'Hakkar", lvl: 38, giver: "Fel'zerul", zone: "Swamp of Sorrows", area: "Stonard", way: "47.9 54.8", pre: "Pool of Tears → The Atal'ai Exile → Return to Fel'zerul.", task: "20 Fetishes of Hakkar.", reward: "Guardian Talisman (trinket: chance when struck for +350 armor) and Orgrimmar reputation" },
+        { id: 1446, name: "Jammal'an the Prophet", lvl: 38, giver: "Atal'ai Exile", zone: "The Hinterlands", area: "Shadra'Alor", way: "33.8 75.2", task: "Head of Jammal'an.", reward: "Rainstrider Leggings, Helm of Exile or Leggings of Freedom and Sorrow" },
+        { id: 3446, name: "Into the Depths / Secret of the Circle", lvl: 46, giver: "Marvon Rivetseeker", zone: "Tanaris", way: "52.7 45.9", pre: "The Sunken Temple (Witch Doctor Uzer'i, Feralas) → The Stone Circle (Marvon's chest in Ratchet).", task: "Altar of Hakkar and the statue circle." },
+        { id: 3528, name: "The God Hakkar", lvl: 40, giver: "Yeh'kinya", zone: "Tanaris", area: "Steamwheedle Port", way: "67.0 22.4", pre: "Screecher Spirits → The Prophecy of Mosh'aru (Zul'Farrak) → The Ancient Egg.", task: "Summon and kill the Avatar of Hakkar.", reward: "Avenguard Helm, Lifeforce Dirk, Gemburst Circlet or Shapeshifter's Helm" },
+        { id: 4146, name: "Zapper Fuel", lvl: 47, giver: "Liv Rizzlefix", zone: "The Barrens", area: "Ratchet", way: "62.4 38.7", pre: "Larion and Muigin → Marvon's Workshop (Un'Goro).", task: "5 Atal'ai Haze. Turn in to Larion, Marshal's Refuge." }
+      ], loot: ["Might of Hakkar, 1H mace (Avatar of Hakkar)", "Warrior's Embrace, plate chest (Avatar of Hakkar)"] },
 
     { id: "brd", name: "Blackrock Depths", zone: "Blackrock Mountain", range: [52, 60], hard: 50, ready: 52, note: "Around 25 Horde quests, most from Kargath. Planned in detail when you reach 48.", quests: [], loot: [] },
     { id: "blackmaw", name: "Blackmaw Hold", zone: "Azshara", range: [55, 60], hard: 53, ready: 55, isNew: true, note: "New in Forever.", quests: [], loot: [] },
     { id: "lbrs", name: "Lower Blackrock Spire", zone: "Blackrock Mountain", range: [55, 60], hard: 53, ready: 55, quests: [], loot: [] },
-    { id: "dm", name: "Dire Maul", zone: "Feralas", range: [54, 60], hard: 54, ready: 56, quests: [], loot: [] },
+    { id: "dm", name: "Dire Maul", zone: "Feralas", range: [54, 60], hard: 54, ready: 56, note: "East is 54–60; West and North are 56–60. All three wings count toward Master Spelunker.", quests: [], loot: [] },
     { id: "scholo", name: "Scholomance", zone: "Western Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
     { id: "strat", name: "Stratholme", zone: "Eastern Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
     { id: "shaper", name: "Shaper's Terrace", zone: "Un'Goro Crater", range: [58, 60], hard: 57, ready: 58, isNew: true, quests: [], loot: [] },
@@ -178,74 +198,81 @@ window.TRACKER = {
   ],
 
   /* Equipped gear from the armory, and the best realistic replacement per slot.
-     how: craft | quest | drop | buy.  at = level you can use it.  bs = Blacksmithing skill needed. */
+     how: craft | quest | drop | buy.  at = level you can use it.  bs = Blacksmithing skill needed.
+     Stats re-checked 2026-11-20 against Wowhead Forever tooltips. Paladins can wear mail; plate is marked where it matters. */
   gear: [
-    { slot: "Head", cur: "Tusken Helm", ilvl: 34, targets: [
-      { name: "Protector's Chain Helm", stats: "+11 Stamina, +7 defense", how: "craft", bs: 125, at: 37 },
-      { name: "Serpentbane Crown", stats: "mail", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
-      { name: "Heavy Mithril Helm", stats: "469 armor, +15 Stamina (plate)", how: "craft", bs: 220, at: 45 } ] },
+    { slot: "Head", cur: "Tusken Helm (mail)", ilvl: 34, targets: [
+      { name: "Serpentbane Crown", stats: "mail, +16 Stamina", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
+      { name: "Heavy Mithril Helm", stats: "plate, 469 armor, +15 Stamina", how: "craft", bs: 220, at: 42, note: "Plans are a world drop, not trainer (Forever tooltip says 220; wiki says 245)" } ] },
     { slot: "Neck", cur: "Abomination Chain", ilvl: 42, targets: [
       { name: "Dragon's Blood Necklace", stats: "+12 Stamina, +8 block value", how: "quest", from: "smcath", src: "Into the Scarlet Monastery", at: 37 },
       { name: "Abomination Chain", stats: "", how: "drop", from: "rfd", src: "Glutton", at: 37 },
-      { name: "Jarkal's Enhancing Necklace", stats: "+10 Stamina, +12 spell power", how: "quest", from: "ulda", src: "necklace chain", at: 41 } ] },
+      { name: "Jarkal's Enhancing Necklace", stats: "+10 Stamina, +1 Intellect, +12 spell power", how: "quest", from: "ulda", src: "Necklace Recovery, Take 3", at: 41 } ] },
     { slot: "Shoulders", cur: "Krol'dok Warplate Pauldrons", ilvl: 46, targets: [
-      { name: "Krol'dok Warplate Pauldrons", stats: "368 armor, +14 Stamina, +10 hit (plate, set 1/5)", how: "drop", from: "kroldok", src: "bind-on-equip drop, or auction house", at: 41 },
-      { name: "Warder's Pauldrons", stats: "375 armor, +10 defense, +13 Stamina (plate)", how: "craft", bs: 210, at: 45 } ] },
+      { name: "Krol'dok Warplate Pauldrons", stats: "plate, 368 armor (+50 bonus), +14 Stamina, +1% hit (set 1/5)", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 41 },
+      { name: "Warder's Pauldrons", stats: "plate, 375 armor, +10 defense, +13 Stamina, +9 spell power", how: "craft", bs: 210, at: 42, note: "Plans from Gor'mak (Barrens 49.8 29.7), 60 Merchant's Favor, Friendly with Durotar Supply and Logistics" },
+      { name: "Big Bad Pauldrons", stats: "plate, 396 armor, +12 Strength, +12 Stamina", how: "drop", from: "zf", src: "Chief Ukorz, about 25%", at: 45 } ] },
     { slot: "Back", cur: "Cloak of the Cult", ilvl: 46, targets: [
-      { name: "Silky Spider Cape", stats: "", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 37 },
-      { name: "Waterlogged Burial Shroud", stats: "", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
+      { name: "Silky Spider Cape", stats: "", how: "drop", from: "rfd", src: "Tuten'kash, 34%", at: 37 },
+      { name: "Waterlogged Burial Shroud", stats: "+7 Stamina, crit, attack power", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
     { slot: "Chest", cur: "Mutant Scale Breastplate", ilvl: 23, targets: [
-      { name: "Green Iron Hauberk", stats: "358 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 37 },
-      { name: "Carapace of Tuten'kash", stats: "plate", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
-      { name: "Krol'dok Warplate Chest", stats: "490 armor, +13 defense, +10 Stamina", how: "drop", from: "kroldok", src: "Nar'gurk", at: 42 } ] },
+      { name: "Green Iron Hauberk", stats: "mail, 238 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 31, note: "Trainer plans. Skill is 155 per the wiki, 180 per Classic data; one report says the recipe is bugged" },
+      { name: "Carapace of Tuten'kash", stats: "plate, 373 armor, +10 Strength, +8 Agility, +15 Stamina", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
+      { name: "Krol'dok Warplate Chest", stats: "plate, 490 armor, +10 Strength, +10 Stamina, +13 defense", how: "drop", from: "kroldok", src: "Nar'gurk, 26%", at: 41 } ] },
     { slot: "Wrist", cur: "Undead Knight's Bracers", ilvl: 36, targets: [
-      { name: "Berserker Shackles", stats: "mail", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
-      { name: "Warder's Wristguards", stats: "231 armor, +8 defense, +11 Stamina (plate)", how: "craft", bs: 225, at: 45 } ] },
+      { name: "Berserker Shackles", stats: "mail, +7 Strength, +6 defense", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
+      { name: "Warder's Wristguards", stats: "plate, 231 armor, +8 defense, +11 Stamina, +7 spell power", how: "craft", bs: 225, at: 45, note: "Plans from Gor'mak, 90 Merchant's Favor, Honored with Durotar Supply and Logistics" } ] },
     { slot: "Hands", cur: "Warsong Gauntlets", ilvl: 27, targets: [
-      { name: "Warder's Gauntlet", stats: "+10 Stamina, +7 defense", how: "craft", bs: 175, at: 37 },
-      { name: "Krol'dok Warplate Gauntlets", stats: "300 armor, +15 parry, +9 Stamina", how: "drop", from: "kroldok", src: "bind-on-equip drop, or auction house", at: 40 } ] },
+      { name: "Warder's Gauntlet", stats: "mail, 159 armor, +10 Stamina, +7 defense, +11 spell power", how: "craft", bs: 175, at: 35, note: "Not a trainer recipe: plans from Gor'mak (Barrens 49.8 29.7), 60 Merchant's Favor, Friendly with Durotar Supply and Logistics" },
+      { name: "Krol'dok Warplate Gauntlets", stats: "plate, 300 armor, +9 Stamina, +1% parry", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 40 } ] },
     { slot: "Waist", cur: "Twilight Lord Girdle", ilvl: 30, targets: [
-      { name: "Warder's Belt", stats: "+10 Stamina, +7 defense", how: "craft", bs: 150, at: 37 } ] },
+      { name: "Warder's Belt", stats: "mail, 132 armor, +10 Stamina, +7 defense, +7 spell power", how: "craft", bs: 150, at: 30, note: "Trainer plans" },
+      { name: "Girdle of Extracted Answers", stats: "plate, +12 Strength, +15 Stamina, damage on block", how: "drop", from: "alcaz", src: "The Questioner", at: 48 } ] },
     { slot: "Legs", cur: "Dual Reinforced Leggings", ilvl: 37, targets: [
-      { name: "Krol'dok Warplate Legplates", stats: "429 armor, +19 Stamina, +8 defense", how: "drop", from: "kroldok", src: "bind-on-equip drop, or auction house", at: 42 } ] },
+      { name: "Krol'dok Warplate Legplates", stats: "plate, 429 armor, +8 Strength, +19 Stamina, +8 defense", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 41 } ] },
     { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
-      { name: "Dusty Mail Boots", stats: "270 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 33%", at: 37 },
-      { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 },
-      { name: "Worgbinder's Treads", stats: "plate", how: "drop", from: "kroldok", src: "War Handler Ashka", at: 42 } ] },
+      { name: "Dusty Mail Boots", stats: "mail, 180 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 35%", at: 37 },
+      { name: "Warder's Boots", stats: "plate, 330 armor, +13 Stamina, +9 defense", how: "craft", bs: 200, at: 40, note: "Where to get the plans isn't known yet; they bind on pickup" },
+      { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "rare drop in the dungeon, about 1%", at: 37 } ] },
     { slot: "Ring 1", cur: "Zarmok's Plated Signet", ilvl: 45, targets: [
-      { name: "Zarmok's Plated Signet", stats: "+9 Stamina, +11 block value, +5 hit", how: "drop", from: "kroldok", src: "Twilight Commander Zarmok", at: 42 } ] },
+      { name: "Zarmok's Plated Signet", stats: "+9 Stamina, +11 block value, +0.5% hit", how: "drop", from: "kroldok", src: "Twilight Commander Zarmok, 33%", at: 40 } ] },
     { slot: "Ring 2", cur: "Purified Ring (caster stats)", ilvl: 44, targets: [
-      { name: "Dragonclaw Ring", stats: "", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
-      { name: "Band of Bossman", stats: "", how: "drop", from: "kroldok", src: "Bossman Toof", at: 42 },
-      { name: "Knucklebone Ring", stats: "", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
-      { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", at: 45 } ] },
+      { name: "Dragonclaw Ring", stats: "stats not checked", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
+      { name: "Knucklebone Ring", stats: "+7 Stamina", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
+      { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", src: "Witch Doctor Zum'rah, 25%", at: 43 } ] },
     { slot: "Trinkets", cur: "Both slots empty", ilvl: 0, targets: [
-      { name: "Defiler's Talisman", stats: "+8 Stamina", how: "buy", src: "Defilers vendor in Hammerfall, Arathi (Horde version of Talisman of Arathor, about 1g 50s; may need Arathi Basin reputation)", at: 37 },
-      { name: "Heart of the Primeval", stats: "", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 },
-      { name: "Rune of Perfection / Rune of Duty", stats: "+8 Stamina", how: "buy", src: "Warsong Gulch vendor, about 4g", at: 40 } ] },
+      { name: "Defiler's Talisman", stats: "+8 Stamina; use: absorbs 353–431 physical damage (level 38 version)", how: "buy", src: "Defilers quartermaster; requires Friendly with The Defilers (Arathi Basin). Vendor location and price are from Classic data", at: 38 },
+      { name: "Rune of Duty", stats: "+8 Stamina, +10 all resistances (pick this over Rune of Perfection; they can't be worn together)", how: "buy", src: "Warsong Gulch vendor; requires Friendly with Warsong Outriders", at: 40 },
+      { name: "Fingerbreaker Stamp", stats: "+6 defense", how: "drop", from: "alcaz", src: "The Questioner", at: 48 },
+      { name: "Guardian Talisman", stats: "chance when struck: +350 armor for 15 sec", how: "quest", from: "st", src: "The Temple of Atal'Hakkar", at: 38 } ] },
     { slot: "Main hand", cur: "Rock on Stick", ilvl: 47, targets: [
       { name: "Rock on Stick", stats: "57-107, speed 2.60, +4 Strength", how: "quest", from: "kroldok", src: "Eye of Mugg", at: 40 },
-      { name: "Dreadfrost Saber", stats: "", how: "drop", from: "drowned", src: "Captain Dreadrise", at: 37 },
-      { name: "Runed Mithril Hammer", stats: "+7 Stamina, +4 defense", how: "craft", bs: 220, at: 45 } ] },
+      { name: "Runed Mithril Hammer", stats: "32-61, speed 1.60, +7 Stamina, +4 defense", how: "craft", bs: 220, at: 44, note: "Plans are a world drop (Forever tooltip says 220; wiki says 245)" },
+      { name: "Might of Hakkar", stats: "1H mace", how: "drop", from: "st", src: "Avatar of Hakkar", at: 49 } ] },
     { slot: "Shield", cur: "Aegis of the Scarlet Commander", ilvl: 44, targets: [
-      { name: "Aegis of the Scarlet Commander", stats: "1548 armor, +8 Stamina, +7 Strength", how: "drop", from: "smcath", src: "Scarlet Commander Mograine", at: 38 },
-      { name: "Maw of Min'loth", stats: "", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 } ] }
+      { name: "Aegis of the Scarlet Commander", stats: "1548 armor, +8 Stamina, +7 Strength", how: "drop", from: "smcath", src: "Scarlet Commander Mograine, 24%", at: 39 },
+      { name: "Maw of Min'loth", stats: "1287 armor", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
+      { name: "Fatebound Buckler", stats: "stats not published", how: "quest", from: "alcaz", src: "Thrall Needs to Know", at: 48 } ] }
   ],
 
   milestones: [
-    { at: 40, id: "plate", name: "Train plate armor", detail: "Done: the armory shows plate pauldrons equipped. Opens Carapace of Tuten'kash, Icemetal Barbute and the rest of the Krol'dok Warplate set." },
-    { at: 40, id: "mount", name: "Warhorse quest", detail: "Take Report to Danitha from Garen Largo, your trainer in Undercity, and ride to Bandarion Keep. It is a one-step class quest with no gold fee, so do it before paying for anything in Brill." },
+    { at: 40, id: "plate", name: "Train plate armor", detail: "Done: the armory shows plate pauldrons equipped." },
+    { at: 40, id: "mount", name: "Warhorse quest", detail: "Done. Two quests: Report to Danitha, then A Paladin's Steed, which teaches Summon Warhorse." },
     { at: 40, id: "dualspec", name: "Dual specialization (50g)", detail: "Bought. Protection stays the main spec; second spec undecided, leaning shockadin over Retribution." },
-    { at: 35, id: "firstaid", name: "Expert First Aid book", detail: "Expert First Aid – Under Wraps from Balai Lok'Wein in Brackenwall Village, or the auction house. At First Aid 225, Doctor Gregory Victor in Hammerfall gives the Triage quest." },
-    { at: 50, id: "classq50", name: "Level 50 class quest", detail: "Sends you into the Sunken Temple." }
+    { at: 35, id: "firstaid", name: "Expert First Aid book", detail: "Buy Expert First Aid – Under Wraps from Balai Lok'Wein in Brackenwall Village, Dustwallow Marsh (on your way to Tabetha). At First Aid 225 and level 35, Doctor Gregory Victor in Hammerfall gives the Triage quest." },
+    { at: 44, id: "legacy_bs", name: "Legacy: Journeyman Blacksmithing", detail: "1 Legacy Point at Blacksmithing 150. You're at 173, so check the Legacy window that it's credited." },
+    { at: 45, id: "legacy45", name: "Legacy: Experienced Paladin", detail: "1 Legacy Point for reaching level 45. Comes next level." },
+    { at: 44, id: "legacy_spel", name: "Legacy: Novice + Experienced Spelunker", detail: "Solo three low dungeons for 2 points: Deadmines (kill VanCleef) and Excavation Site: Wetlands (Relic Guardian) for Novice, and Blackfathom Deeps (Aku'mai) for Experienced." },
+    { at: 50, id: "classq50", name: "Level 50 class quest", detail: "Not available to Horde paladins right now (Forging the Mightstone is Alliance only). Watch the patch notes for a fix." }
   ],
 
   unknowns: [
     "Your current gold after buying dual spec",
-    "Whether you ran Excavation Site: Wetlands",
+    "Did Necklace Recovery, Take 3 get turned in to Jarkal?",
     "Whether you turned in Into the Scarlet Monastery: your neck is still Abomination Chain, so which reward did you take?",
-    "Krol'dok side quests: did you finish Tome of Twilight, A Token of Vengeance and Krol'dok Moulding?",
     "First Aid: did you buy the Expert book?",
-    "Second spec: still leaning shockadin? The armory shows all 34 points in Protection"
+    "Second spec: still leaning shockadin? The armory shows all 34 points in Protection",
+    "Reputation with Durotar Supply and Logistics (Friendly unlocks the Warder's Gauntlet and Pauldrons plans from Gor'mak)",
+    "Do solo dungeon kills count for Legacy? Check the Legacy window after your first solo run"
   ]
 };

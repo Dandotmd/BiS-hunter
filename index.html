@@ -299,7 +299,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
   }
 
   function srcText(t) {
-    if (t.how === "craft") return "craft, Blacksmithing " + t.bs;
+    if (t.how === "craft") return "craft, Blacksmithing " + t.bs + (t.note ? ". " + t.note : "");
     var d = t.from ? dById(t.from).name : "";
     return (t.how === "quest" ? "quest: " : t.how === "buy" ? "buy: " : "") + [t.src, d].filter(Boolean).join(", ");
   }
@@ -351,7 +351,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
       return '<li><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (S.prog[k] ? " checked" : "") + '><label for="' + k + '"><b>' + esc(m.name) + '</b> <span class="muted small">level ' + m.at + "</span><br><span class=\"small\">" + esc(m.detail) + "</span></label></li>";
     }).join("");
     $("unk").innerHTML = T.unknowns.map(function (u) { return "<li>" + esc(u) + "</li>"; }).join("");
-    $("foot").innerHTML = 'Game data checked ' + esc(T.checked) + ' against Wowhead, ForeverDB and Forever Codex. New-dungeon loot sources and anything past level 45 lean on Classic data and may differ in Forever. Gear snapshot from the <a href="' + C.armory + '" target="_blank" rel="noopener">armory</a>, read 2026-11-19 at level 43.';
+    $("foot").innerHTML = 'Game data checked ' + esc(T.checked) + ' against Wowhead Forever, Warcraft Tavern, Conquest Capped, Gfinity, Frostyboost, Method.gg and Warcraft Wiki. Notes say where only Classic data was found (mostly Maraudon and Sunken Temple levels and waypoints). Gear snapshot from the <a href="' + C.armory + '" target="_blank" rel="noopener">armory</a>, read 2026-11-19 at level 43.';
   }
 
   function render() { renderHead(); renderFocus(); renderDungeons(); renderGear(); renderRest(); }

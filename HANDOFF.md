@@ -77,59 +77,89 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfang Keep (all four per user, for Legacy), Gnomeregan, Razorfen Kraul, SM Graveyard / Library / Armory / Cathedral, City of Dalaran, Razorfen Downs, The Drowned City, Krol'dok Stronghold (all four Horde quests), **Uldaman** (one run, all quests including Platinum Discs).
 
 ### In progress
-- **Necklace Recovery chain:** Deliver the Gems turned in to Dran Droffers (Orgrimmar). **Take 3 still to turn in to Jarkal Mossmeld in Kargath** for Jarkal's Enhancing Necklace (+10 Stamina, +12 spell power). Confirm with user.
+- **Necklace Recovery chain:** Deliver the Gems turned in to Dran Droffers (Orgrimmar). **Take 3 still to turn in to Jarkal Mossmeld in Kargath** for Jarkal's Enhancing Necklace (+10 Stamina, +1 Intellect, +12 spell power; confirmed on Wowhead Forever). Confirm with user.
 
 ### Next
-1. **Zul'Farrak (44-54)** prep and run. Route in Section 4.
-2. **Legacy, Novice Spelunker:** only The Deadmines and Excavation Site: Wetlands left. Plan to solo both. Point value of the challenge not confirmed.
-3. **Blacksmithing 175:** Plans: Warder's Gauntlet (skill 175, new in Forever) replaces ilvl 27 hands. Check trainer vs. plans vendor.
-4. Maraudon (46-55) after ZF. Shadowshard Fragments can be picked up now (Uthel'nay, Orgrimmar, requires 39).
+1. **Zul'Farrak (44-54; most groups go at 46-48)** prep and run. Route in Section 4.
+2. **Legacy, 3 points from solo runs:**
+   - Novice Spelunker (1 point): The Deadmines (17-26, kill Edwin VanCleef) and Excavation Site: Wetlands (kill Relic Guardian).
+   - Experienced Spelunker (1 point): **Blackfathom Deeps** (24-32, kill Aku'mai). It's the only dungeon on that list not done yet.
+   - Either way you need the final-boss kill. Whether solo kills count is not confirmed.
+   - Also check the window for Journeyman Blacksmithing (150) and Experienced Paladin (level 45).
+3. **Warder's Gauntlet is mail, not a trainer recipe.** Plans come from Gor'mak (Barrens 49.8 29.7) for 60 Merchant's Favor at Friendly with Durotar Supply and Logistics. It still beats the ilvl 27 hands (+10 Sta, +7 def).
+4. Maraudon (46-55, Classic data) after ZF. Shadowshard Fragments can be picked up now (Uthel'nay, Orgrimmar, level 38).
+5. The level 50 paladin class quest (Forging the Mightstone) is **Alliance only** right now, so it is not a reason to go to Sunken Temple.
 
 ---
 
-## 4. Zul'Farrak route (verified 2026-11-20 against Warcraft Tavern and Frostyboost Forever guides)
+## 4. Zul'Farrak route (re-checked 2026-11-20: Wowhead Forever tooltips, Gfinity, Conquest Capped, Frostyboost, Warcraft Tavern)
 
 User was in Thunder Bluff after turning in the Platinum Discs.
 
 **Mulgore**
-- Mazu'kon, Skywatcher Plateau (32.4 20.6): **Zum'rah's Head** (Horde, level 42, kill Witch Doctor Zum'rah)
+- Mazu'kon, Skywatcher Plateau (32.4 20.6): **Zum'rah's Head** (Horde, level 42, kill Witch Doctor Zum'rah; about 10,100 XP, 65s). Zum'rah also drops the Blood Ritual Ring (25%).
 
 **Orgrimmar**
 - Uthel'nay (39.2 86.3): **Shadowshard Fragments** (Maraudon, for later)
-- Deino (38.4 85.8): **Tabetha's Task** (optional lead-in to Tiara)
-- Blacksmithing: Plans: Warder's Gauntlet at 175
+- Deino (38.4 85.8): **Tabetha's Task**. Take it: sources disagree on whether the Tiara needs it.
+
+**The Barrens (only if Friendly with Durotar Supply and Logistics)**
+- Gor'mak (49.8 29.7): Plans: Warder's Gauntlet (BS 175, 60 Merchant's Favor)
 
 **Kargath**
 - Jarkal: turn in **Necklace Recovery, Take 3**
 
 **Dustwallow Marsh**
-- Tabetha, hut in the Quagmire (46 57): turn in Tabetha's Task, take **Tiara of the Deep** (kill Hydromancer Velratha; reward choice Gemshale Pauldrons / Dank Shoulderpads plus Spellshifter Rod)
+- Brackenwall Village: Balai Lok'Wein sells Expert First Aid – Under Wraps, if you don't have it yet
+- Tabetha, hut in the Quagmire (46 57): turn in Tabetha's Task, take **Tiara of the Deep** (kill Hydromancer Velratha). Reward: Gemshale Pauldrons (plate, +5 Str, +10 Sta, +8 Int) or Dank Shoulderpads, plus Spellshifter Rod.
 
 **Gadgetzan**
-- Tran'rek (51.6 26.8): **Scarab Shells** (5 Uncracked Scarab Shells from scarabs inside). Krazek's Booty Bay breadcrumb is optional per Warcraft Tavern; Frostyboost lists it as a prerequisite. Try Tran'rek directly.
+- Tran'rek (51.6 26.8): **Scarab Shells** (5 Uncracked Scarab Shells from scarabs inside). Gfinity and Frostyboost say Krazek's Booty Bay breadcrumb, Tran'rek, is required; Conquest Capped and Warcraft Tavern (Classic-based) say not. Try Tran'rek directly; if he offers nothing, the breadcrumb is the reason.
 - Trenton Lighthammer (51.4 28.6): **Troll Temper** (20 vials from elite trolls inside)
 - Chief Engineer Bilgewhizzle (52.4 28.4): **Divino-matic Rod** (from Sergeant Bly)
 
 **Skipped unless one lines up**
-- The Prophecy of Mosh'aru (Yeh'kinya, Steamwheedle Port 67 22.4): needs Screecher Spirits (Feralas) first.
+- The Prophecy of Mosh'aru (Yeh'kinya, Steamwheedle Port 67 22.4): needs Screecher Spirits (Feralas) first. Leads on to The God Hakkar (Sunken Temple).
 - The Spider God (Master Gadrin, Sen'jin): needs the Venom Bottles chain (Hinterlands, Tarren Mill).
-- Gahz'rilla (Wizzle Brassbolts, Shimmering Flats 78 77): needs The Brassbolts Brothers and someone holding the Mallet of Zul'Farrak.
+- Gahz'rilla (Wizzle Brassbolts, Shimmering Flats 78 77): someone in the group needs the Mallet of Zul'Farrak. The Brassbolts Brothers lead-in is Alliance only.
 
-ZF loot to watch: Blood Ritual Ring (+13 Sta, +3 def), Big Bad Pauldrons, Jang'thraze the Protector.
+ZF loot to watch:
+- Blood Ritual Ring (+13 Sta, +3 def, requires 43, from Zum'rah)
+- Big Bad Pauldrons (plate, +12 Str, +12 Sta, requires 45, Chief Ukorz, about 25%)
+- Jang'thraze the Protector (1H sword with an absorb proc, rare; where it drops is unclear)
 
 ---
 
-## 5. Gear priorities
+## 5. Gear priorities (re-checked 2026-11-20)
 
-1. Chest (ilvl 23): Krol'dok Warplate Chest (Nar'gurk) or Green Iron Hauberk (craft BS 180).
-2. Hands (ilvl 27): Warder's Gauntlet (BS 175) or Krol'dok Warplate Gauntlets (BoE, AH).
-3. Feet (28), Waist (30): Warder's Belt (BS 150), Worgbinder's Treads (Krol'dok).
-4. Head (34): Krol'dok Warplate Helmet.
-5. Neck: Jarkal's Enhancing Necklace (pending turn-in).
-6. Ring 2 is a caster ring: Blood Ritual Ring (ZF), Band of Bossman (Krol'dok), Dragonclaw Ring.
-7. Trinkets empty.
+Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins can wear mail, but it has less armor.
 
-ForeverDB leveling-mode Protection weights: defense 1.4, Stamina 1.0, dodge 0.9, parry 0.8, block 0.6, spell power 0.6, hit 0.56, block value 0.5, Strength 0.4, armor 0.1.
+1. **Chest (ilvl 23):**
+   - Best: Krol'dok Warplate Chest (plate, +13 def, Nar'gurk 26%).
+   - Or Carapace of Tuten'kash (plate, RFD).
+   - Fallback: Green Iron Hauberk (mail, 238 armor; skill 155 or 180, sources disagree).
+2. **Hands (ilvl 27):** Warder's Gauntlet (mail, Gor'mak plans, see Section 3) or Krol'dok Warplate Gauntlets (plate, +1% parry, BoE, AH).
+3. **Feet (28):**
+   - **Warder's Boots** (plate, +13 Sta, +9 def, BS 200; source of the plans unknown).
+   - Or Dusty Mail Boots (mail, +14 Sta).
+   - Worgbinder's Treads is a Str/Int item: **not** a tank target.
+4. **Waist (30):** Warder's Belt (mail, BS 150, trainer). Later: Girdle of Extracted Answers (plate, Alcaz Prison).
+5. **Head (34):**
+   - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
+   - Protector's Chain Helm is a level 25 item: dropped.
+   - Real upgrade: Heavy Mithril Helm (plate, requires 42, BS 220, plans are a world drop).
+6. **Neck:** Jarkal's Enhancing Necklace (pending turn-in).
+7. **Ring 2 is a caster ring:**
+   - Blood Ritual Ring (ZF).
+   - Or Knucklebone Ring (Drowned City).
+   - Band of Bossman is a healer ring: dropped.
+8. **Trinkets empty:**
+   - Rune of Duty (+8 Sta, +10 resistances, Friendly with Warsong Outriders).
+   - Defiler's Talisman (+8 Sta plus an absorb, Friendly with The Defilers).
+   - Guardian Talisman (Sunken Temple quest).
+   - Fingerbreaker Stamp (+6 def, Alcaz).
+
+Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found again and are **unverified**. Icy Veins (written for level 60) ranks Stamina > Defense > spell power.
 
 ---
 
@@ -141,6 +171,8 @@ ForeverDB leveling-mode Protection weights: defense 1.4, Stamina 1.0, dodge 0.9,
 4. Expert First Aid book bought?
 5. Second spec plan (shockadin?).
 6. Has Blacksmithing passed 175?
+7. Durotar Supply and Logistics reputation (Friendly unlocks Gor'mak's Warder's plans).
+8. Did solo dungeon kills count in the Legacy window?
 
 ---
 
@@ -163,3 +195,4 @@ When the necklace is turned in: set `q_2283` to "done" and `g_jarkal-s-enhancing
 - Method.gg, Odealo, Icy Veins: Legacy challenges (Novice Spelunker list).
 - Warcraft Wiki / Wowpedia / wowclassicdb: Classic quest text for Badlands Reagent Run, Necklace Recovery chain, Shadowshard Fragments, Scarab Shells.
 - seemeta.com, metaforge.app: Warder's Gauntlet (BS 175).
+- 2026-11-20 re-check: Wowhead Forever quest/item tooltips (nether.wowhead.com/forever/tooltip), Warcraft Tavern Forever (dungeons, Legacy, Maraudon, Sunken Temple, Alcaz, blacksmithing plans), Conquest Capped, Gfinity, Frostyboost, Method.gg, Warcraft Wiki (Forever blacksmithing plans, Novice Spelunker), Icy Veins (search snippets only: 403).
