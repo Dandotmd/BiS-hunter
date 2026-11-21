@@ -11,12 +11,13 @@ window.TRACKER = {
   /* Baseline snapshot. The live tracker overrides level / professions / gold from its saved state. */
   character: {
     name: "Danadin Lightbrindan",
-    armory: "https://wowarmory.gg/forever/us/character/danadin-lightbrindan",
+    armory: "https://wowarmory.gg/?region=us&forever=danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 44, gold: null,
-    stats: { Health: 1979, Mana: 1763, Armor: 3563, Strength: 145, Stamina: 144, "Attack power": 405 },
-    professions: { Mining: [204, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
+    level: 45, gold: null,
+    /* armory 2026-11-21, level 45, average item level 38 */
+    stats: { Health: 2156, Mana: 1847, Armor: 3928, Strength: 143, Stamina: 155, "Attack power": 429, Dodge: "5.2%", Parry: "8.2%", Block: "6.2%" },
+    professions: { Mining: [215, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
@@ -204,7 +205,8 @@ window.TRACKER = {
      how: craft | quest | drop | buy.  at = level you can use it.  bs = Blacksmithing skill needed.
      Stats re-checked 2026-11-20 against Wowhead Forever tooltips. Paladins can wear mail; plate is marked where it matters. */
   gear: [
-    { slot: "Head", cur: "Tusken Helm (mail)", ilvl: 34, targets: [
+    { slot: "Head", cur: "Warbringer's Crown of the Champion (plate, 355 armor, +8 Str, +14 Sta, +4 def)", ilvl: 45, targets: [
+      { name: "Warbringer's Crown of the Champion", stats: "plate, 355 armor, +8 Strength, +14 Stamina, +4 defense", how: "drop", src: "equipped 2026-11-21 (bind-on-equip)", at: 40 },
       { name: "Serpentbane Crown", stats: "mail, +16 Stamina", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
       { name: "Heavy Mithril Helm", stats: "plate, 469 armor, +15 Stamina", how: "craft", bs: 220, at: 42, note: "Plans are a world drop, not trainer (Forever tooltip says 220; wiki says 245)" } ] },
     { slot: "Neck", cur: "Abomination Chain", ilvl: 42, targets: [
@@ -218,7 +220,8 @@ window.TRACKER = {
     { slot: "Back", cur: "Cloak of the Cult", ilvl: 46, targets: [
       { name: "Silky Spider Cape", stats: "", how: "drop", from: "rfd", src: "Tuten'kash, 34%", at: 37 },
       { name: "Waterlogged Burial Shroud", stats: "+7 Stamina, crit, attack power", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
-    { slot: "Chest", cur: "Mutant Scale Breastplate", ilvl: 23, targets: [
+    { slot: "Chest", cur: "Zealot Plate (plate, 509 armor, +13 Str, mana on hit)", ilvl: 48, targets: [
+      { name: "Zealot Plate", stats: "plate, 509 armor, +13 Strength, chance when struck to restore 66–110 mana", how: "drop", src: "equipped 2026-11-21", at: 43 },
       { name: "Green Iron Hauberk", stats: "mail, 238 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 31, note: "Trainer plans. Skill is 155 per the wiki, 180 per Classic data; one report says the recipe is bugged" },
       { name: "Carapace of Tuten'kash", stats: "plate, 373 armor, +10 Strength, +8 Agility, +15 Stamina", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
       { name: "Krol'dok Warplate Chest", stats: "plate, 490 armor, +10 Strength, +10 Stamina, +13 defense", how: "drop", from: "kroldok", src: "Nar'gurk, 26%", at: 41 } ] },
@@ -243,12 +246,13 @@ window.TRACKER = {
       { name: "Dragonclaw Ring", stats: "stats not checked", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
       { name: "Knucklebone Ring", stats: "+7 Stamina", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
       { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", src: "Witch Doctor Zum'rah, 25%", at: 43 } ] },
-    { slot: "Trinkets", cur: "Both slots empty", ilvl: 0, targets: [
+    { slot: "Trinkets", cur: "Carrot on a Stick (mount speed only); second slot empty", ilvl: 0, targets: [
       { name: "Defiler's Talisman", stats: "+8 Stamina; use: absorbs 353–431 physical damage (level 38 version)", how: "buy", src: "Defilers quartermaster; requires Friendly with The Defilers (Arathi Basin). Vendor location and price are from Classic data", at: 38 },
       { name: "Rune of Duty", stats: "+8 Stamina, +10 all resistances (pick this over Rune of Perfection; they can't be worn together)", how: "buy", src: "Warsong Gulch vendor; requires Friendly with Warsong Outriders", at: 40 },
       { name: "Fingerbreaker Stamp", stats: "+6 defense", how: "drop", from: "alcaz", src: "The Questioner", at: 48 },
       { name: "Guardian Talisman", stats: "chance when struck: +350 armor for 15 sec", how: "quest", from: "st", src: "The Temple of Atal'Hakkar", at: 38 } ] },
-    { slot: "Main hand", cur: "Rock on Stick", ilvl: 47, targets: [
+    { slot: "Main hand", cur: "Vanquisher's Sword (46-86, speed 2.20, +22 attack power)", ilvl: 44, targets: [
+      { name: "Vanquisher's Sword", stats: "46-86, speed 2.20, +22 attack power", how: "quest", from: "rfd", src: "Bring the End", at: 37 },
       { name: "Rock on Stick", stats: "57-107, speed 2.60, +4 Strength", how: "quest", from: "kroldok", src: "Eye of Mugg", at: 40 },
       { name: "Runed Mithril Hammer", stats: "32-61, speed 1.60, +7 Stamina, +4 defense", how: "craft", bs: 220, at: 44, note: "Plans are a world drop (Forever tooltip says 220; wiki says 245)" },
       { name: "Might of Hakkar", stats: "1H mace", how: "drop", from: "st", src: "Avatar of Hakkar", at: 49 } ] },

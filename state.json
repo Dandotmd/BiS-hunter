@@ -1,7 +1,7 @@
 {
   "character": {
-    "level": 44,
-    "mining": 204,
+    "level": 45,
+    "mining": 215,
     "blacksmithing": 173,
     "firstAid": 150
   },
@@ -42,11 +42,16 @@
     "m_dualspec": "1",
     "m_mount": "1",
     "m_plate": "1",
-    "q_2865": "have",
-    "q_3042": "have",
-    "q_2846": "have",
-    "q_2768": "have",
-    "q_2770": "have",
-    "q_7068": "have"
+    "q_2865": "done",
+    "q_3042": "done",
+    "q_2846": "done",
+    "q_2768": "done",
+    "q_2770": "done",
+    "q_7068": "have",
+    "d_zf": "done",
+    "q_zumrah": "done",
+    "m_legacy45": "1",
+    "g_warbringer-s-crown-of-the-champion": "1",
+    "g_zealot-plate": "1"
   }
 }

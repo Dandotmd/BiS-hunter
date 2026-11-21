@@ -1,6 +1,6 @@
 # WoW Forever Leveling Tracker: Handoff (v2)
 
-Snapshot: **2026-11-20, 12:40 ET**. Replaces the 2026-11-19 handoff.
+Snapshot: **2026-11-21** (armory read 13:55 ET). Replaces the 2026-11-20 handoff.
 
 ## 0. How to use this in a new session
 
@@ -22,39 +22,40 @@ Goal (user's words): *"a solid tracker where you help me determine what I should
 | Game | World of Warcraft: Forever, US, Normal ruleset (Forever has no realms) |
 | Faction / race / class | Horde, Undead, Paladin |
 | Spec | **Protection** tank, 34 points (armory, 11-19). Dual spec bought; second spec undecided, leaning shockadin |
-| Level | **44, about 66%** (user, 11-20) |
+| Level | **45, about 70%** (user, 11-21) |
 | Guild | Send Ibuprofen |
 | Armory | Search at https://wowarmory.gg/forever/us (first name Danadin, surname Lightbrindan). The direct `/forever/us/character/...` URL redirects to the home page; the search lands on `https://wowarmory.gg/?region=us&forever=danadin-lightbrindan`. Profile only updates after logout. |
 | Plate | Trained (wearing plate pauldrons) |
 | Mount | Warhorse done |
 | Gold | Unknown |
 
-### Professions (armory 11-19)
-Mining 204/225, Blacksmithing 173/225, First Aid 150/150, Cooking 57/150, Fishing 1/75.
+### Professions (armory 11-21)
+Mining 215/225, Blacksmithing 173/225, First Aid 150/150, Cooking 57/150, Fishing 1/75.
 
 ### Talents (armory 11-19, all Protection)
 Redoubt 5, Precision 3, Sacred Duty 2, Templar's Bulwark 1, Shield Specialization 2, Toughness 2, Swift Judgement 1, Improved Righteous Fury 3, Anticipation 5, Holy Shield 1, Reckoning 5, Iron Creed 3, Shieldsworn 1.
 
-### Stats (armory 11-19, level 43)
-Health 1,979, Mana 1,763, Armor 3,563, Str 145, Agi 46, Sta 144, Int 65, Spirit 60, AP 405, SP 9, Dodge 4.9%, Parry 6.0%, Block 6.0%. Average item level 33.
+### Stats (armory 11-21, level 45)
+Health 2,156, Mana 1,847, Armor 3,928, Str 143, Agi 48, Sta 155, Int 66, Spirit 62, AP 429, SP 9, Dodge 5.2%, Parry 8.2%, Block 6.2%. Average item level 38. Talents: Protection 34, Retribution 2.
 
-### Equipped (armory 11-19)
+### Equipped (armory 11-21)
 | Slot | Item | ilvl |
 |---|---|---|
-| Head | Tusken Helm (mail) | 34 |
-| Neck | Abomination Chain | 42 |
+| Head | Warbringer's Crown of the Champion (plate, +8 Str, +14 Sta, +4 def) | 45 |
+| Neck | Abomination Chain (+10 Sta, +3 def, +6 AP) | 42 |
 | Shoulders | Krol'dok Warplate Pauldrons (plate, set 1/5) | 46 |
 | Back | Cloak of the Cult | 46 |
-| Chest | Mutant Scale Breastplate (weakest slot) | 23 |
+| Chest | Zealot Plate (plate, 509 armor, +13 Str, mana on hit) | 48 |
 | Wrist | Undead Knight's Bracers | 36 |
 | Hands | Warsong Gauntlets | 27 |
 | Waist | Twilight Lord Girdle | 30 |
 | Legs | Dual Reinforced Leggings | 37 |
 | Feet | Treacherous Treads | 28 |
 | Ring 1 | Zarmok's Plated Signet | 45 |
-| Ring 2 | Purified Ring (caster stats) | 44 |
-| Trinkets | both empty | |
-| Main hand | Rock on Stick (57-107, 2.60) | 47 |
+| Ring 2 | Purified Ring (+12 Int, +5 SP: caster ring) | 44 |
+| Shirt | Brawler's Harness | |
+| Trinkets | Carrot on a Stick (mount speed); one empty | 50 |
+| Main hand | Vanquisher's Sword (46-86, 2.20, +22 AP); Rock on Stick is about equal on damage | 44 |
 | Off hand | Aegis of the Scarlet Commander | 44 |
 
 Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +100 armor, 3pc +5 defense, 4pc heal on block, 5pc stacking Stamina.
@@ -75,26 +76,29 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 ## 3. Current status (2026-11-20)
 
 ### Dungeons done
-Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfang Keep (all four per user, for Legacy), Gnomeregan, Razorfen Kraul, SM Graveyard / Library / Armory / Cathedral, City of Dalaran, Razorfen Downs, The Drowned City, Krol'dok Stronghold (all four Horde quests), **Uldaman** (one run, all quests including Platinum Discs).
+Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfang Keep (all four per user, for Legacy), Gnomeregan, Razorfen Kraul, SM Graveyard / Library / Armory / Cathedral, City of Dalaran, Razorfen Downs, The Drowned City, Krol'dok Stronghold (all four Horde quests), Uldaman (all quests), **Zul'Farrak** (11-21, one run: Scarab Shells, Troll Temper, Divino-matic Rod, Tiara of the Deep, Gahz'rilla, Zum'rah's Head). Skipped: The Prophecy of Mosh'aru, The Spider God.
 
-### In progress
-- **Zul'Farrak quests in log (user screenshot, 11-20):** Scarab Shells, Troll Temper, Tiara of the Deep. Not in log: Divino-matic Rod (Bilgewhizzle, Gadgetzan, right beside Trenton), Zum'rah's Head (Mulgore), plus the three skipped chains.
-- **Necklace Recovery chain:** Deliver the Gems turned in to Dran Droffers (Orgrimmar). **Take 3 still to turn in to Jarkal Mossmeld in Kargath** for Jarkal's Enhancing Necklace (+10 Stamina, +1 Intellect, +12 spell power; confirmed on Wowhead Forever). Confirm with user.
+### Still open
+- **Necklace Recovery, Take 3** (Jarkal, Kargath): armory still shows Abomination Chain. For tanking, Abomination Chain (+10 Sta, +3 def) beats Jarkal's (+10 Sta, +12 SP), so the turn-in is only for XP.
+- Shadowshard Fragments in log (Maraudon).
+- Into the Scarlet Monastery still listed as "in log" (q_1048); confirm.
 
 ### Next
-1. **Zul'Farrak (44-54; most groups go at 46-48)** prep and run. Route in Section 4.
-2. **Legacy, 3 points from solo runs:**
-   - Novice Spelunker (1 point): The Deadmines (17-26, kill Edwin VanCleef) and Excavation Site: Wetlands (kill Relic Guardian).
-   - Experienced Spelunker (1 point): **Blackfathom Deeps** (24-32, kill Aku'mai). It's the only dungeon on that list not done yet.
-   - Either way you need the final-boss kill. Whether solo kills count is not confirmed.
-   - Also check the window for Journeyman Blacksmithing (150) and Experienced Paladin (level 45).
-3. Blacksmithing deferred to 60; crafted gear targets show "after 60" in the tracker.
-4. Maraudon (46-55, Classic data) after ZF. Shadowshard Fragments can be picked up now (Uthel'nay, Orgrimmar, level 38).
-5. The level 50 paladin class quest (Forging the Mightstone) is **Alliance only** right now, so it is not a reason to go to Sunken Temple.
+1. **Maraudon (46-55)**, one Desolace trip for all quests first (Section 3b).
+2. **Legacy solo runs:** Deadmines (VanCleef) and Excavation Site: Wetlands (Relic Guardian) for Novice Spelunker; Blackfathom Deeps (Aku'mai) for Experienced Spelunker. Experienced Paladin (level 45) should now be credited.
+3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
+4. Blacksmithing deferred to 60.
+
+### 3b. Maraudon pickups (Classic-era data for levels/coords; Forever beta had no Maraudon)
+- Orgrimmar: Shadowshard Fragments (already in log).
+- Desolace, Shadowprey Village: Vark Battlescar (23.2 70.3) Vyletongue Corruption; Selendra south of Shadowprey (26.9 77.7) Corruption of Earth and Seed.
+- Desolace, Kormek's Hut: Willow (62.2 39.6) Twisted Evils.
+- Desolace, south: Centaur Pariah (50.4 86.7, patrols) The Pariah's Instructions (needs Khan amulet pieces from the centaur camps).
+- Outside the orange portal: Cavindra, Legends of Maraudon.
 
 ---
 
-## 4. Zul'Farrak route (re-checked 2026-11-20: Wowhead Forever tooltips, Gfinity, Conquest Capped, Frostyboost, Warcraft Tavern)
+## 4. Zul'Farrak route (DONE 11-21; kept for reference) (re-checked 2026-11-20: Wowhead Forever tooltips, Gfinity, Conquest Capped, Frostyboost, Warcraft Tavern)
 
 User was in Thunder Bluff after turning in the Platinum Discs.
 
@@ -133,7 +137,7 @@ ZF loot to watch:
 
 Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins can wear mail, but it has less armor.
 
-1. **Chest (ilvl 23):**
+1. **Chest: done** (Zealot Plate, ilvl 48). Older options:
    - Best: Krol'dok Warplate Chest (plate, +13 def, Nar'gurk 26%).
    - Or Carapace of Tuten'kash (plate, RFD).
 2. **Hands (ilvl 27):** Krol'dok Warplate Gauntlets (plate, +1% parry, BoE, AH). Warder's Gauntlet is crafted: after 60.
@@ -142,7 +146,7 @@ Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins ca
    - Warder's Boots (BS 200) is crafted: after 60.
    - Worgbinder's Treads is a Str/Int item: **not** a tank target.
 4. **Waist (30):** Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Warder's Belt is crafted: after 60.
-5. **Head (34):**
+5. **Head: done** (Warbringer's Crown, ilvl 45). Older notes:
    - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
    - Protector's Chain Helm is a level 25 item: dropped.
    - Serpentbane Crown (mail, +16 Sta, Drowned City) is the only non-crafted target listed; look for drops in ZF/Maraudon.
@@ -164,11 +168,12 @@ Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found a
 ## 6. Open questions for the user
 
 1. Current gold.
-2. Did Take 3 get turned in to Jarkal?
-3. Into the Scarlet Monastery: turned in? Neck is still Abomination Chain, so which reward?
+2. Take 3: turning it in, or skipping since Abomination Chain is the better tank neck?
+3. Into the Scarlet Monastery: turned in? Which reward?
 4. Expert First Aid book bought?
 5. Second spec plan (shockadin?).
 6. Did solo dungeon kills count in the Legacy window?
+7. What dropped in ZF? (Zealot Plate and Warbringer's Crown are now equipped; were they ZF drops?)
 
 ---
 
