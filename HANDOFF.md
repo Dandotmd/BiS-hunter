@@ -89,12 +89,30 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
 
-### 3b. Maraudon pickups (Classic-era data for levels/coords; Forever beta had no Maraudon)
-- Orgrimmar: Shadowshard Fragments (already in log).
-- Desolace, Shadowprey Village: Vark Battlescar (23.2 70.3) Vyletongue Corruption; Selendra south of Shadowprey (26.9 77.7) Corruption of Earth and Seed.
-- Desolace, Kormek's Hut: Willow (62.2 39.6) Twisted Evils.
-- Desolace, south: Centaur Pariah (50.4 86.7, patrols) The Pariah's Instructions (needs Khan amulet pieces from the centaur camps).
-- Outside the orange portal: Cavindra, Legends of Maraudon.
+### 3b. Maraudon pickups (re-checked 11-21; Warcraft Tavern Forever, which says it uses Classic data, plus Wowhead Forever tooltips)
+
+Fly to Shadowprey Village (Desolace's Horde flight point), then make one loop through the zone:
+
+**Shadowprey Village**
+- Vark Battlescar (23.2 70.3): **Vyletongue Corruption** (gives the Coated Cerulean Vial)
+- Selendra (Shadowprey area, about 26.9 77.7): **Corruption of Earth and Seed** (kill Princess Theradras)
+
+**Southern road, south of Mannoroc Coven**
+- Centaur Pariah (patrols, about 50.4 86.7): **The Pariah's Instructions**. Kill The Nameless Prophet for the Amulet of Spirits, use it on the five Khans (Kolk, Gelk, Magra, Maraudos, Veng), loot their gems and combine them. Not shareable.
+
+**Kormek's Hut, near Thunderaxe Fortress**
+- Willow (62.2 39.6): **Twisted Evils** (Theradric Crystal Carvings: 25 per Wowhead Forever, 15 per Warcraft Tavern; the Nameless Prophet always drops them)
+
+**Maraudon entrance (caves, west Desolace)**
+- Cavindra, in the caves outside the portal: **Legends of Maraudon** (Rod from Noxxion, Diamond from Lord Vyletongue, then kill Celebras the Cursed)
+- Fill the Cerulean Vial at an **orange-crystal pool** outside the orange (right-hand) entrance before going in.
+- Collect the 10 Shadowshard Fragments from the rumblers outside (already in log).
+
+**Inside (no pickup needed)**
+- The Scepter of Celebras: from Celebras the Redeemed after Legends; gives the inner-wing shortcut.
+- Seed of Life: from Zaetar's Spirit after Theradras.
+
+No other prerequisites: every Horde Maraudon quest can be picked up directly. Alliance versions (Talendria, Keeper Marandis, Archmage Tervosh) don't apply.
 
 ---
 
