@@ -105,8 +105,7 @@ Starting in Gadgetzan (user is there, 11-23). Shadowshard Fragments is already i
 
 **3. Ride east along the southern road**
 - Centaur Pariah, patrols south of Mannoroc Coven (50.4 86.6; Wowhead has him around 48.4 87.0): **The Pariah's Instructions**. Not shareable.
-- Mithera, Shen'dralas (53.1 75.8 on the Shen'dralas map): **Forlorn Gardens** first (examine the pedestal in the shrine at the Forlorn Gardens, return to her). That unlocks **Word of the Woods** (new in Forever). Both are Alliance and Horde, requires level 35 (EverlookDB, checked 11-23 after the user found Word of the Woods missing).
-- Woodwyrd, Forlorn Gardens, Shen'dralas (69.4 72.0): turn in Word of the Woods, take **Rot and Regret** (fill a vial in Rotgrip's water, inner Maraudon). Reward **Thornplated Cord** (plate waist, ilvl 43, +9 Sta/Int/Spi), a big step up from the ilvl 30 belt.
+- **Skipped (user, 11-23): Mithera / Woodwyrd / Rot and Regret.** Forlorn Gardens is gated behind Mordent Evenshade's Shen'dralas chain (Tattered Journal, Strange Pylons, Fragments of the Pylons in the Magram and Gelkis villages, Powering the Pylons, A Brief History Lesson, Meeting the Magister; Polestar guide). About 8 quests of level 41-45 content across two zones for a belt that Girdle of Extracted Answers replaces at 48.
 - Picked up as of 11-23: An'she's Radiance (log shows level 51), Vyletongue Corruption, Corruption of Earth and Seed, The Pariah's Instructions, plus Shadowshard Fragments.
 
 **4. Ride north**
@@ -175,7 +174,7 @@ Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins ca
    - Dusty Mail Boots (mail, +14 Sta, SM Cathedral).
    - Warder's Boots (BS 200) is crafted: after 60.
    - Worgbinder's Treads is a Str/Int item: **not** a tank target.
-4. **Waist (30):** Thornplated Cord (plate, ilvl 43, Rot and Regret, Maraudon) now; then Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Warder's Belt is crafted: after 60.
+4. **Waist (30):** Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Thornplated Cord (Rot and Regret) skipped 11-23: chain too long. Warder's Belt is crafted: after 60.
 5. **Head: done** (Warbringer's Crown, ilvl 45). Older notes:
    - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
    - Protector's Chain Helm is a level 25 item: dropped.
