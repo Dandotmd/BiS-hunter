@@ -276,8 +276,6 @@ window.TRACKER = {
 
   unknowns: [
     "Your current gold after buying dual spec",
-    "Did Necklace Recovery, Take 3 get turned in to Jarkal?",
-    "Whether you turned in Into the Scarlet Monastery: your neck is still Abomination Chain, so which reward did you take?",
     "First Aid: did you buy the Expert book?",
     "Second spec: still leaning shockadin? The armory shows all 34 points in Protection",
     "Do solo dungeon kills count for Legacy? Check the Legacy window after your first solo run"

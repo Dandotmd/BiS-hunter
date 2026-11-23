@@ -1,6 +1,6 @@
 {
   "character": {
-    "level": 45,
+    "level": 46,
     "mining": 215,
     "blacksmithing": 173,
     "firstAid": 150
@@ -17,7 +17,7 @@
     "d_smcath": "done",
     "d_kroldok": "done",
     "d_ulda": "done",
-    "q_1048": "have",
+    "q_1048": "done",
     "q_3341": "done",
     "q_6521": "done",
     "q_97196": "done",
@@ -33,7 +33,7 @@
     "q_2418": "done",
     "q_709": "done",
     "q_2278": "done",
-    "q_2283": "have",
+    "q_2283": "done",
     "g_abomination-chain": "1",
     "g_rock-on-stick": "1",
     "g_krol-dok-warplate-pauldrons": "1",
@@ -52,6 +52,7 @@
     "q_zumrah": "done",
     "m_legacy45": "1",
     "g_warbringer-s-crown-of-the-champion": "1",
-    "g_zealot-plate": "1"
+    "g_zealot-plate": "1",
+    "g_jarkal-s-enhancing-necklace": "1"
   }
 }

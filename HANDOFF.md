@@ -1,6 +1,6 @@
 # WoW Forever Leveling Tracker: Handoff (v2)
 
-Snapshot: **2026-11-21** (armory read 13:55 ET). Replaces the 2026-11-20 handoff.
+Snapshot: **2026-11-23** (user update; armory last read 11-21 13:55 ET, unchanged on 11-23 because the profile hadn't refreshed). Replaces the 2026-11-20 handoff.
 
 ## 0. How to use this in a new session
 
@@ -22,7 +22,7 @@ Goal (user's words): *"a solid tracker where you help me determine what I should
 | Game | World of Warcraft: Forever, US, Normal ruleset (Forever has no realms) |
 | Faction / race / class | Horde, Undead, Paladin |
 | Spec | **Protection** tank, 34 points (armory, 11-19). Dual spec bought; second spec undecided, leaning shockadin |
-| Level | **45, about 70%** (user, 11-21) |
+| Level | **46, 42%** (user, 11-23); doing Gadgetzan quests in Tanaris |
 | Guild | Send Ibuprofen |
 | Armory | Search at https://wowarmory.gg/forever/us (first name Danadin, surname Lightbrindan). The direct `/forever/us/character/...` URL redirects to the home page; the search lands on `https://wowarmory.gg/?region=us&forever=danadin-lightbrindan`. Profile only updates after logout. |
 | Plate | Trained (wearing plate pauldrons) |
@@ -73,18 +73,21 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 
 ---
 
-## 3. Current status (2026-11-20)
+## 3. Current status (2026-11-23)
 
 ### Dungeons done
 Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfang Keep (all four per user, for Legacy), Gnomeregan, Razorfen Kraul, SM Graveyard / Library / Armory / Cathedral, City of Dalaran, Razorfen Downs, The Drowned City, Krol'dok Stronghold (all four Horde quests), Uldaman (all quests), **Zul'Farrak** (11-21, one run: Scarab Shells, Troll Temper, Divino-matic Rod, Tiara of the Deep, Gahz'rilla, Zum'rah's Head). Skipped: The Prophecy of Mosh'aru, The Spider God.
 
+### Turned in since 11-21 (user, 11-23)
+- **Necklace Recovery, Take 3** (Jarkal, Kargath). Jarkal's Enhancing Necklace is now owned; Abomination Chain (+10 Sta, +3 def) stays the better tank neck.
+- **Into the Scarlet Monastery** (Varimathras). Which reward was taken is unknown.
+
 ### Still open
-- **Necklace Recovery, Take 3** (Jarkal, Kargath): armory still shows Abomination Chain. For tanking, Abomination Chain (+10 Sta, +3 def) beats Jarkal's (+10 Sta, +12 SP), so the turn-in is only for XP.
 - Shadowshard Fragments in log (Maraudon).
-- Into the Scarlet Monastery still listed as "in log" (q_1048); confirm.
+- Gadgetzan quests in progress (user, 11-23). Which ones isn't recorded.
 
 ### Next
-1. **Maraudon (46-55)**, one Desolace trip for all quests first (Section 3b).
+1. **Maraudon (46-55)**, not started as of 11-23. One Desolace trip for all quests first (Section 3b).
 2. **Legacy solo runs:** Deadmines (VanCleef) and Excavation Site: Wetlands (Relic Guardian) for Novice Spelunker; Blackfathom Deeps (Aku'mai) for Experienced Spelunker. Experienced Paladin (level 45) should now be credited.
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
@@ -168,7 +171,7 @@ Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins ca
    - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
    - Protector's Chain Helm is a level 25 item: dropped.
    - Serpentbane Crown (mail, +16 Sta, Drowned City) is the only non-crafted target listed; look for drops in ZF/Maraudon.
-6. **Neck:** Jarkal's Enhancing Necklace (pending turn-in).
+6. **Neck: done.** Keep Abomination Chain for tanking; Jarkal's Enhancing Necklace (turned in 11-23) is a spell power neck.
 7. **Ring 2 is a caster ring:**
    - Blood Ritual Ring (ZF).
    - Or Knucklebone Ring (Drowned City).
@@ -186,12 +189,11 @@ Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found a
 ## 6. Open questions for the user
 
 1. Current gold.
-2. Take 3: turning it in, or skipping since Abomination Chain is the better tank neck?
-3. Into the Scarlet Monastery: turned in? Which reward?
-4. Expert First Aid book bought?
-5. Second spec plan (shockadin?).
-6. Did solo dungeon kills count in the Legacy window?
-7. What dropped in ZF? (Zealot Plate and Warbringer's Crown are now equipped; were they ZF drops?)
+2. Into the Scarlet Monastery: which reward was taken? (Turned in, 11-23.)
+3. Expert First Aid book bought?
+4. Second spec plan (shockadin?).
+5. Did solo dungeon kills count in the Legacy window?
+6. What dropped in ZF? (Zealot Plate and Warbringer's Crown are now equipped; were they ZF drops?)
 
 ---
 
@@ -203,7 +205,7 @@ Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found a
 - Key conventions: `d_<dungeon id>` = "done"; `q_<quest id>` = "have" or "done"; `g_<slug>` = "1" (item name lowercased, every non-alphanumeric run turned into `-`); `m_<milestone id>` = "1"; `""` clears.
 - Superseded, no longer updated: claude.ai artifact https://claude.ai/artifact/Q13oByuzMcLNFbMFEW93hk (and its db), the older tracker `EWChMpRK4RLcVgdhfFrvcu`, and the `Dandotmd/BiS-hunter` branch.
 
-When the necklace is turned in: set `q_2283` to "done" and `g_jarkal-s-enhancing-necklace` to "1". ZF quest ids in `data.js`: 2865, 3042, 2768, 2846, 3527, 2936, 2770, and `zumrah`.
+Necklace turn-in recorded 11-23 (`q_2283` done, `g_jarkal-s-enhancing-necklace` 1). ZF quest ids in `data.js`: 2865, 3042, 2768, 2846, 3527, 2936, 2770, and `zumrah`.
 
 ---
 
