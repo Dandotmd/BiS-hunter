@@ -105,8 +105,9 @@ Starting in Gadgetzan (user is there, 11-23). Shadowshard Fragments is already i
 
 **3. Ride east along the southern road**
 - Centaur Pariah, patrols south of Mannoroc Coven (50.4 86.6; Wowhead has him around 48.4 87.0): **The Pariah's Instructions**. Not shareable.
-- Mithera, Shen'dralas (51.9 73.9 or 53.2 75.9, a short ride north of the Pariah): **Word of the Woods** (new in Forever).
-- Woodwyrd, Forlorn Gardens, Shen'dralas (69.5 71.9): turn in Word of the Woods, take **Rot and Regret** (fill a vial in Rotgrip's water, inner Maraudon). Reward **Thornplated Cord** (plate waist, ilvl 43, +9 Sta/Int/Spi), a big step up from the ilvl 30 belt. Neither page states a faction; Icy Veins lists it as neutral. If Mithera won't talk to you, skip the pair.
+- Mithera, Shen'dralas (53.1 75.8 on the Shen'dralas map): **Forlorn Gardens** first (examine the pedestal in the shrine at the Forlorn Gardens, return to her). That unlocks **Word of the Woods** (new in Forever). Both are Alliance and Horde, requires level 35 (EverlookDB, checked 11-23 after the user found Word of the Woods missing).
+- Woodwyrd, Forlorn Gardens, Shen'dralas (69.4 72.0): turn in Word of the Woods, take **Rot and Regret** (fill a vial in Rotgrip's water, inner Maraudon). Reward **Thornplated Cord** (plate waist, ilvl 43, +9 Sta/Int/Spi), a big step up from the ilvl 30 belt.
+- Picked up as of 11-23: An'she's Radiance (log shows level 51), Vyletongue Corruption, Corruption of Earth and Seed, The Pariah's Instructions, plus Shadowshard Fragments.
 
 **4. Ride north**
 - Willow, Kormek's Hut, south-east of Thunder Axe Fortress (62.2 39.6): **Twisted Evils** (25 Theradric Crystal Carvings from mobs in either wing; may take more than one run).
