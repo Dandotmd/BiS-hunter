@@ -92,30 +92,38 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
 
-### 3b. Maraudon pickups (re-checked 11-21; Warcraft Tavern Forever, which says it uses Classic data, plus Wowhead Forever tooltips)
+### 3b. Maraudon pickup route (re-checked 2026-11-23: Icy Veins Forever quest list updated 11-18, Icy Veins Forever DB, Wowhead Forever guide)
 
-Fly to Shadowprey Village (Desolace's Horde flight point), then make one loop through the zone:
+Starting in Gadgetzan (user is there, 11-23). Shadowshard Fragments is already in the log.
 
-**Shadowprey Village**
-- Vark Battlescar (23.2 70.3): **Vyletongue Corruption** (gives the Coated Cerulean Vial)
-- Selendra (Shadowprey area, about 26.9 77.7): **Corruption of Earth and Seed** (kill Princess Theradras)
+**1. Gadgetzan → fly to Thunder Bluff**
+- Olana Brighthoof, Skywatcher's Plateau, Mulgore (32.6 24.0; the same plateau as Mazu'kon): **An'she's Radiance** (new in Forever). Grab the crystal behind Landslide. 11,900 XP, no gear.
 
-**Southern road, south of Mannoroc Coven**
-- Centaur Pariah (patrols, about 50.4 86.7): **The Pariah's Instructions**. Kill The Nameless Prophet for the Amulet of Spirits, use it on the five Khans (Kolk, Gelk, Magra, Maraudos, Veng), loot their gems and combine them. Not shareable.
+**2. Thunder Bluff → fly to Shadowprey Village (Desolace)**
+- Vark Battlescar (23.2 70.2): **Vyletongue Corruption**. Gives the Coated Cerulean Vial. Not shareable.
+- Selendra, just south of the village (26.8 77.6): **Corruption of Earth and Seed** (kill Princess Theradras).
 
-**Kormek's Hut, near Thunderaxe Fortress**
-- Willow (62.2 39.6): **Twisted Evils** (Theradric Crystal Carvings: 25 per Wowhead Forever, 15 per Warcraft Tavern; the Nameless Prophet always drops them)
+**3. Ride east along the southern road**
+- Centaur Pariah, patrols south of Mannoroc Coven (50.4 86.6; Wowhead has him around 48.4 87.0): **The Pariah's Instructions**. Not shareable.
+- Mithera, Shen'dralas (51.9 73.9 or 53.2 75.9, a short ride north of the Pariah): **Word of the Woods** (new in Forever).
+- Woodwyrd, Forlorn Gardens, Shen'dralas (69.5 71.9): turn in Word of the Woods, take **Rot and Regret** (fill a vial in Rotgrip's water, inner Maraudon). Reward **Thornplated Cord** (plate waist, ilvl 43, +9 Sta/Int/Spi), a big step up from the ilvl 30 belt. Neither page states a faction; Icy Veins lists it as neutral. If Mithera won't talk to you, skip the pair.
 
-**Maraudon entrance (caves, west Desolace)**
-- Cavindra, in the caves outside the portal: **Legends of Maraudon** (Rod from Noxxion, Diamond from Lord Vyletongue, then kill Celebras the Cursed)
-- Fill the Cerulean Vial at an **orange-crystal pool** outside the orange (right-hand) entrance before going in.
-- Collect the 10 Shadowshard Fragments from the rumblers outside (already in log).
+**4. Ride north**
+- Willow, Kormek's Hut, south-east of Thunder Axe Fortress (62.2 39.6): **Twisted Evils** (25 Theradric Crystal Carvings from mobs in either wing; may take more than one run).
 
-**Inside (no pickup needed)**
-- The Scepter of Celebras: from Celebras the Redeemed after Legends; gives the inner-wing shortcut.
-- Seed of Life: from Zaetar's Spirit after Theradras.
+**5. Ride west to Maraudon (caves, west Desolace). Do these before entering the portal**
+- Cavindra, in the caves on the orange side: **Legends of Maraudon**.
+- Fill the Cerulean Vial at the big pool with orange crystals, on the way to the orange entrance.
+- Kill The Nameless Prophet near the big stone door for the Amulet of Spirits. Gelk (rock-elemental path to the purple side) and Magra (by the stairs on the orange path) are outside too.
+- 10 Shadowshard Fragments from the rock elementals on the way to the purple entrance.
 
-No other prerequisites: every Horde Maraudon quest can be picked up directly. Alliance versions (Talendria, Keeper Marandis, Archmage Tervosh) don't apply.
+**Picked up inside (nothing to do beforehand)**
+- The Scepter of Celebras: from Celebras the Redeemed after Legends. It opens the shortcut to inner Maraudon.
+- Seed of Life: from Zaetar's Spirit after Theradras. Turn in to Keeper Remulos, Moonglade. No gear.
+
+**Turn-ins afterwards:** Vark and Selendra (Shadowprey), the Pariah (south road), Woodwyrd (Shen'dralas), Willow (Kormek's Hut), Uthel'nay (Orgrimmar), Olana (Mulgore), Remulos (Moonglade).
+
+Alliance versions (Talendria, Keeper Marandis, Archmage Tervosh) don't apply.
 
 ---
 
@@ -166,7 +174,7 @@ Several crafted "Warder's" and older pieces are **mail**, not plate. Paladins ca
    - Dusty Mail Boots (mail, +14 Sta, SM Cathedral).
    - Warder's Boots (BS 200) is crafted: after 60.
    - Worgbinder's Treads is a Str/Int item: **not** a tank target.
-4. **Waist (30):** Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Warder's Belt is crafted: after 60.
+4. **Waist (30):** Thornplated Cord (plate, ilvl 43, Rot and Regret, Maraudon) now; then Girdle of Extracted Answers (plate, Alcaz Prison, 48+). Warder's Belt is crafted: after 60.
 5. **Head: done** (Warbringer's Crown, ilvl 45). Older notes:
    - The Krol'dok Warplate Helmet has **no tank stats** (Str/Spirit): skip it.
    - Protector's Chain Helm is a level 25 item: dropped.
