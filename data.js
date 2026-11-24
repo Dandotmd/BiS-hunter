@@ -14,10 +14,10 @@ window.TRACKER = {
     armory: "https://wowarmory.gg/?region=us&forever=danadin-lightbrindan",
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
-    level: 45, gold: null,
-    /* armory 2026-11-21, level 45, average item level 38 */
-    stats: { Health: 2156, Mana: 1847, Armor: 3928, Strength: 143, Stamina: 155, "Attack power": 429, Dodge: "5.2%", Parry: "8.2%", Block: "6.2%" },
-    professions: { Mining: [215, 225], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
+    level: 48, gold: null,
+    /* armory 2026-11-24 13:11 ET, level 47, before the Maraudon turn-ins */
+    stats: { Health: 2237, Mana: 1886, Armor: 4455, Strength: 146, Stamina: 156, "Attack power": 441, Dodge: "6.0%", Parry: "10.4%", Block: "6.4%" },
+    professions: { Mining: [227, 300], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
@@ -174,10 +174,10 @@ window.TRACKER = {
 
     { id: "alcaz", name: "Alcaz Prison", zone: "Alcaz Island, Dustwallow Marsh", range: [48, 53], hard: 46, ready: 48, isNew: true,
       guide: "https://www.warcrafttavern.com/forever/guides/alcaz-island-prison/",
-      note: "Range 48–53 (Warcraft Tavern says 48–55; final boss is level 51). The portal is in a building basement around 75, 15: take the path up the hill to the left of the dock. Bosses: Tidemistress Ca'zass, Overseer Wrex (his Overseer's Keyring opens the right side), Katerina the Cleaner, Zarla and Blazeroar, then The Questioner behind a locked door. The Kor'kron chain may start with Eitrigg in Orgrimmar (unconfirmed).",
+      note: "Range 48–53 (Warcraft Tavern says 48–55; final boss is level 51). The portal is in a building basement around 75, 15: take the path up the hill to the left of the dock. Bosses: Tidemistress Ca'zass, Overseer Wrex (his Overseer's Keyring opens the right side), Katerina the Cleaner, Zarla and Blazeroar, then The Questioner behind a locked door. The Kor'kron chain starts with Eitrigg in Orgrimmar (EverlookDB, 11-24).",
       quests: [
-        { id: "korkron", name: "The Missing Kor'kron (chain)", lvl: 48, giver: "Nazeer Bloodpike", zone: "Dustwallow Marsh", area: "Brackenwall Village", way: "35.2 30.7", isNew: true,
-          task: "Shareable. Chain: The Elite of the Elite → Right Place, Wrong Time → No Orc Left Behind." },
+        { id: "korkron", name: "The Missing Kor'kron (chain)", lvl: 48, giver: "Eitrigg (Orgrimmar 34.2 39.0), then Nazeer Bloodpike", zone: "Dustwallow Marsh", area: "Brackenwall Village", way: "35.2 30.7", isNew: true,
+          task: "Shareable. Chain: The Missing Kor'kron (Eitrigg) > The Elite of the Elite → Right Place, Wrong Time → No Orc Left Behind." },
         { id: "ulka", name: "Blood Red Bandanas / A Little Payback", lvl: 48, giver: "Sergeant Ulka", zone: "Dustwallow Marsh", area: "outside the prison", way: "70.3 19.0", isNew: true,
           task: "Bandanas: 8 from mobs inside, turned in to Eitrigg in Grommash Hold. Payback: 15 Strashaz Soldiers, 8 Enchantresses and Ca'zass's head. Ulka also gives No Orc Left Behind (turned in to Commander Folkar inside).",
           reward: "Payback: Kor'kron Battle Gauntlets, Naga Scale Spaulders or Marshdweller's Pants" },
@@ -236,7 +236,7 @@ window.TRACKER = {
       { name: "Green Iron Hauberk", stats: "mail, 238 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 31, note: "Trainer plans. Skill is 155 per the wiki, 180 per Classic data; one report says the recipe is bugged" },
       { name: "Carapace of Tuten'kash", stats: "plate, 373 armor, +10 Strength, +8 Agility, +15 Stamina", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
       { name: "Krol'dok Warplate Chest", stats: "plate, 490 armor, +10 Strength, +10 Stamina, +13 defense", how: "drop", from: "kroldok", src: "Nar'gurk, 26%", at: 41 } ] },
-    { slot: "Wrist", cur: "Undead Knight's Bracers", ilvl: 36, targets: [
+    { slot: "Wrist", cur: "Noxxion's Shackles (plate, 235 armor, +5 Str, +9 Sta, +10 Nature Resistance)", ilvl: 51, targets: [
       { name: "Noxxion's Shackles", stats: "plate, 235 armor, +5 Strength, +9 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Noxxion, about 40%. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 46 },
       { name: "Berserker Shackles", stats: "mail, +7 Strength, +6 defense", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
       { name: "Warder's Wristguards", stats: "plate, 231 armor, +8 defense, +11 Stamina, +7 spell power", how: "craft", bs: 225, at: 45, note: "Plans from Gor'mak, 90 Merchant's Favor, Honored with Durotar Supply and Logistics" } ] },
@@ -251,7 +251,7 @@ window.TRACKER = {
     { slot: "Legs", cur: "Dual Reinforced Leggings", ilvl: 37, targets: [
       { name: "Elemental Rockridge Leggings", stats: "plate, 496 armor, +20 Strength, +16 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Princess Theradras, about 20%. Requires level 49. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 49 },
       { name: "Krol'dok Warplate Legplates", stats: "plate, 429 armor, +8 Strength, +19 Stamina, +8 defense", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 41 } ] },
-    { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
+    { slot: "Feet", cur: "Shinkicker Boots (plate, 300 armor, +10 Str, +9 Agi)", ilvl: 45, targets: [
       { name: "Dusty Mail Boots", stats: "mail, 180 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 35%", at: 37 },
       { name: "Warder's Boots", stats: "plate, 330 armor, +13 Stamina, +9 defense", how: "craft", bs: 200, at: 40, note: "Where to get the plans isn't known yet; they bind on pickup" },
       { name: "Linken's Boots of Iron", stats: "mail", how: "drop", from: "drowned", src: "rare drop in the dungeon, about 1%", at: 37 } ] },
@@ -275,7 +275,7 @@ window.TRACKER = {
       { name: "Rock on Stick", stats: "57-107, speed 2.60, +4 Strength", how: "quest", from: "kroldok", src: "Eye of Mugg", at: 40 },
       { name: "Runed Mithril Hammer", stats: "32-61, speed 1.60, +7 Stamina, +4 defense", how: "craft", bs: 220, at: 44, note: "Plans are a world drop (Forever tooltip says 220; wiki says 245)" },
       { name: "Might of Hakkar", stats: "1H mace", how: "drop", from: "st", src: "Avatar of Hakkar", at: 49 } ] },
-    { slot: "Shield", cur: "Aegis of the Scarlet Commander", ilvl: 44, targets: [
+    { slot: "Shield", cur: "Putridus Wall (1,739 armor, 29 block, +10 Sta, +5 defense, +8 Nature Resistance)", ilvl: 50, targets: [
       { name: "Gizlock's Hypertech Buckler", stats: "1835 armor, 32 block, +10 Intellect, small spell power, 4 mana per 5 sec", how: "drop", from: "mara", src: "Tinkerer Gizlock, about 33%. Sidegrade: more armor and block, loses the Aegis Strength and Stamina. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 48 },
       { name: "Aegis of the Scarlet Commander", stats: "1548 armor, +8 Stamina, +7 Strength", how: "drop", from: "smcath", src: "Scarlet Commander Mograine, 24%", at: 39 },
       { name: "Maw of Min'loth", stats: "1287 armor", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },

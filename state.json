@@ -1,7 +1,7 @@
 {
   "character": {
-    "level": 47,
-    "mining": 215,
+    "level": 48,
+    "mining": 227,
     "blacksmithing": 173,
     "firstAid": 150
   },
@@ -47,22 +47,23 @@
     "q_2846": "done",
     "q_2768": "done",
     "q_2770": "done",
-    "q_7068": "have",
+    "q_7068": "done",
     "d_zf": "done",
     "q_zumrah": "done",
     "m_legacy45": "1",
     "g_warbringer-s-crown-of-the-champion": "1",
     "g_zealot-plate": "1",
     "g_jarkal-s-enhancing-necklace": "1",
-    "q_96776": "have",
-    "q_7029": "have",
-    "q_7067": "have",
-    "q_7064": "have",
-    "q_7028": "have",
-    "q_93404": "have",
+    "q_96776": "done",
+    "q_7029": "done",
+    "q_7067": "done",
+    "q_7064": "done",
+    "q_7028": "done",
+    "q_93404": "done",
     "q_7044": "done",
     "d_mara": "done",
     "q_7066": "have",
-    "q_7046": "done"
+    "q_7046": "done",
+    "g_noxxion-s-shackles": "1"
   }
 }

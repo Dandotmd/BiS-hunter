@@ -22,7 +22,7 @@ Goal (user's words): *"a solid tracker where you help me determine what I should
 | Game | World of Warcraft: Forever, US, Normal ruleset (Forever has no realms) |
 | Faction / race / class | Horde, Undead, Paladin |
 | Spec | **Protection** tank, 34 points (armory, 11-19). Dual spec bought; second spec undecided, leaning shockadin |
-| Level | **47** (user, 11-24); Maraudon run done, turn-ins pending |
+| Level | **48** (user, 11-24); Maraudon done and every quest turned in |
 | Guild | Send Ibuprofen |
 | Armory | Search at https://wowarmory.gg/forever/us (first name Danadin, surname Lightbrindan). The direct `/forever/us/character/...` URL redirects to the home page; the search lands on `https://wowarmory.gg/?region=us&forever=danadin-lightbrindan`. Profile only updates after logout. |
 | Plate | Trained (wearing plate pauldrons) |
@@ -35,10 +35,10 @@ Mining 215/225, Blacksmithing 173/225, First Aid 150/150, Cooking 57/150, Fishin
 ### Talents (armory 11-19, all Protection)
 Redoubt 5, Precision 3, Sacred Duty 2, Templar's Bulwark 1, Shield Specialization 2, Toughness 2, Swift Judgement 1, Improved Righteous Fury 3, Anticipation 5, Holy Shield 1, Reckoning 5, Iron Creed 3, Shieldsworn 1.
 
-### Stats (armory 11-21, level 45)
-Health 2,156, Mana 1,847, Armor 3,928, Str 143, Agi 48, Sta 155, Int 66, Spirit 62, AP 429, SP 9, Dodge 5.2%, Parry 8.2%, Block 6.2%. Average item level 38. Talents: Protection 34, Retribution 2.
+### Stats (armory 11-24 13:11 ET, level 47, before the Maraudon turn-ins)
+Health 2,237, Mana 1,886, Armor 4,455, Str 146, Agi 59, Sta 156, Int 66, Spirit 64, AP 441, SP 9, Dodge 6.0%, Parry 10.4%, Block 6.4%. Talents: Protection 34, Retribution 4. Mining 227/300.
 
-### Equipped (armory 11-21)
+### Equipped (armory 11-24, before the Maraudon turn-ins; quest rewards not shown yet)
 | Slot | Item | ilvl |
 |---|---|---|
 | Head | Warbringer's Crown of the Champion (plate, +8 Str, +14 Sta, +4 def) | 45 |
@@ -46,17 +46,17 @@ Health 2,156, Mana 1,847, Armor 3,928, Str 143, Agi 48, Sta 155, Int 66, Spirit 
 | Shoulders | Krol'dok Warplate Pauldrons (plate, set 1/5) | 46 |
 | Back | Cloak of the Cult | 46 |
 | Chest | Zealot Plate (plate, 509 armor, +13 Str, mana on hit) | 48 |
-| Wrist | Undead Knight's Bracers | 36 |
+| Wrist | Noxxion's Shackles (plate, +5 Str, +9 Sta) | 51 |
 | Hands | Warsong Gauntlets | 27 |
 | Waist | Twilight Lord Girdle | 30 |
 | Legs | Dual Reinforced Leggings | 37 |
-| Feet | Treacherous Treads | 28 |
+| Feet | Shinkicker Boots (plate, 300 armor, +10 Str, +9 Agi) | 45 |
 | Ring 1 | Zarmok's Plated Signet | 45 |
 | Ring 2 | Purified Ring (+12 Int, +5 SP: caster ring) | 44 |
 | Shirt | Brawler's Harness | |
 | Trinkets | Carrot on a Stick (mount speed); one empty | 50 |
 | Main hand | Vanquisher's Sword (46-86, 2.20, +22 AP); Rock on Stick is about equal on damage | 44 |
-| Off hand | Aegis of the Scarlet Commander | 44 |
+| Off hand | Putridus Wall (1,739 armor, 29 block, +10 Sta, +5 def) | 50 |
 
 Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +100 armor, 3pc +5 defense, 4pc heal on block, 5pc stacking Stamina.
 
@@ -87,7 +87,8 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 - Gadgetzan quests in progress (user, 11-23). Which ones isn't recorded.
 
 ### Next
-1. **Maraudon (46-55)**, run 11-24. Legends of Maraudon turned in inside. Ready to turn in: Twisted Evils, Vyletongue Corruption, The Pariah's Instructions, Corruption of Earth and Seed, An'she's Radiance (Mulgore). Rot and Regret has the vial; use it on the burning tree by Woodwyrd. Shadowshard Fragments 3/10 (rock elementals outside the portals). Seed of Life (Remulos, Moonglade) can wait for a Felwood or Winterspring trip.
+1. **Maraudon** done 11-24, every quest turned in (user). Scepter of Celebras owned. Follow-ups: Passing the Blame (Kog'thug, Shen'dralas 72.6 31.6) and Agamaggan's Blood (Razorfen Downs).
+2. **Next dungeon: Alcaz Prison (48-53).** Horde chain checked on EverlookDB 11-24: The Missing Kor'kron (Eitrigg, Orgrimmar 34.2 39.0) > The Elite of the Elite (Nazeer Bloodpike, Brackenwall 35.2 30.7) > Right Place, Wrong Time and No Orc Left Behind (Sergeant Ulka, 70.3 19.0); Ulka also gives A Little Payback and Blood Red Bandanas (bandanas go to Eitrigg). Then Sunken Temple at 49-50.
 2. **Legacy solo runs:** Deadmines (VanCleef) and Excavation Site: Wetlands (Relic Guardian) for Novice Spelunker; Blackfathom Deeps (Aku'mai) for Experienced Spelunker. Experienced Paladin (level 45) should now be credited.
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
