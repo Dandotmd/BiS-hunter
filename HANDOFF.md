@@ -22,7 +22,7 @@ Goal (user's words): *"a solid tracker where you help me determine what I should
 | Game | World of Warcraft: Forever, US, Normal ruleset (Forever has no realms) |
 | Faction / race / class | Horde, Undead, Paladin |
 | Spec | **Protection** tank, 34 points (armory, 11-19). Dual spec bought; second spec undecided, leaning shockadin |
-| Level | **46, 42%** (user, 11-23); doing Gadgetzan quests in Tanaris |
+| Level | **47** (user, 11-23); all Maraudon quests in the log, ready to run |
 | Guild | Send Ibuprofen |
 | Armory | Search at https://wowarmory.gg/forever/us (first name Danadin, surname Lightbrindan). The direct `/forever/us/character/...` URL redirects to the home page; the search lands on `https://wowarmory.gg/?region=us&forever=danadin-lightbrindan`. Profile only updates after logout. |
 | Plate | Trained (wearing plate pauldrons) |
@@ -87,7 +87,7 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 - Gadgetzan quests in progress (user, 11-23). Which ones isn't recorded.
 
 ### Next
-1. **Maraudon (46-55)**, not started as of 11-23. One Desolace trip for all quests first (Section 3b).
+1. **Maraudon (46-55)**, all quests picked up 11-23 at level 47 (Shadowshard Fragments, Twisted Evils, Vyletongue Corruption, The Pariah's Instructions, An'she's Radiance, Corruption of Earth and Seed, Legends of Maraudon, Rot and Regret). Not run yet.
 2. **Legacy solo runs:** Deadmines (VanCleef) and Excavation Site: Wetlands (Relic Guardian) for Novice Spelunker; Blackfathom Deeps (Aku'mai) for Experienced Spelunker. Experienced Paladin (level 45) should now be credited.
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.

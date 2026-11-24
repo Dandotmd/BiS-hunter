@@ -1,6 +1,6 @@
 {
   "character": {
-    "level": 46,
+    "level": 47,
     "mining": 215,
     "blacksmithing": 173,
     "firstAid": 150
@@ -58,6 +58,8 @@
     "q_7029": "have",
     "q_7067": "have",
     "q_7064": "have",
-    "q_7028": "have"
+    "q_7028": "have",
+    "q_93404": "have",
+    "q_7044": "have"
   }
 }
