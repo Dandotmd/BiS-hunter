@@ -213,6 +213,7 @@ window.TRACKER = {
      Stats re-checked 2026-11-20 against Wowhead Forever tooltips. Paladins can wear mail; plate is marked where it matters. */
   gear: [
     { slot: "Head", cur: "Warbringer's Crown of the Champion (plate, 355 armor, +8 Str, +14 Sta, +4 def)", ilvl: 45, targets: [
+      { name: "Helm of the Mountain", stats: "plate, 453 armor (+230 bonus), +3 Stamina, +7 defense, +10 Nature Resistance", how: "drop", from: "mara", src: "Landslide, about 25%. Sidegrade: more armor and defense, 11 less Stamina than your crown. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 48 },
       { name: "Warbringer's Crown of the Champion", stats: "plate, 355 armor, +8 Strength, +14 Stamina, +4 defense", how: "drop", src: "equipped 2026-11-21 (bind-on-equip)", at: 40 },
       { name: "Serpentbane Crown", stats: "mail, +16 Stamina", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
       { name: "Heavy Mithril Helm", stats: "plate, 469 armor, +15 Stamina", how: "craft", bs: 220, at: 42, note: "Plans are a world drop, not trainer (Forever tooltip says 220; wiki says 245)" } ] },
@@ -221,10 +222,12 @@ window.TRACKER = {
       { name: "Abomination Chain", stats: "", how: "drop", from: "rfd", src: "Glutton", at: 37 },
       { name: "Jarkal's Enhancing Necklace", stats: "+10 Stamina, +1 Intellect, +12 spell power", how: "quest", from: "ulda", src: "Necklace Recovery, Take 3", at: 41 } ] },
     { slot: "Shoulders", cur: "Krol'dok Warplate Pauldrons", ilvl: 46, targets: [
+      { name: "Hulkstone Pauldrons", stats: "plate, 354 armor, +13 Stamina, +1% block", how: "quest", from: "mara", src: "Twisted Evils. Slightly below your Krol'dok Pauldrons; take it only as a spare.", at: 47 },
       { name: "Krol'dok Warplate Pauldrons", stats: "plate, 368 armor (+50 bonus), +14 Stamina, +1% hit (set 1/5)", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 41 },
       { name: "Warder's Pauldrons", stats: "plate, 375 armor, +10 defense, +13 Stamina, +9 spell power", how: "craft", bs: 210, at: 42, note: "Plans from Gor'mak (Barrens 49.8 29.7), 60 Merchant's Favor, Friendly with Durotar Supply and Logistics" },
       { name: "Big Bad Pauldrons", stats: "plate, 396 armor, +12 Strength, +12 Stamina", how: "drop", from: "zf", src: "Chief Ukorz, about 25%", at: 45 } ] },
     { slot: "Back", cur: "Cloak of the Cult", ilvl: 46, targets: [
+      { name: "Grovekeeper's Drape", stats: "37 armor, +12 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Celebras the Cursed, about 33%. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 47 },
       { name: "Silky Spider Cape", stats: "", how: "drop", from: "rfd", src: "Tuten'kash, 34%", at: 37 },
       { name: "Waterlogged Burial Shroud", stats: "+7 Stamina, crit, attack power", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
     { slot: "Chest", cur: "Zealot Plate (plate, 509 armor, +13 Str, mana on hit)", ilvl: 48, targets: [
@@ -233,9 +236,11 @@ window.TRACKER = {
       { name: "Carapace of Tuten'kash", stats: "plate, 373 armor, +10 Strength, +8 Agility, +15 Stamina", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
       { name: "Krol'dok Warplate Chest", stats: "plate, 490 armor, +10 Strength, +10 Stamina, +13 defense", how: "drop", from: "kroldok", src: "Nar'gurk, 26%", at: 41 } ] },
     { slot: "Wrist", cur: "Undead Knight's Bracers", ilvl: 36, targets: [
+      { name: "Noxxion's Shackles", stats: "plate, 235 armor, +5 Strength, +9 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Noxxion, about 40%. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 46 },
       { name: "Berserker Shackles", stats: "mail, +7 Strength, +6 defense", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
       { name: "Warder's Wristguards", stats: "plate, 231 armor, +8 defense, +11 Stamina, +7 spell power", how: "craft", bs: 225, at: 45, note: "Plans from Gor'mak, 90 Merchant's Favor, Honored with Durotar Supply and Logistics" } ] },
     { slot: "Hands", cur: "Warsong Gauntlets", ilvl: 27, targets: [
+      { name: "Branchclaw Gauntlets", stats: "plate, 295 armor, +9 Strength, +5 Stamina, 4 mana and 4 health per 5 sec", how: "quest", from: "mara", src: "Vyletongue Corruption (guaranteed). Replaces Warsong Gauntlets (ilvl 27).", at: 47 },
       { name: "Warder's Gauntlet", stats: "mail, 159 armor, +10 Stamina, +7 defense, +11 spell power", how: "craft", bs: 175, at: 35, note: "Not a trainer recipe: plans from Gor'mak (Barrens 49.8 29.7), 60 Merchant's Favor, Friendly with Durotar Supply and Logistics" },
       { name: "Krol'dok Warplate Gauntlets", stats: "plate, 300 armor, +9 Stamina, +1% parry", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 40 } ] },
     { slot: "Waist", cur: "Twilight Lord Girdle", ilvl: 30, targets: [
@@ -243,6 +248,7 @@ window.TRACKER = {
       { name: "Thornplated Cord", stats: "plate, ilvl 43, +9 Stamina, +9 Intellect, +9 Spirit", how: "quest", from: "mara", src: "Rot and Regret (Woodwyrd, Shen'dralas). Chain unlocked 11-23; needs the Maraudon run.", at: 46 },
       { name: "Girdle of Extracted Answers", stats: "plate, +12 Strength, +15 Stamina, damage on block", how: "drop", from: "alcaz", src: "The Questioner", at: 48 } ] },
     { slot: "Legs", cur: "Dual Reinforced Leggings", ilvl: 37, targets: [
+      { name: "Elemental Rockridge Leggings", stats: "plate, 496 armor, +20 Strength, +16 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Princess Theradras, about 20%. Requires level 49. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 49 },
       { name: "Krol'dok Warplate Legplates", stats: "plate, 429 armor, +8 Strength, +19 Stamina, +8 defense", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 41 } ] },
     { slot: "Feet", cur: "Treacherous Treads", ilvl: 28, targets: [
       { name: "Dusty Mail Boots", stats: "mail, 180 armor, +14 Stamina", how: "drop", from: "smcath", src: "High Inquisitor Fairbanks, 35%", at: 37 },
@@ -251,20 +257,25 @@ window.TRACKER = {
     { slot: "Ring 1", cur: "Zarmok's Plated Signet", ilvl: 45, targets: [
       { name: "Zarmok's Plated Signet", stats: "+9 Stamina, +11 block value, +0.5% hit", how: "drop", from: "kroldok", src: "Twilight Commander Zarmok, 33%", at: 40 } ] },
     { slot: "Ring 2", cur: "Purified Ring (caster stats)", ilvl: 44, targets: [
+      { name: "Blackstone Ring", stats: "+6 Stamina, +1% hit, +20 attack power", how: "drop", from: "mara", src: "Princess Theradras, about 25%. Requires level 49. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 49 },
       { name: "Dragonclaw Ring", stats: "stats not checked", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
       { name: "Knucklebone Ring", stats: "+7 Stamina", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
       { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", src: "Witch Doctor Zum'rah, 25%", at: 43 } ] },
     { slot: "Trinkets", cur: "Carrot on a Stick (mount speed only); second slot empty", ilvl: 0, targets: [
+      { name: "Mark of the Chosen", stats: "2% chance when struck: +21 all stats for 1 min", how: "quest", from: "mara", src: "The Pariah's Instructions (guaranteed). Fills the empty trinket slot.", at: 47 },
       { name: "Defiler's Talisman", stats: "+8 Stamina; use: absorbs 353–431 physical damage (level 38 version)", how: "buy", src: "Defilers quartermaster; requires Friendly with The Defilers (Arathi Basin). Vendor location and price are from Classic data", at: 38 },
       { name: "Rune of Duty", stats: "+8 Stamina, +10 all resistances (pick this over Rune of Perfection; they can't be worn together)", how: "buy", src: "Warsong Gulch vendor; requires Friendly with Warsong Outriders", at: 40 },
       { name: "Fingerbreaker Stamp", stats: "+6 defense", how: "drop", from: "alcaz", src: "The Questioner", at: 48 },
       { name: "Guardian Talisman", stats: "chance when struck: +350 armor for 15 sec", how: "quest", from: "st", src: "The Temple of Atal'Hakkar", at: 38 } ] },
     { slot: "Main hand", cur: "Vanquisher's Sword (46-86, speed 2.20, +22 attack power)", ilvl: 44, targets: [
+      { name: "Thrash Blade", stats: "66-124, speed 2.70 (35.2 DPS), chance on hit: extra attack", how: "quest", from: "mara", src: "Corruption of Earth and Seed (guaranteed choice). Beats Vanquisher's Sword (30 DPS).", at: 47 },
+      { name: "Fist of Stone", stats: "44-83, speed 1.80 (35.3 DPS), +40 armor, mana on hit", how: "drop", from: "mara", src: "Landslide, about 25%. Requires level 48. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 48 },
       { name: "Vanquisher's Sword", stats: "46-86, speed 2.20, +22 attack power", how: "quest", from: "rfd", src: "Bring the End", at: 37 },
       { name: "Rock on Stick", stats: "57-107, speed 2.60, +4 Strength", how: "quest", from: "kroldok", src: "Eye of Mugg", at: 40 },
       { name: "Runed Mithril Hammer", stats: "32-61, speed 1.60, +7 Stamina, +4 defense", how: "craft", bs: 220, at: 44, note: "Plans are a world drop (Forever tooltip says 220; wiki says 245)" },
       { name: "Might of Hakkar", stats: "1H mace", how: "drop", from: "st", src: "Avatar of Hakkar", at: 49 } ] },
     { slot: "Shield", cur: "Aegis of the Scarlet Commander", ilvl: 44, targets: [
+      { name: "Gizlock's Hypertech Buckler", stats: "1835 armor, 32 block, +10 Intellect, small spell power, 4 mana per 5 sec", how: "drop", from: "mara", src: "Tinkerer Gizlock, about 33%. Sidegrade: more armor and block, loses the Aegis Strength and Stamina. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 48 },
       { name: "Aegis of the Scarlet Commander", stats: "1548 armor, +8 Stamina, +7 Strength", how: "drop", from: "smcath", src: "Scarlet Commander Mograine, 24%", at: 39 },
       { name: "Maw of Min'loth", stats: "1287 armor", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
       { name: "Fatebound Buckler", stats: "stats not published", how: "quest", from: "alcaz", src: "Thrall Needs to Know", at: 48 } ] }
