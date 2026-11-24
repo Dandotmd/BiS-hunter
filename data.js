@@ -179,12 +179,13 @@ window.TRACKER = {
         { id: "korkron", name: "The Missing Kor'kron (chain)", lvl: 48, giver: "Eitrigg (Orgrimmar 34.2 39.0), then Nazeer Bloodpike", zone: "Dustwallow Marsh", area: "Brackenwall Village", way: "35.2 30.7", isNew: true,
           task: "Shareable. Chain: The Missing Kor'kron (Eitrigg) > The Elite of the Elite → Right Place, Wrong Time → No Orc Left Behind." },
         { id: "ulka", name: "Blood Red Bandanas / A Little Payback", lvl: 48, giver: "Sergeant Ulka", zone: "Dustwallow Marsh", area: "outside the prison", way: "70.3 19.0", isNew: true,
-          task: "Bandanas: 8 from mobs inside, turned in to Eitrigg in Grommash Hold. Payback: 15 Strashaz Soldiers, 8 Enchantresses and Ca'zass's head. Ulka also gives No Orc Left Behind (turned in to Commander Folkar inside).",
+          task: "Bandanas: 8 from Defias Bounty Hunters (~71%), Alcaz Jailers and Overseer Wrex (~50%) inside, turned in to Eitrigg in Grommash Hold. Payback: 15 Strashaz Soldiers, 8 Enchantresses and Ca'zass's head. Ulka also gives No Orc Left Behind (turned in to Commander Folkar inside).",
           reward: "Payback: Kor'kron Battle Gauntlets, Naga Scale Spaulders or Marshdweller's Pants" },
         { id: "folkar", name: "The Honor of the Kor'kron → Thrall Needs to Know", lvl: 48, giver: "Commander Folkar", zone: "Inside the dungeon", isNew: true, where: "inside",
           task: "Then Bad News for Folkar (Perfumed Note after Blazeroar), then Thrall in Orgrimmar.", reward: "Fatebound Buckler (shield), Courier's Clasp or Dustwallow Dirk" },
         { id: "ironchains", name: "The Man in the Iron Chains", lvl: 48, giver: "Inside the dungeon", zone: "Inside the dungeon", isNew: true, where: "inside",
-          task: "Kill The Questioner, take the Ornate Shackle Key to Mason Connery. Leads to More Valuable Than Gold → State Secrets." }
+          task: "Ornate Shackle Key drops from The Questioner (~50%); take it to Mason Connery. His note starts More Valuable Than Gold: click the Loose Floorboard for the Document Box. State Secrets: hand the box to Nazgrel (Orgrimmar 32.4 36.0) or Rix Xizzix (Booty Bay, Stranglethorn 28.4 75.8), not both (EverlookDB 11-24).",
+          reward: "State Secrets: Fractured Insignia, 6,550 XP, 1g 60s" }
       ],
       loot: ["Girdle of Extracted Answers, plate waist, +12 Strength, +15 Stamina, damage on block (The Questioner)", "Fingerbreaker Stamp, trinket, +6 defense (The Questioner)",
              "Fatebound Buckler, shield (quest: Thrall Needs to Know)", "Grips of Control, plate hands, caster stats (Overseer Wrex): skip"] },
