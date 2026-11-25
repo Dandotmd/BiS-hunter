@@ -2,6 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Danadin's Road to 60</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 8 12v18c0 15 10 25 24 30 14-5 24-15 24-30V12z' fill='%236a4bb0' stroke='%23d9b45a' stroke-width='4'/%3E%3Cpath d='M32 16v32M22 26h20' stroke='%23d9b45a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: one narrow column, phone first. Focus list on top, then dungeon route, gear, milestones. */
@@ -58,6 +59,20 @@ section { display: flex; flex-direction: column; gap: 12px; min-width: 0 }
 .profs label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted) }
 .profs input { width: 58px; font: 500 13px var(--mono); padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg) }
 .save { font-size: 12px; color: var(--muted) }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted) }
+.stats b { color: var(--fg); font: 500 13px var(--mono) }
+.links { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px }
+
+/* plan */
+.plan { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden }
+.plan > li { display: grid; grid-template-columns: auto 52px 1fr; gap: 2px 12px; padding: 10px 14px; border-top: 1px solid var(--line); align-items: start }
+.plan > li:first-child { border-top: 0 }
+.plan > li[data-st="now"] { background: color-mix(in srgb, var(--accent) 9%, var(--surface)) }
+.plan > li[data-st="done"] .pt { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line) }
+.plan input { accent-color: var(--good); width: 18px; height: 18px; margin-top: 2px }
+.plan .pl { font: 500 13px var(--mono); color: var(--muted); padding-top: 1px; white-space: nowrap }
+.plan .kind { font: 500 10px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--gold) }
+.plan .pt a { color: inherit; text-decoration-color: var(--line) }
 
 /* focus */
 .focus { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden }
@@ -142,11 +157,19 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
       <div class="ticks"><span>1</span><span>20</span><span>40 mount · plate</span><span>60</span></div>
     </div>
     <div class="profs" id="profs"></div>
+    <div class="stats" id="stats"></div>
+    <div class="links"><a href="research.html">Dungeon quest research</a><a id="armory" href="#" target="_blank" rel="noopener">Armory</a></div>
   </header>
 
   <section aria-labelledby="h-focus">
     <div class="sechead"><h2 id="h-focus">Focus now</h2><span class="small muted" id="focus-sub"></span></div>
     <ol class="focus" id="focus"></ol>
+  </section>
+
+  <section aria-labelledby="h-plan">
+    <div class="sechead"><h2 id="h-plan">Plan to 60</h2><span class="small muted" id="plan-sub"></span></div>
+    <ol class="plan" id="plan"></ol>
+    <p class="small muted" id="plan-opt"></p>
   </section>
 
   <section aria-labelledby="h-dung">
@@ -243,6 +266,8 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
     $("sub").textContent = C.race + " " + C.spec + " " + C.cls + " · " + C.faction + " · " + C.realm + " · <" + C.guild + ">";
     $("lvl-n").textContent = "Level " + L;
     $("bar").style.width = (L / 60 * 100).toFixed(1) + "%";
+    $("armory").href = C.armory;
+    if (C.stats && !$("stats").firstChild) $("stats").innerHTML = Object.keys(C.stats).map(function (k) { return esc(k) + " <b>" + esc(C.stats[k]) + "</b>"; }).join("") + '<span class="small">(armory ' + esc(C.snapshot || "") + ")</span>";
     var el = $("profs"), a = document.activeElement && document.activeElement.id;
     if (!el.firstChild) {
       el.innerHTML = [["mining", "Mining"], ["blacksmithing", "Blacksmithing"], ["firstAid", "First Aid"]].map(function (p) {
@@ -298,6 +323,25 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
     }).join("") || '<li><span class="t">Nothing queued.</span></li>';
   }
 
+  function stepAuto(p) { return !!(p.d && !p.manual && S.prog["d_" + p.d] === "done"); }
+  function stepDone(p) { return stepAuto(p) || !!S.prog["p_" + p.id]; }
+  function renderPlan() {
+    if (!T.plan) return;
+    var L = S.char.level, cur = T.plan.filter(function (p) { return !stepDone(p); })[0];
+    $("plan").innerHTML = T.plan.map(function (p) {
+      var done = stepDone(p), auto = stepAuto(p), st = done ? "done" : p === cur ? "now" : "", k = "p_" + p.id;
+      var lv = p.lv[0] === p.lv[1] ? String(p.lv[0]) : p.lv[0] + "–" + p.lv[1];
+      var title = p.d ? '<a href="#d-' + p.d + '" data-open="' + p.d + '">' + esc(p.t) + "</a>" : esc(p.t);
+      var kind = (p.d ? "Dungeon" : "Questing") + (st === "now" ? " · now" : "") + (!done && L > p.lv[1] ? " · behind plan" : "");
+      return '<li data-st="' + st + '"><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (done ? " checked" : "") + (auto ? ' disabled title="Ticked because the dungeon is marked done"' : "") + ' aria-label="' + esc(p.t) + ' done">' +
+        '<span class="pl">' + lv + '</span><div><span class="kind">' + kind + '</span><div class="pt"><b>' + title + "</b>" + (p.zr ? ' <span class="muted small">zone ' + esc(p.zr) + "</span>" : "") + "</div>" +
+        (p.note ? '<div class="small">' + esc(p.note) + "</div>" : "") + "</div></li>";
+    }).join("");
+    var left = T.plan.filter(function (p) { return !stepDone(p); }).length;
+    $("plan-sub").textContent = left ? left + " of " + T.plan.length + " steps left · each dungeon once" : "Every step done";
+    $("plan-opt").textContent = T.planOptional || "";
+  }
+
   function srcText(t) {
     if (t.how === "craft") return "craft, Blacksmithing " + t.bs + (t.note ? ". " + t.note : "");
     var d = t.from ? dById(t.from).name : "";
@@ -324,9 +368,9 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
       }).join("") + "</ul>";
       if (d.loot && d.loot.length) body += '<div><div class="lab">Worth it for a tank</div><ul class="loot">' + d.loot.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></div>";
       if (d.guide) body += '<a class="small" href="' + d.guide + '" target="_blank" rel="noopener">Wowhead guide</a>';
-      if (d.research) body += ' <a class="small" href="' + d.research + '" target="_blank" rel="noopener">Every Horde quest and chain (EverlookDB, saved on disk)</a>';
+      if (d.research) body += ' <a class="small" href="research.html?f=' + encodeURIComponent(d.research.split("/").pop().replace(/\.md$/, "")) + '">Every Horde quest and chain (EverlookDB, saved on disk)</a>';
       body += '<button class="btn" data-d="' + d.id + '">' + (st === "done" ? "Mark as not run" : "Mark dungeon done") + "</button>";
-      return '<details class="d" data-id="' + d.id + '" data-st="' + st + '"' + (openSet[d.id] ? " open" : "") + "><summary>" +
+      return '<details class="d" id="d-' + d.id + '" data-id="' + d.id + '" data-st="' + st + '"' + (openSet[d.id] ? " open" : "") + "><summary>" +
         '<span class="dn">' + esc(d.name) + (d.isNew ? ' <span class="new">new</span>' : "") + '</span><span class="pill p-' + st + '">' + LABEL[st] + "</span>" +
         '<span class="dm"><span class="r">' + d.range[0] + "–" + d.range[1] + "</span><span>" + esc(d.zone) + "</span>" + (qs.length && st !== "done" ? "<span>" + got + "/" + qs.length + " quests picked up</span>" : "") + "</span></summary>" +
         '<div class="dbody">' + body + "</div></details>";
@@ -352,13 +396,15 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
       return '<li><input type="checkbox" id="' + k + '" data-g="' + k + '"' + (S.prog[k] ? " checked" : "") + '><label for="' + k + '"><b>' + esc(m.name) + '</b> <span class="muted small">level ' + m.at + "</span><br><span class=\"small\">" + esc(m.detail) + "</span></label></li>";
     }).join("");
     $("unk").innerHTML = T.unknowns.map(function (u) { return "<li>" + esc(u) + "</li>"; }).join("");
-    $("foot").innerHTML = 'Game data checked ' + esc(T.checked) + ' against Wowhead Forever, Warcraft Tavern, Conquest Capped, Gfinity, Frostyboost, Method.gg and Warcraft Wiki. Notes say where only Classic data was found (mostly Maraudon and Sunken Temple levels and waypoints). Gear snapshot from the <a href="' + C.armory + '" target="_blank" rel="noopener">armory</a>, read 2026-11-21 at level 45.';
+    $("foot").innerHTML = "Game data from Forever sources (EverlookDB, forever-codex, Wowhead Forever, Icy Veins Forever); each dungeon note says when it was checked and where only Classic data was found. Gear and stats from the <a href=\"" + esc(C.armory) + "\" target=\"_blank\" rel=\"noopener\">armory</a>, read " + esc(C.snapshot || "") + ".";
   }
 
-  function render() { renderHead(); renderFocus(); renderDungeons(); renderGear(); renderRest(); }
+  function render() { renderHead(); renderFocus(); renderPlan(); renderDungeons(); renderGear(); renderRest(); }
 
   /* ---------- events ---------- */
   document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-open]");
+    if (a) { e.preventDefault(); var de = $("d-" + a.dataset.open); if (de) { de.open = true; de.scrollIntoView({ behavior: "smooth", block: "start" }); } return; }
     var b = e.target.closest("button"); if (!b) return;
     if (b.id === "lvl-up" && S.char.level < 60) return setC("level", S.char.level + 1);
     if (b.id === "lvl-down" && S.char.level > 1) return setC("level", S.char.level - 1);

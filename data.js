@@ -16,12 +16,14 @@ window.TRACKER = {
     guild: "Send Ibuprofen",
     level: 48, gold: null,
     /* armory 2026-11-24 15:25 ET, level 48, after the Maraudon turn-ins */
+    snapshot: "2026-11-24 15:25 ET at level 48",
     stats: { Health: 2309, Mana: 1928, Armor: 4629, Strength: 147, Stamina: 160, "Attack power": 424, Dodge: "5.8%", Parry: "11.3%", Block: "6.3%" },
     professions: { Mining: [228, 300], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
       "Skip zones you dislike (Arathi); favourites later on: the Plaguelands and Winterspring",
+      "From 48: each dungeon run once only, with questing in between",
       "Blacksmithing on hold until level 60"
     ]
   },
@@ -282,6 +284,25 @@ window.TRACKER = {
       { name: "Maw of Min'loth", stats: "1287 armor", how: "drop", from: "drowned", src: "Min'loth the Serpent", at: 37 },
       { name: "Fatebound Buckler", stats: "stats not published", how: "quest", from: "alcaz", src: "Thrall Needs to Know", at: 48 } ] }
   ],
+
+  /* 48-60 plan, same as HANDOFF.md section 3a (user 2026-11-25: each dungeon once, questing between).
+     Dungeon ranges from forever-codex.com, zone ranges from EverlookDB's zone list, both read 2026-11-25.
+     Levels are estimates (about one level per dungeon). A dungeon step ticks itself when that dungeon is
+     marked done, except the two Dire Maul visits ("manual"), which are ticked on the plan. */
+  plan: [
+    { id: "alcaz", lv: [48, 49], d: "alcaz", t: "Alcaz Prison", note: "12 Horde quests, about 73,000 quest XP." },
+    { id: "st", lv: [49, 50], d: "st", t: "Sunken Temple", note: "Might of Hakkar, Warrior's Embrace (level 49). Check which ST chains are still open first." },
+    { id: "wpl", lv: [50, 52], t: "Quest: Western Plaguelands", zr: "48-60", note: "Picks up Scholomance quests early." },
+    { id: "brd", lv: [52, 54], d: "brd", t: "Blackrock Depths", note: "About 25 Horde quests (Kargath). Plan the list at 51." },
+    { id: "dme", lv: [54, 55], d: "dm", manual: true, t: "Dire Maul East", note: "Passing the Blame on this Feralas trip." },
+    { id: "blackmaw", lv: [55, 56], d: "blackmaw", t: "Blackmaw Hold", note: "New in Forever, Azshara. 17 Horde quests on file." },
+    { id: "fw", lv: [56, 57], t: "Quest: Felwood into Winterspring", zr: "Felwood 46-60, Winterspring 53-63", note: "Seed of Life at Moonglade on the way (11,900 XP)." },
+    { id: "dmwn", lv: [57, 58], d: "dm", manual: true, t: "Dire Maul West and North" },
+    { id: "epl", lv: [58, 58], t: "Quest: Eastern Plaguelands", zr: "53-63", note: "Picks up Stratholme quests." },
+    { id: "strat", lv: [58, 59], d: "strat", t: "Stratholme" },
+    { id: "scholo", lv: [59, 60], d: "scholo", t: "Scholomance" }
+  ],
+  planOptional: "Optional, for gear at 60 or if a run falls short: Blackrock Spire (one 10-player instance, 55-60), Shaper's Terrace (58-60, new, Un'Goro), Mount Hyjal questing (new map, 55-60).",
 
   milestones: [
     { at: 40, id: "plate", name: "Train plate armor", detail: "Done: the armory shows plate pauldrons equipped." },

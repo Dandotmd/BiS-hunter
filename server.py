@@ -3,12 +3,15 @@
 Serves this folder at http://127.0.0.1:8765 and saves the page's state to state.json.
   GET  /api/state            -> {"character": {...}, "progress": {...}}
   POST /api/state/<doc>      -> merge a JSON patch into that doc; "" or null removes a key
-Run:  python server.py   (optional: --port 8765)
+  POST /api/shutdown         -> stop the server (used by "launch.pyw --stop")
+Run:  python server.py   (optional: --port 8765, --log server.log)
+launch.pyw starts it with pythonw (no window) and --log, since pythonw has no console to print to.
 Only binds to 127.0.0.1, so nothing outside this PC can reach it.
 """
 import argparse
 import json
 import os
+import sys
 import tempfile
 import threading
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -67,6 +70,11 @@ class Handler(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def do_POST(self):
+        if self.path == "/api/shutdown":
+            self._json(200, {"ok": True})
+            # short delay so this reply reaches the caller before the process exits
+            threading.Timer(0.5, self.server.shutdown).start()
+            return
         parts = self.path.strip("/").split("/")
         if len(parts) != 3 or parts[:2] != ["api", "state"] or parts[2] not in DOCS:
             return self._json(404, {"error": "unknown endpoint"})
@@ -96,7 +104,12 @@ class Handler(SimpleHTTPRequestHandler):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8765)
-    port = ap.parse_args().port
+    ap.add_argument("--log", help="append output to this file (needed under pythonw, which has no console)")
+    args = ap.parse_args()
+    port = args.port
+    if args.log or sys.stderr is None:
+        log = open(args.log or os.path.join(ROOT, "server.log"), "a", encoding="utf-8", buffering=1)
+        sys.stdout = sys.stderr = log
     srv = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"Tracker: http://127.0.0.1:{port}/  (saving to {STATE})", flush=True)
     try:

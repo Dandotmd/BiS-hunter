@@ -4,13 +4,28 @@ Danadin's dungeon-first leveling tracker, run from this folder. No claude.ai acc
 
 ## Run it
 
-Double-click `start.bat`, or:
+From anywhere on this PC: Start Menu or Desktop, **WoW Forever Tracker**. It runs `launch.pyw` with
+`pythonw` (no console window). That starts `server.py` hidden if it isn't already running, then opens the page
+in its own Edge app window. **Stop WoW Forever Tracker** in the Start Menu stops the hidden server. The
+server's output goes to `server.log` (git-ignored).
 
-```bash
-python server.py
+```powershell
+.\install-shortcuts.ps1              # (re)create the shortcuts; run again if this folder moves
+.\install-shortcuts.ps1 -AutoStart   # also start the hidden server at sign-in
+.\install-shortcuts.ps1 -Remove      # delete every shortcut it made
 ```
 
-Then open http://127.0.0.1:8765/. The server only listens on this PC.
+Console fallback: double-click `start.bat`, or `python server.py`, then open http://127.0.0.1:8765/.
+The server only listens on this PC.
+
+## Pages
+
+- `index.html`: character, focus list, **Plan to 60** (the 48-60 steps from `data.js` `plan`, current step
+  highlighted; dungeon steps tick themselves when that dungeon is marked done, the two Dire Maul visits are
+  ticked on the plan as `p_<step id>`), dungeon route, gear, milestones.
+- `research.html`: reader for `research/dungeon-quests/*.md`, with a filter box, "only quests I can take at
+  my level", copyable /way buttons and EverlookDB/Wowhead links. `research.html?f=st` opens one file.
+  Each dungeon card links to its file.
 
 ## Files (one source of truth each)
 
@@ -19,13 +34,15 @@ Then open http://127.0.0.1:8765/. The server only listens on this PC.
 | `data.js` | The plan: dungeons, quests, gear targets, milestones, open questions | Claude, when the plan changes |
 | `state.json` | Your progress: level, professions, quest/dungeon/gear/milestone ticks | The page (every click saves here); Claude may edit it directly |
 | `index.html` | The page that renders `data.js` + `state.json` | Claude, for layout/logic changes |
-| `server.py` | Serves the folder and saves to `state.json` | Rarely |
+| `research.html` | Reader for the dungeon quest research files | Claude, for layout/logic changes |
+| `server.py` | Serves the folder, saves to `state.json`, `POST /api/shutdown` stops it | Rarely |
+| `launch.pyw`, `install-shortcuts.ps1`, `tracker.ico` | PC-wide launcher and its shortcuts | Rarely |
 | `HANDOFF.md` | Character, preferences, current status and routes for a new Claude session | Claude, at the end of each session |
 
 ## state.json keys
 
 - `character`: `level`, `mining`, `blacksmithing`, `firstAid` (numbers).
-- `progress`: `d_<dungeon id>` = `"done"`; `q_<quest id>` = `"have"` or `"done"`;
+- `progress`: `d_<dungeon id>` = `"done"`; `q_<quest id>` = `"have"` or `"done"`; `p_<plan step id>` = `"1"`;
   `g_<item slug>` = `"1"` (name lowercased, each non-alphanumeric run → `-`); `m_<milestone id>` = `"1"`.
   Posting `""` for a key removes it.
 
@@ -47,5 +64,10 @@ then `curl http://127.0.0.1:8765/api/state` should print the contents of `state.
 - Stop the server before hand-editing `state.json`, or the page may overwrite your edit on its next click
   (the server re-reads the file on each save, so edits between clicks are kept, but a page left open shows
   stale values until reloaded).
+- Only one server can hold port 8765. If one is already running (a `start.bat` console, or an older copy),
+  the launcher just opens the page against it. Pages are read from disk, so page changes show at once;
+  `server.py` changes need that server stopped first (Stop shortcut, close its console, or sign out).
+- The research reader decodes the files as UTF-8 itself, so accented characters read right even on an
+  older server that sends `.md` without a charset.
 - The old claude.ai artifact (`Q13oByuzMcLNFbMFEW93hk`) still exists with its own database. It is no longer
   updated; this folder is the live copy as of 2026-11-20.

@@ -230,7 +230,7 @@ Stat weights: the earlier "ForeverDB leveling-mode" numbers could not be found a
 
 ## 7. The tracker (local, since 2026-11-20)
 
-- **Folder:** `D:\ScratchPad\WoW-Forever-Tracker` (git repo). Run `start.bat` or `python server.py`, open http://127.0.0.1:8765/.
+- **Folder:** `D:\ScratchPad\WoW-Forever-Tracker` (git repo). The user opens it from the Start Menu or Desktop shortcut **WoW Forever Tracker** (`launch.pyw`: hidden server + Edge app window; installed 2026-11-25 by `install-shortcuts.ps1`). Console fallback: `start.bat` or `python server.py`, then http://127.0.0.1:8765/. The page shows the 48-60 plan from `data.js` `plan` (keep it in step with section 3a), and `research.html` reads the dungeon quest research.
 - `data.js` = the plan, `state.json` = progress (every click on the page saves here), `index.html` = the page, `server.py` = local save server. Details in `README.md`.
 - `state.json` was seeded from the artifact database as of this snapshot (character v2, progress v7).
 - **Dungeon quest research (2026-11-25):** `research/dungeon-quests/<id>.md` has every Horde quest a paladin can take for Alcaz, ST, BRD, DM, Blackmaw, Blackrock Spire, Strat, Scholo and Shaper's Terrace, with whole chains (start, turn-in, objectives, rewards, XP), from EverlookDB. `shared-chains.md` holds chains that span three or more of them; `quests.json` is the raw data. Re-run with `python research/crawl_dungeon_quests.py`. Each dungeon on the page links to its file. Limits: EverlookDB lists quests by their zone field, so a quest filed under an outdoor zone shows up only if a chain links it; some in-dungeon starters are not recorded yet. Curate the dungeon's `quests` in `data.js` from this file before each run.
