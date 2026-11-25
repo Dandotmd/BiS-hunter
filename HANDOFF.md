@@ -65,6 +65,7 @@ Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +10
 ## 2. Preferences and working style
 
 - Dungeon-first leveling as a tank. Pick up every dungeon quest and its prerequisites first, then do them all in one run.
+- **From 48: each dungeon run once only** (user, 11-25). Questing in between is welcome, especially Winterspring and both Plaguelands.
 - **Wants routes as plain bullet points, grouped by location, in travel order, with no back-and-forth.**
 - Wants facts checked, not recalled. Twice this session the assistant got things wrong from Classic data (Uldaman quests assumed inside the instance when they were in the outdoor dig site; Necklace Recovery order). User pushed back both times and was right. **Verify against Forever sources before routing.**
 - Give reasons for suggestions; no filler.
@@ -93,27 +94,26 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
 
-### 3a. Plan 48-60 (rewritten 2026-11-25: each dungeon once)
-User rule (11-25): run each dungeon once, all quests picked up first. Expect about one level per run including turn-ins, so questing fills the gaps.
-Sources: dungeon ranges and lockouts from forever-codex.com (data build 1.60.1.70245); zone ranges from EverlookDB's zone list (Forever client), both read 11-25.
-Already done: Uldaman, Zul'Farrak, Maraudon and everything earlier.
+### 3a. Plan 48-60 (rewritten 2026-11-25: each dungeon once, questing in favourite zones)
+User rules (11-25): each dungeon once with all quests picked up first; questing welcome, especially Winterspring and both Plaguelands.
+Sources: dungeon ranges from forever-codex.com (data build 1.60.1.70245); zone ranges from EverlookDB's zone list (Forever client); both read 11-25.
+Already done: Uldaman, Zul'Farrak, Maraudon and everything earlier. Level per step is an estimate (about one level per dungeon).
 
 | Step | Level | Do | Notes |
 |---|---|---|---|
-| 1 | 48-49 | Alcaz Prison (48-53) | 12 Horde quests, about 73,000 quest XP. Girdle of Extracted Answers, Fingerbreaker Stamp, Fatebound Buckler. |
-| 2 | 49-50 | Sunken Temple (50-60, enterable at 45) | Might of Hakkar and Warrior's Embrace are level 49 items. Check which ST chains are still open first. |
-| 3 | 50-52 | Questing: Searing Gorge (43-60) and Burning Steppes (48-60) | The only planned questing block. Same area as BRD and Blackrock Spire, so pick up their quests here. |
-| 4 | 52-54 | Blackrock Depths (52-60) | Biggest dungeon, about 25 Horde quests (Kargath); one long clear should be close to two levels. Quest list planned at 51. |
-| 5 | 54-55 | Dire Maul East (54+) | Passing the Blame (Kog'thug, Shen'dralas) on this Feralas trip. |
+| 1 | 48-49 | Alcaz Prison (48-53) | Next. 12 Horde quests, about 73,000 quest XP. |
+| 2 | 49-50 | Sunken Temple (50-60, enter at 45) | Might of Hakkar, Warrior's Embrace (level 49). Check open ST chains first. |
+| 3 | 50-52 | Quest: Western Plaguelands (48-60) | Picks up Scholomance quests early. |
+| 4 | 52-54 | Blackrock Depths (52-60) | About 25 Horde quests (Kargath). Plan the list at 51. |
+| 5 | 54-55 | Dire Maul East (54+) | Passing the Blame on this Feralas trip. |
 | 6 | 55-56 | Blackmaw Hold (55-60, new, Azshara) | Quests not researched yet. |
-| 7 | 56-57 | Dire Maul West and North (56+) | Second Feralas trip. |
-| 8 | 57-58 | Blackrock Spire (55-60) | Forever lists it as one 10-player instance: needs a bigger group. |
-| 9 | 58-59 | Stratholme (58-60) | Plaguelands. |
-| 10 | 59-60 | Scholomance (58-60) | Plaguelands. |
-| Spare | 58-60 | Shaper's Terrace (58-60, new, Un'Goro) | Use if a run falls short, or for gear at 60. |
+| 7 | 56-57 | Quest: Felwood (46-60) into Winterspring (53-63) | Seed of Life at Moonglade on the way (11,900 XP). |
+| 8 | 57-58 | Dire Maul West and North (56+) | |
+| 9 | 58 | Quest: Eastern Plaguelands (53-63) | Picks up Stratholme quests. |
+| 10 | 58-59 | Stratholme (58-60) | |
+| 11 | 59-60 | Scholomance (58-60) | |
 
-If a run falls short: Western Plaguelands (48-60), Eastern Plaguelands (53-63) or Mount Hyjal (new map, 55-60) for questing.
-Loose end: Seed of Life (Keeper Remulos, Moonglade; 11,900 XP) on any Kalimdor trip.
+With three questing blocks, 60 likely comes before every dungeon is used. Optional, for gear at 60 or if short: Blackrock Spire (one 10-player instance, 55-60), Shaper's Terrace (58-60, new, Un'Goro), Mount Hyjal questing (new map, 55-60).
 
 ### 3b. Maraudon pickup route (re-checked 2026-11-23: Icy Veins Forever quest list updated 11-18, Icy Veins Forever DB, Wowhead Forever guide)
 
