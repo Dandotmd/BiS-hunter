@@ -236,7 +236,8 @@ window.TRACKER = {
       { name: "Grovekeeper's Drape", stats: "37 armor, +12 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Celebras the Cursed, about 33%. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 47 },
       { name: "Silky Spider Cape", stats: "", how: "drop", from: "rfd", src: "Tuten'kash, 34%", at: 37 },
       { name: "Waterlogged Burial Shroud", stats: "+7 Stamina, crit, attack power", how: "drop", from: "drowned", src: "Primeval Elemental", at: 37 } ] },
-    { slot: "Chest", cur: "Zealot Plate (plate, 509 armor, +13 Str, mana on hit)", ilvl: 48, targets: [
+    { slot: "Chest", cur: "Warrior's Embrace (plate, 567 armor, +6 Agi, +14 Sta, +8 defense, +1.5% dodge)", ilvl: 49, targets: [
+      { name: "Warrior's Embrace", stats: "plate, 567 armor, +6 Agility, +14 Stamina, +8 defense, +1.5% dodge", how: "drop", from: "st", src: "Avatar of Hakkar, got 2026-11-25", at: 49 },
       { name: "Zealot Plate", stats: "plate, 509 armor, +13 Strength, chance when struck to restore 66–110 mana", how: "drop", src: "equipped 2026-11-21", at: 43 },
       { name: "Green Iron Hauberk", stats: "mail, 238 armor, +11 Stamina, +7 Strength", how: "craft", bs: 180, at: 31, note: "Trainer plans. Skill is 155 per the wiki, 180 per Classic data; one report says the recipe is bugged" },
       { name: "Carapace of Tuten'kash", stats: "plate, 373 armor, +10 Strength, +8 Agility, +15 Stamina", how: "drop", from: "rfd", src: "Tuten'kash, 33%", at: 40 },
