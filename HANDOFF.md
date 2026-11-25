@@ -35,10 +35,10 @@ Mining 215/225, Blacksmithing 173/225, First Aid 150/150, Cooking 57/150, Fishin
 ### Talents (armory 11-19, all Protection)
 Redoubt 5, Precision 3, Sacred Duty 2, Templar's Bulwark 1, Shield Specialization 2, Toughness 2, Swift Judgement 1, Improved Righteous Fury 3, Anticipation 5, Holy Shield 1, Reckoning 5, Iron Creed 3, Shieldsworn 1.
 
-### Stats (armory 11-24 13:11 ET, level 47, before the Maraudon turn-ins)
-Health 2,237, Mana 1,886, Armor 4,455, Str 146, Agi 59, Sta 156, Int 66, Spirit 64, AP 441, SP 9, Dodge 6.0%, Parry 10.4%, Block 6.4%. Talents: Protection 34, Retribution 4. Mining 227/300.
+### Stats (armory 11-24 15:25 ET, level 48, after the Maraudon turn-ins)
+Health 2,309, Mana 1,928, Armor 4,629, Str 147, Agi 60, Sta 160, Int 67, Spirit 65, AP 424, SP 9, Dodge 5.8%, Parry 11.3%, Block 6.3%. Talents: Protection 34, Retribution 5. Mining 228/300.
 
-### Equipped (armory 11-24, before the Maraudon turn-ins; quest rewards not shown yet)
+### Equipped (armory 11-24 15:25 ET, after the Maraudon turn-ins)
 | Slot | Item | ilvl |
 |---|---|---|
 | Head | Warbringer's Crown of the Champion (plate, +8 Str, +14 Sta, +4 def) | 45 |
@@ -47,15 +47,15 @@ Health 2,237, Mana 1,886, Armor 4,455, Str 146, Agi 59, Sta 156, Int 66, Spirit 
 | Back | Cloak of the Cult | 46 |
 | Chest | Zealot Plate (plate, 509 armor, +13 Str, mana on hit) | 48 |
 | Wrist | Noxxion's Shackles (plate, +5 Str, +9 Sta) | 51 |
-| Hands | Warsong Gauntlets | 27 |
+| Hands | Branchclaw Gauntlets (plate, +9 Str, +5 Sta, mp5 and hp5) | 49 |
 | Waist | Twilight Lord Girdle | 30 |
 | Legs | Dual Reinforced Leggings | 37 |
 | Feet | Shinkicker Boots (plate, 300 armor, +10 Str, +9 Agi) | 45 |
 | Ring 1 | Zarmok's Plated Signet | 45 |
 | Ring 2 | Purified Ring (+12 Int, +5 SP: caster ring) | 44 |
 | Shirt | Brawler's Harness | |
-| Trinkets | Carrot on a Stick (mount speed); one empty | 50 |
-| Main hand | Vanquisher's Sword (46-86, 2.20, +22 AP); Rock on Stick is about equal on damage | 44 |
+| Trinkets | Carrot on a Stick (mount speed); Mark of the Chosen (2% when struck: +21 all stats) | 48 |
+| Main hand | Thrash Blade (66-124, 2.70, 35.2 DPS, extra-attack proc) | 53 |
 | Off hand | Putridus Wall (1,739 armor, 29 block, +10 Sta, +5 def) | 50 |
 
 Krol'dok Battlegear set: Helmet, Pauldrons, Chest, Legplates, Gauntlets. 2pc +100 armor, 3pc +5 defense, 4pc heal on block, 5pc stacking Stamina.

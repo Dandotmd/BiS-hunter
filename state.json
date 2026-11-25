@@ -1,7 +1,7 @@
 {
   "character": {
     "level": 48,
-    "mining": 227,
+    "mining": 228,
     "blacksmithing": 173,
     "firstAid": 150
   },
@@ -64,6 +64,9 @@
     "d_mara": "done",
     "q_7066": "have",
     "q_7046": "done",
-    "g_noxxion-s-shackles": "1"
+    "g_noxxion-s-shackles": "1",
+    "g_branchclaw-gauntlets": "1",
+    "g_mark-of-the-chosen": "1",
+    "g_thrash-blade": "1"
   }
 }

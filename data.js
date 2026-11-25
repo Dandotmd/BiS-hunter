@@ -15,9 +15,9 @@ window.TRACKER = {
     realm: "US Normal (PvE)", faction: "Horde", race: "Undead", cls: "Paladin", spec: "Protection",
     guild: "Send Ibuprofen",
     level: 48, gold: null,
-    /* armory 2026-11-24 13:11 ET, level 47, before the Maraudon turn-ins */
-    stats: { Health: 2237, Mana: 1886, Armor: 4455, Strength: 146, Stamina: 156, "Attack power": 441, Dodge: "6.0%", Parry: "10.4%", Block: "6.4%" },
-    professions: { Mining: [227, 300], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
+    /* armory 2026-11-24 15:25 ET, level 48, after the Maraudon turn-ins */
+    stats: { Health: 2309, Mana: 1928, Armor: 4629, Strength: 147, Stamina: 160, "Attack power": 424, Dodge: "5.8%", Parry: "11.3%", Block: "6.3%" },
+    professions: { Mining: [228, 300], Blacksmithing: [173, 225], "First Aid": [150, 150], Cooking: [57, 150], Fishing: [1, 75] },
     prefs: [
       "Dungeon-first leveling as tank",
       "Pick up every dungeon quest and its prerequisites, then clear them all in one run",
@@ -241,7 +241,7 @@ window.TRACKER = {
       { name: "Noxxion's Shackles", stats: "plate, 235 armor, +5 Strength, +9 Stamina, +10 Nature Resistance", how: "drop", from: "mara", src: "Noxxion, about 40%. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 46 },
       { name: "Berserker Shackles", stats: "mail, +7 Strength, +6 defense", how: "drop", from: "drowned", src: "Zul'Alai", at: 37 },
       { name: "Warder's Wristguards", stats: "plate, 231 armor, +8 defense, +11 Stamina, +7 spell power", how: "craft", bs: 225, at: 45, note: "Plans from Gor'mak, 90 Merchant's Favor, Honored with Durotar Supply and Logistics" } ] },
-    { slot: "Hands", cur: "Warsong Gauntlets", ilvl: 27, targets: [
+    { slot: "Hands", cur: "Branchclaw Gauntlets (plate, 295 armor, +9 Str, +5 Sta, 4 mana and 4 health per 5 sec)", ilvl: 49, targets: [
       { name: "Branchclaw Gauntlets", stats: "plate, 295 armor, +9 Strength, +5 Stamina, 4 mana and 4 health per 5 sec", how: "quest", from: "mara", src: "Vyletongue Corruption (guaranteed). Replaces Warsong Gauntlets (ilvl 27).", at: 47 },
       { name: "Warder's Gauntlet", stats: "mail, 159 armor, +10 Stamina, +7 defense, +11 spell power", how: "craft", bs: 175, at: 35, note: "Not a trainer recipe: plans from Gor'mak (Barrens 49.8 29.7), 60 Merchant's Favor, Friendly with Durotar Supply and Logistics" },
       { name: "Krol'dok Warplate Gauntlets", stats: "plate, 300 armor, +9 Stamina, +1% parry", how: "drop", from: "kroldok", src: "bind-on-equip trash drop, or auction house", at: 40 } ] },
@@ -263,13 +263,13 @@ window.TRACKER = {
       { name: "Dragonclaw Ring", stats: "stats not checked", how: "quest", from: "rfd", src: "Extinguishing the Idol", at: 37 },
       { name: "Knucklebone Ring", stats: "+7 Stamina", how: "drop", from: "drowned", src: "Deathless Marrow", at: 37 },
       { name: "Blood Ritual Ring", stats: "+13 Stamina, +3 defense", how: "drop", from: "zf", src: "Witch Doctor Zum'rah, 25%", at: 43 } ] },
-    { slot: "Trinkets", cur: "Carrot on a Stick (mount speed only); second slot empty", ilvl: 0, targets: [
+    { slot: "Trinkets", cur: "Carrot on a Stick (mount speed only) and Mark of the Chosen (2% when struck: +21 all stats for 1 min)", ilvl: 48, targets: [
       { name: "Mark of the Chosen", stats: "2% chance when struck: +21 all stats for 1 min", how: "quest", from: "mara", src: "The Pariah's Instructions (guaranteed). Fills the empty trinket slot.", at: 47 },
       { name: "Defiler's Talisman", stats: "+8 Stamina; use: absorbs 353–431 physical damage (level 38 version)", how: "buy", src: "Defilers quartermaster; requires Friendly with The Defilers (Arathi Basin). Vendor location and price are from Classic data", at: 38 },
       { name: "Rune of Duty", stats: "+8 Stamina, +10 all resistances (pick this over Rune of Perfection; they can't be worn together)", how: "buy", src: "Warsong Gulch vendor; requires Friendly with Warsong Outriders", at: 40 },
       { name: "Fingerbreaker Stamp", stats: "+6 defense", how: "drop", from: "alcaz", src: "The Questioner", at: 48 },
       { name: "Guardian Talisman", stats: "chance when struck: +350 armor for 15 sec", how: "quest", from: "st", src: "The Temple of Atal'Hakkar", at: 38 } ] },
-    { slot: "Main hand", cur: "Vanquisher's Sword (46-86, speed 2.20, +22 attack power)", ilvl: 44, targets: [
+    { slot: "Main hand", cur: "Thrash Blade (66-124, speed 2.70, 35.2 DPS, chance on hit: extra attack)", ilvl: 53, targets: [
       { name: "Thrash Blade", stats: "66-124, speed 2.70 (35.2 DPS), chance on hit: extra attack", how: "quest", from: "mara", src: "Corruption of Earth and Seed (guaranteed choice). Beats Vanquisher's Sword (30 DPS).", at: 47 },
       { name: "Fist of Stone", stats: "44-83, speed 1.80 (35.3 DPS), +40 armor, mana on hit", how: "drop", from: "mara", src: "Landslide, about 25%. Requires level 48. Stats: EverlookDB (Forever client, 11-23). Boss drop table and chance are Classic estimates; Forever may differ.", at: 48 },
       { name: "Vanquisher's Sword", stats: "46-86, speed 2.20, +22 attack power", how: "quest", from: "rfd", src: "Bring the End", at: 37 },
