@@ -40,6 +40,9 @@ def save(data):
 
 
 class Handler(SimpleHTTPRequestHandler):
+    # show research notes as readable UTF-8 text instead of a download
+    extensions_map = {**SimpleHTTPRequestHandler.extensions_map, ".md": "text/plain; charset=utf-8"}
+
     def __init__(self, *a, **kw):
         super().__init__(*a, directory=ROOT, **kw)
 

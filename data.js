@@ -172,7 +172,7 @@ window.TRACKER = {
         { id: 7046, name: "The Scepter of Celebras", lvl: 41, giver: "Celebras the Redeemed", zone: "Inside the dungeon", area: "after Celebras the Cursed dies", where: "inside", task: "Follow him and wait out his ritual. Rewards the Scepter of Celebras, the shortcut to the inner wing. Not shareable.", reward: "Scepter of Celebras" }
       ], loot: [] },
 
-    { id: "alcaz", name: "Alcaz Prison", zone: "Alcaz Island, Dustwallow Marsh", range: [48, 53], hard: 46, ready: 48, isNew: true,
+    { id: "alcaz", research: "research/dungeon-quests/alcaz.md", name: "Alcaz Prison", zone: "Alcaz Island, Dustwallow Marsh", range: [48, 53], hard: 46, ready: 48, isNew: true,
       guide: "https://www.warcrafttavern.com/forever/guides/alcaz-island-prison/",
       note: "Range 48–53 (Warcraft Tavern says 48–55; final boss is level 51). The portal is in a building basement around 75, 15: take the path up the hill to the left of the dock. Bosses: Tidemistress Ca'zass, Overseer Wrex (his Overseer's Keyring opens the right side), Katerina the Cleaner, Zarla and Blazeroar, then The Questioner behind a locked door. The Kor'kron chain starts with Eitrigg in Orgrimmar (EverlookDB, 11-24).",
       quests: [
@@ -190,7 +190,7 @@ window.TRACKER = {
       loot: ["Girdle of Extracted Answers, plate waist, +12 Strength, +15 Stamina, damage on block (The Questioner)", "Fingerbreaker Stamp, trinket, +6 defense (The Questioner)",
              "Fatebound Buckler, shield (quest: Thrall Needs to Know)", "Grips of Control, plate hands, caster stats (Overseer Wrex): skip"] },
 
-    { id: "st", name: "Sunken Temple", zone: "Swamp of Sorrows", range: [50, 60], hard: 46, ready: 49,
+    { id: "st", research: "research/dungeon-quests/st.md", name: "Sunken Temple", zone: "Swamp of Sorrows", range: [50, 60], hard: 46, ready: 49,
       note: "Might of Hakkar (1H mace) and Warrior's Embrace (plate chest), both level 49 drops from the Avatar of Hakkar, are top Protection Paladin picks. The level 50 paladin class quest (Forging the Mightstone) is currently Alliance only: it starts in the Western Plaguelands, every NPC in it is hostile to Horde, and Horde trainers don't offer it. The level range is from Classic data.",
       quests: [
         { id: 1445, name: "The Temple of Atal'Hakkar", lvl: 38, giver: "Fel'zerul", zone: "Swamp of Sorrows", area: "Stonard", way: "47.9 54.8", pre: "Pool of Tears → The Atal'ai Exile → Return to Fel'zerul.", task: "20 Fetishes of Hakkar.", reward: "Guardian Talisman (trinket: chance when struck for +350 armor) and Orgrimmar reputation" },
@@ -200,14 +200,14 @@ window.TRACKER = {
         { id: 4146, name: "Zapper Fuel", lvl: 47, giver: "Liv Rizzlefix", zone: "The Barrens", area: "Ratchet", way: "62.4 38.7", pre: "Larion and Muigin → Marvon's Workshop (Un'Goro).", task: "5 Atal'ai Haze. Turn in to Larion, Marshal's Refuge." }
       ], loot: ["Might of Hakkar, 1H mace (Avatar of Hakkar)", "Warrior's Embrace, plate chest (Avatar of Hakkar)"] },
 
-    { id: "brd", name: "Blackrock Depths", zone: "Blackrock Mountain", range: [52, 60], hard: 50, ready: 52, note: "Around 25 Horde quests, most from Kargath. Planned in detail when you reach 48.", quests: [], loot: [] },
-    { id: "blackmaw", name: "Blackmaw Hold", zone: "Azshara", range: [55, 60], hard: 53, ready: 55, isNew: true, note: "New in Forever.", quests: [], loot: [] },
-    { id: "lbrs", name: "Lower Blackrock Spire", zone: "Blackrock Mountain", range: [55, 60], hard: 53, ready: 55, quests: [], loot: [] },
-    { id: "dm", name: "Dire Maul", zone: "Feralas", range: [54, 60], hard: 54, ready: 56, note: "East is 54–60; West and North are 56–60. All three wings count toward Master Spelunker.", quests: [], loot: [] },
-    { id: "scholo", name: "Scholomance", zone: "Western Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
-    { id: "strat", name: "Stratholme", zone: "Eastern Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
-    { id: "shaper", name: "Shaper's Terrace", zone: "Un'Goro Crater", range: [58, 60], hard: 57, ready: 58, isNew: true, quests: [], loot: [] },
-    { id: "ubrs", name: "Upper Blackrock Spire", zone: "Blackrock Mountain", range: [59, 60], hard: 58, ready: 59, quests: [], loot: [] }
+    { id: "brd", research: "research/dungeon-quests/brd.md", name: "Blackrock Depths", zone: "Blackrock Mountain", range: [52, 60], hard: 50, ready: 52, note: "Around 25 Horde quests, most from Kargath. Planned in detail when you reach 48.", quests: [], loot: [] },
+    { id: "blackmaw", research: "research/dungeon-quests/blackmaw.md", name: "Blackmaw Hold", zone: "Azshara", range: [55, 60], hard: 53, ready: 55, isNew: true, note: "New in Forever.", quests: [], loot: [] },
+    { id: "lbrs", research: "research/dungeon-quests/brs.md", name: "Lower Blackrock Spire", zone: "Blackrock Mountain", range: [55, 60], hard: 53, ready: 55, quests: [], loot: [] },
+    { id: "dm", research: "research/dungeon-quests/dm.md", name: "Dire Maul", zone: "Feralas", range: [54, 60], hard: 54, ready: 56, note: "East is 54–60; West and North are 56–60. All three wings count toward Master Spelunker.", quests: [], loot: [] },
+    { id: "scholo", research: "research/dungeon-quests/scholo.md", name: "Scholomance", zone: "Western Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
+    { id: "strat", research: "research/dungeon-quests/strat.md", name: "Stratholme", zone: "Eastern Plaguelands", range: [58, 60], hard: 56, ready: 58, note: "Plaguelands: one of your favourite zones.", quests: [], loot: [] },
+    { id: "shaper", research: "research/dungeon-quests/shaper.md", name: "Shaper's Terrace", zone: "Un'Goro Crater", range: [58, 60], hard: 57, ready: 58, isNew: true, quests: [], loot: [] },
+    { id: "ubrs", research: "research/dungeon-quests/brs.md", name: "Upper Blackrock Spire", zone: "Blackrock Mountain", range: [59, 60], hard: 58, ready: 59, quests: [], loot: [] }
   ],
 
   /* Equipped gear from the armory, and the best realistic replacement per slot.

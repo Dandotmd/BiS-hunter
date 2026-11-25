@@ -324,6 +324,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line)
       }).join("") + "</ul>";
       if (d.loot && d.loot.length) body += '<div><div class="lab">Worth it for a tank</div><ul class="loot">' + d.loot.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + "</ul></div>";
       if (d.guide) body += '<a class="small" href="' + d.guide + '" target="_blank" rel="noopener">Wowhead guide</a>';
+      if (d.research) body += ' <a class="small" href="' + d.research + '" target="_blank" rel="noopener">Every Horde quest and chain (EverlookDB, saved on disk)</a>';
       body += '<button class="btn" data-d="' + d.id + '">' + (st === "done" ? "Mark as not run" : "Mark dungeon done") + "</button>";
       return '<details class="d" data-id="' + d.id + '" data-st="' + st + '"' + (openSet[d.id] ? " open" : "") + "><summary>" +
         '<span class="dn">' + esc(d.name) + (d.isNew ? ' <span class="new">new</span>' : "") + '</span><span class="pill p-' + st + '">' + LABEL[st] + "</span>" +
