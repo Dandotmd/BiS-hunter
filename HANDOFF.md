@@ -93,21 +93,27 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
 
-### 3a. Plan 48-60 (written 2026-11-25)
-Dungeon ranges and lockouts from forever-codex.com (Forever data build 1.60.1.70245, read 11-25). Daily lockout: Dire Maul, Blackrock Spire, Scholomance, Stratholme. No lockout listed: Sunken Temple, Blackrock Depths, Alcaz Prison.
-Blackrock Spire is listed as one 10-player instance, 55-60.
+### 3a. Plan 48-60 (rewritten 2026-11-25: each dungeon once)
+User rule (11-25): run each dungeon once, all quests picked up first. Expect about one level per run including turn-ins, so questing fills the gaps.
+Sources: dungeon ranges and lockouts from forever-codex.com (data build 1.60.1.70245); zone ranges from EverlookDB's zone list (Forever client), both read 11-25.
+Already done: Uldaman, Zul'Farrak, Maraudon and everything earlier.
 
-| Phase | Levels | Run | Why |
+| Step | Level | Do | Notes |
 |---|---|---|---|
-| 1 | 48-49 | Alcaz Prison, 1-2 runs | 12 Horde quests, about 73,000 quest XP (EverlookDB). Girdle of Extracted Answers, Fingerbreaker Stamp, Fatebound Buckler. |
-| 2 | 49-52 | Sunken Temple, repeatable | Might of Hakkar and Warrior's Embrace (Avatar of Hakkar, level 49 items). Check which ST quest chains are still open before going. Rerun Alcaz for missing drops. |
-| 3 | 52-55 | Blackrock Depths, repeatable | No lockout; about 25 Horde quests, most from Kargath. Plan the quest list at 51. Ironfoe is the big drop. |
-| 4 | 54-56 | Dire Maul East at 54, West and North at 56 | Daily lockout. Passing the Blame (Kog'thug, Shen'dralas, Feralas) fits this trip. |
-| 5 | 55-58 | Blackrock Spire (10-player), Blackmaw Hold (new, Azshara) | Blackrock Spire has a daily lockout; Blackmaw Hold has no lockout listed. |
-| 6 | 58-60 | Stratholme, Scholomance, Shaper's Terrace (new, Un'Goro) | Daily lockouts on Strat and Scholo: one of each per day, Shaper's Terrace or BRD in between. |
+| 1 | 48-49 | Alcaz Prison (48-53) | 12 Horde quests, about 73,000 quest XP. Girdle of Extracted Answers, Fingerbreaker Stamp, Fatebound Buckler. |
+| 2 | 49-50 | Sunken Temple (50-60, enterable at 45) | Might of Hakkar and Warrior's Embrace are level 49 items. Check which ST chains are still open first. |
+| 3 | 50-52 | Questing: Searing Gorge (43-60) and Burning Steppes (48-60) | The only planned questing block. Same area as BRD and Blackrock Spire, so pick up their quests here. |
+| 4 | 52-54 | Blackrock Depths (52-60) | Biggest dungeon, about 25 Horde quests (Kargath); one long clear should be close to two levels. Quest list planned at 51. |
+| 5 | 54-55 | Dire Maul East (54+) | Passing the Blame (Kog'thug, Shen'dralas) on this Feralas trip. |
+| 6 | 55-56 | Blackmaw Hold (55-60, new, Azshara) | Quests not researched yet. |
+| 7 | 56-57 | Dire Maul West and North (56+) | Second Feralas trip. |
+| 8 | 57-58 | Blackrock Spire (55-60) | Forever lists it as one 10-player instance: needs a bigger group. |
+| 9 | 58-59 | Stratholme (58-60) | Plaguelands. |
+| 10 | 59-60 | Scholomance (58-60) | Plaguelands. |
+| Spare | 58-60 | Shaper's Terrace (58-60, new, Un'Goro) | Use if a run falls short, or for gear at 60. |
 
-Rules for speed: pick up every quest before a run, turn in at one hub per trip, run the no-lockout dungeon (ST then BRD) back to back, and use daily-lockout dungeons once a day each.
-Loose ends to fold in: Seed of Life (Keeper Remulos, Moonglade; 11,900 XP) on any Kalimdor trip.
+If a run falls short: Western Plaguelands (48-60), Eastern Plaguelands (53-63) or Mount Hyjal (new map, 55-60) for questing.
+Loose end: Seed of Life (Keeper Remulos, Moonglade; 11,900 XP) on any Kalimdor trip.
 
 ### 3b. Maraudon pickup route (re-checked 2026-11-23: Icy Veins Forever quest list updated 11-18, Icy Veins Forever DB, Wowhead Forever guide)
 
