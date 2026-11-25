@@ -93,6 +93,22 @@ Ragefire Chasm or Hall of Thanes, Ruins of Lordaeron, Wailing Caverns, Shadowfan
 3. Weakest slots: hands (27), feet (28), waist (30), ring 2 (caster), one trinket.
 4. Blacksmithing deferred to 60.
 
+### 3a. Plan 48-60 (written 2026-11-25)
+Dungeon ranges and lockouts from forever-codex.com (Forever data build 1.60.1.70245, read 11-25). Daily lockout: Dire Maul, Blackrock Spire, Scholomance, Stratholme. No lockout listed: Sunken Temple, Blackrock Depths, Alcaz Prison.
+Blackrock Spire is listed as one 10-player instance, 55-60.
+
+| Phase | Levels | Run | Why |
+|---|---|---|---|
+| 1 | 48-49 | Alcaz Prison, 1-2 runs | 12 Horde quests, about 73,000 quest XP (EverlookDB). Girdle of Extracted Answers, Fingerbreaker Stamp, Fatebound Buckler. |
+| 2 | 49-52 | Sunken Temple, repeatable | Might of Hakkar and Warrior's Embrace (Avatar of Hakkar, level 49 items). Check which ST quest chains are still open before going. Rerun Alcaz for missing drops. |
+| 3 | 52-55 | Blackrock Depths, repeatable | No lockout; about 25 Horde quests, most from Kargath. Plan the quest list at 51. Ironfoe is the big drop. |
+| 4 | 54-56 | Dire Maul East at 54, West and North at 56 | Daily lockout. Passing the Blame (Kog'thug, Shen'dralas, Feralas) fits this trip. |
+| 5 | 55-58 | Blackrock Spire (10-player), Blackmaw Hold (new, Azshara) | Blackrock Spire has a daily lockout; Blackmaw Hold has no lockout listed. |
+| 6 | 58-60 | Stratholme, Scholomance, Shaper's Terrace (new, Un'Goro) | Daily lockouts on Strat and Scholo: one of each per day, Shaper's Terrace or BRD in between. |
+
+Rules for speed: pick up every quest before a run, turn in at one hub per trip, run the no-lockout dungeon (ST then BRD) back to back, and use daily-lockout dungeons once a day each.
+Loose ends to fold in: Seed of Life (Keeper Remulos, Moonglade; 11,900 XP) on any Kalimdor trip.
+
 ### 3b. Maraudon pickup route (re-checked 2026-11-23: Icy Veins Forever quest list updated 11-18, Icy Veins Forever DB, Wowhead Forever guide)
 
 Starting in Gadgetzan (user is there, 11-23). Shadowshard Fragments is already in the log.
