@@ -69,7 +69,10 @@
     "g_mark-of-the-chosen": "1",
     "g_thrash-blade": "1",
     "g_thornplated-cord": "1",
-    "q_korkron": "have",
-    "q_ulka": "have"
+    "q_korkron": "done",
+    "q_ulka": "done",
+    "d_alcaz": "done",
+    "q_folkar": "done",
+    "q_ironchains": "have"
   }
 }
