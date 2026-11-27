@@ -8,10 +8,12 @@ Open a session in `D:\ScratchPad\WoW-Forever-Tracker` and say:
 
 > Continue as my WoW Forever planning assistant. Read HANDOFF.md, treat Section 3 as current status, and verify quest facts with Firecrawl before giving me routes.
 
-**Character data (added 2026-11-26):** run `python tools/snapshot.py` first, then read `characters.json`. It
-holds every logged-in character's level, gold, gear, bags, bank, skills, quest log, completed quest IDs and
-boss kills, straight from the game (README, "Character data from the game"). Where it disagrees with the
-sections below, the snapshot wins if its `lastSeenText` is newer. Not yet confirmed in game as of this note.
+**Character data (added 2026-11-26):** run `python tools/snapshot.py` first, then read `context.md` (the
+briefing: game, player, plan, and every character's gold, gear, talents, skills, quests, bags and bank) or
+`characters.json` (the same data, raw). Both come straight from the game (README, "Character data from the
+game"). Where they disagree with the sections below, the snapshot wins if its `lastSeenText` is newer.
+In-game status 2026-11-27: the addon loads; level, zone, skills and quests are confirmed. Gold, gear, bags,
+stats, talents, reputation, recipes and flight points are tested only against a mock client so far.
 
 The tracker lives in this folder (Section 7). Edit `data.js` / `state.json` in place; see `README.md`.
 

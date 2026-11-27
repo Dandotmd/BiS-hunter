@@ -3,3 +3,5 @@ __pycache__/
 server.log
 characters.json
 characters.json.tmp
+context.md
+context.md.tmp

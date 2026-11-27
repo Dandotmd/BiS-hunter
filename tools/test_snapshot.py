@@ -153,6 +153,39 @@ C_QuestLog = {
     GetAllCompletedQuestIDs = function() return doneIDs end,
 }
 doneIDs = { 1048, 709, 3341 }
+
+function UnitStat(_, i) return 100 + i, 110 + i end
+function UnitHealthMax() return 2309 end
+function UnitPowerMax() return SECRET end
+function UnitArmor() return 4000, 4629 end
+function UnitAttackPower() return 400, 30, -6 end
+function GetDodgeChance() return 5.8349 end
+C_TooltipInfo = { GetInventoryItem = function(_, slot)
+    if slot == 1 then return { lines = {
+        { leftText = "Warbringer's Crown" }, { leftText = "|cffffffff+14 Stamina|r" }, { leftText = "Head", rightText = "Plate" },
+    } } end
+end }
+FACTION_STANDING_LABEL5 = "Friendly"
+C_Reputation = {
+    GetNumFactions = function() return 2 end,
+    GetFactionDataByIndex = function(i)
+        if i == 1 then return { name = "Horde", isHeader = true, reaction = 4 } end
+        return { name = "Orgrimmar", reaction = 5, currentStanding = 4500, currentReactionThreshold = 3000,
+            nextReactionThreshold = 9000, factionID = 76 }
+    end,
+}
+function GetBindLocation() return "Orgrimmar" end
+local taxi = { { "Orgrimmar, Durotar", "CURRENT" }, { "Gadgetzan, Tanaris", "REACHABLE" }, { "Unknown Place", "NONE" } }
+function NumTaxiNodes() return #taxi end
+function TaxiNodeName(i) return taxi[i][1] end
+function TaxiNodeGetType(i) return taxi[i][2] end
+local recipes = { { name = "Steel Plate Helm", learned = true, numAvailable = 2 }, { name = "Unlearned Thing", learned = false },
+    { name = "Golden Scale Bracers", learned = true, numAvailable = 0 } }
+C_TradeSkillUI = {
+    GetAllRecipeIDs = function() return { 1, 2, 3 } end,
+    GetBaseProfessionInfo = function() return { professionName = "Blacksmithing" } end,
+    GetRecipeInfo = function(id) return recipes[id] end,
+}
 '''
 
 SERIALIZE = r'''
@@ -297,8 +330,9 @@ class AddonTests(unittest.TestCase):
             GetNumTalentTabs, GetTalentTabInfo, GetNumTalents, GetTalentInfo = nil, nil, nil, nil
             C_ClassTalents = { GetActiveConfigID = function() return 7 end }
             local nodes = {
-                [11] = { groupIDs = { 2 }, ranksPurchased = 5, maxRanks = 5, entryIDs = { 111 } },
-                [12] = { groupIDs = { 2 }, ranksPurchased = 0, activeRank = 0, maxRanks = 3, entryIDs = { 112 } },
+                [11] = { groupIDs = { 2 }, ranksPurchased = 5, maxRanks = 5, entryIDs = { 111 }, posX = 300, posY = 100 },
+                [12] = { groupIDs = { 2 }, ranksPurchased = 0, activeRank = 0, maxRanks = 3, entryIDs = { 112 }, posX = 100, posY = 200 },
+                [15] = { groupIDs = { 2 }, ranksPurchased = 1, maxRanks = 1, entryIDs = { 115 }, posX = 100, posY = 100, isVisible = false },
                 [13] = { groupIDs = { 1 }, ranksPurchased = 0, activeRank = 2, maxRanks = 5, activeEntry = { entryID = 113 } },
                 [14] = { groupIDs = { 99 }, ranksPurchased = 1, maxRanks = 1, entryIDs = { 114 } },
             }
@@ -308,20 +342,29 @@ class AddonTests(unittest.TestCase):
                     { groupID = 2, displayName = "Protection", orderIndex = 2 },
                     { groupID = 1, displayName = "Holy", orderIndex = 1 },
                 } end,
-                GetTreeNodes = function() return { 11, 12, 13, 14 } end,
+                GetTreeNodes = function() return { 12, 11, 13, 14, 15 } end,
+                GetTreeCurrencyInfo = function() return { { quantity = 3, spent = 7, maxQuantity = 10 } } end,
                 GetNodeInfo = function(_, id) return nodes[id] end,
                 GetEntryInfo = function(_, id) return { definitionID = id + 1000 } end,
                 GetDefinitionInfo = function(id) return { spellID = id + 10000 } end,
             }
-            C_Spell = { GetSpellName = function(id) return id == 11111 and "Redoubt" or "Spell " .. id end }
+            C_Spell = {
+                GetSpellName = function(id) return id == 11111 and "Redoubt" or "Spell " .. id end,
+                GetSpellDescription = function(id) return id == 11111 and "Raises your block chance." or "" end,
+            }
         ''')
         self.maxDiff = None
-        self.assertEqual(self.char()["talents"], [
+        c = self.char()
+        self.assertEqual(c["talents"], [
             {"tab": "Holy", "points": 2,
-             "talents": [{"name": "Spell 11113", "spellID": 11113, "node": 13, "rank": 2, "max": 5}]},
-            {"tab": "Protection", "points": 5,
-             "talents": [{"name": "Redoubt", "spellID": 11111, "node": 11, "rank": 5, "max": 5}]},
+             "talents": [{"name": "Spell 11113", "spellID": 11113, "node": 13, "rank": 2, "max": 5, "row": 1, "col": 1}]},
+            {"tab": "Protection", "points": 5, "talents": [
+                {"name": "Redoubt", "spellID": 11111, "node": 11, "rank": 5, "max": 5, "row": 1, "col": 2,
+                 "desc": "Raises your block chance."},
+                {"name": "Spell 11112", "spellID": 11112, "node": 12, "rank": 0, "max": 3, "row": 2, "col": 1},
+            ]},
         ])
+        self.assertEqual(c["talentPoints"], {"unspent": 3, "spent": 7, "max": 10})
 
     def test_basics(self):
         c = self.char()
@@ -333,7 +376,8 @@ class AddonTests(unittest.TestCase):
 
     def test_gear(self):
         gear = self.char()["equipped"]
-        self.assertEqual(gear["Head"], {"id": 111, "name": "Warbringer's Crown"})  # ilvl call threw: left out
+        # ilvl call threw: left out. text is the tooltip without the name line and colour codes.
+        self.assertEqual(gear["Head"], {"id": 111, "name": "Warbringer's Crown", "text": ["+14 Stamina", "Head  Plate"]})
         self.assertEqual(gear["MainHand"]["name"], "Thrash Blade")
         self.assertEqual(len(gear), 2)
 
@@ -398,6 +442,74 @@ class AddonTests(unittest.TestCase):
         kills = self.char()["kills"]
         self.assertEqual([k["boss"] for k in kills], ["Shade of Eranikus", "Avatar of Hakkar"])
         self.assertEqual((kills[0]["instance"], kills[0]["instanceID"], kills[0]["encounterID"]), ("Sunken Temple", 109, 493))
+
+    def test_sheet_stats_reputation_and_hearth(self):
+        c = self.char()
+        self.assertEqual(c["stats"], {"Strength": 111, "Agility": 112, "Stamina": 113, "Intellect": 114, "Spirit": 115,
+                                      "Health": 2309, "Armor": 4629, "AttackPower": 424, "DodgePct": 5.83})
+        self.assertEqual(c["reputation"], [{"name": "Orgrimmar", "id": 76, "standing": "Friendly", "have": 1500, "need": 6000}])
+        self.assertEqual(c["hearth"], "Orgrimmar")
+
+    def test_flight_points_and_recipes_are_read_when_their_window_opens(self):
+        c = self.char()
+        self.assertNotIn("flights", c)
+        self.assertNotIn("recipes", c)
+        self.fire("TAXIMAP_OPENED")
+        self.fire("TRADE_SKILL_SHOW")
+        c = self.char()
+        self.assertEqual(sorted(c["flights"]), ["Gadgetzan, Tanaris", "Orgrimmar, Durotar"])
+        self.assertEqual(c["recipes"]["Blacksmithing"]["list"], [
+            {"name": "Golden Scale Bracers", "id": 3, "canMake": 0},
+            {"name": "Steel Plate Helm", "id": 1, "canMake": 2},
+        ])
+
+    def test_briefing_covers_every_section_in_plain_text(self):
+        self.lua.globals().bankReadable = True
+        self.fire("BANKFRAME_OPENED")
+        self.fire("TAXIMAP_OPENED")
+        self.fire("TRADE_SKILL_SHOW")
+        self.fire("BOSS_KILL", 494, "Avatar of Hakkar")
+        saved = snapshot.parse_saved_variables(self.lua.globals().SavedFile())
+        doc = snapshot.build(saved["ForeverTrackerDB"], now=1795000000)
+        tracker = {"character": {"prefs": ["Dungeon-first"]},
+                   "plan": [{"id": "st", "lv": [49, 50], "d": "st", "t": "Sunken Temple"},
+                            {"id": "wpl", "lv": [50, 52], "t": "Quest: Western Plaguelands", "zr": "48-60"}],
+                   "milestones": [{"at": 40, "id": "mount", "name": "Warhorse"}, {"at": 50, "id": "cq", "name": "Class quest"}]}
+        state = {"progress": {"d_st": "done", "m_mount": "1"}}
+        text = snapshot.render_context(doc, intro="## The game\n\nIntro text.", tracker=tracker, state=state)
+        for expected in (
+            "## The game", "Intro text.",
+            "- [x] Level 49-50: Sunken Temple.", "- [ ] Level 50-52: Quest: Western Plaguelands (zone range 48-60).",
+            "- Level 50: Class quest.",
+            "| Danadin | level 49 Undead Paladin | 123g 45s 67c | Tanaris |",
+            "hearth set to Orgrimmar", "XP 100/9000 (0 rested)",
+            "Health 2309, Armor 4629, Strength 111, Agility 112, Stamina 113, Intellect 114, Spirit 115, AttackPower 424, DodgePct 5.83.",
+            "- Head: Warbringer's Crown: +14 Stamina; Head  Plate\n- MainHand: Thrash Blade",
+            "- Mining 228/300",
+            "- **Protection**: 5 points", "  - Redoubt 5/5",
+            "- Head: Warbringer's Crown: +14 Stamina; Head  Plate",
+            "4 of 26 slots used. Empty Vial x25, Hearthstone, Linen Cloth x3.",
+            "Linen Cloth x40, Thorium Bar x20.",
+            "- Blacksmithing (seen 2026-11-26 12:00:00): Golden Scale Bracers, Steel Plate Helm",
+            "- Orgrimmar: Friendly 1500/6000",
+            "Gadgetzan, Tanaris, Orgrimmar, Durotar.",
+            "- The Essence of Eranikus (quest 3373, Tanaris, level 55): Essence placed: 0/1",
+            "- Done one (quest 1445, Feralas, level 50): ready to turn in",
+            "Avatar of Hakkar in Sunken Temple at level 49",
+            "### Completed quest IDs (3)", "709, 1048, 3341",
+        ):
+            self.assertIn(expected, text)
+        self.assertNotIn("Warhorse", text)  # ticked milestone left out
+
+    def test_briefing_says_not_recorded_instead_of_zero(self):
+        doc = snapshot.build({"chars": {"Alt": {"name": "Alt", "level": 8, "money": 0, "bags": {"items": {}, "slots": 0}}}}, now=10)
+        text = snapshot.render_context(doc)
+        self.assertIn("| Alt | level 8 | not recorded |", text)
+        self.assertIn("gold not recorded", text)
+        for section in ("Skills", "Talents", "Gear worn", "Bags"):
+            self.assertIn(f"### {section}\n\nNot recorded.", text)
+        self.assertIn("### Bank\n\nNot recorded (the bank has not been opened", text)
+        self.assertIn("### Quest log (0)\n\nEmpty or not recorded.", text)
 
     def test_slash_command_runs(self):
         printed = []

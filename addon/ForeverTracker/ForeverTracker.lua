@@ -102,6 +102,47 @@ local function ItemLevel(link)
     return lvl
 end
 
+local function Plain(text)
+    return (text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):gsub("|T.-|t", ""):gsub("%s+$", ""))
+end
+
+local scanTip
+-- The tooltip text of a worn item, without its name line: stats, effects, set
+-- bonuses. WoW Forever has its own items, so the text is the only description.
+local function ItemText(slot)
+    local out = {}
+    if type(C_TooltipInfo) == "table" then
+        local data = nth(1, C_TooltipInfo.GetInventoryItem, "player", slot)
+        for _, line in ipairs(type(data) == "table" and type(data.lines) == "table" and data.lines or {}) do
+            if type(line) == "table" then
+                local left, right = clean(line.leftText), clean(line.rightText)
+                if type(left) == "string" and left ~= "" then
+                    if type(right) == "string" and right ~= "" then left = left .. "  " .. right end
+                    out[#out + 1] = Plain(left)
+                end
+            end
+        end
+    end
+    if #out == 0 then
+        if scanTip == nil then
+            local ok, tip = pcall(CreateFrame, "GameTooltip", "ForeverTrackerTip", nil, "GameTooltipTemplate")
+            scanTip = ok and type(tip) == "table" and type(tip.SetInventoryItem) == "function" and tip or false
+        end
+        if scanTip then
+            call(scanTip.SetOwner, scanTip, WorldFrame or UIParent, "ANCHOR_NONE")
+            call(scanTip.ClearLines, scanTip)
+            call(scanTip.SetInventoryItem, scanTip, "player", slot)
+            for i = 1, nth(1, scanTip.NumLines, scanTip) or 0 do
+                local line = _G["ForeverTrackerTipTextLeft" .. i]
+                local text = line and nth(1, line.GetText, line)
+                if type(text) == "string" and text ~= "" then out[#out + 1] = Plain(text) end
+            end
+        end
+    end
+    if #out > 0 then table.remove(out, 1) end
+    return #out > 0 and out or nil
+end
+
 local function Equipped()
     local gear = {}
     for slot, slotName in ipairs(SLOTS) do
@@ -109,7 +150,7 @@ local function Equipped()
         if link then
             local id, name = itemFromLink(link)
             id = id or nth(1, GetInventoryItemID, "player", slot)
-            gear[slotName] = { id = id, name = name, ilvl = ItemLevel(link) }
+            gear[slotName] = { id = id, name = name, ilvl = ItemLevel(link), text = ItemText(slot) }
         end
     end
     if next(gear) or not char.equipped then char.equipped = gear end
@@ -258,19 +299,38 @@ local function SpellName(spellID)
     return name or nth(1, GetSpellInfo, spellID)
 end
 
--- WoW Forever keeps talents in the trait tree: one tree per class, with the
--- three talent trees as its groups.
-local function TraitTalents()
-    local T = C_Traits
-    if type(T) ~= "table" then return nil end
-    local configID
-    if type(C_ClassTalents) == "table" then configID = nth(1, C_ClassTalents.GetActiveConfigID) end
-    local S = C_SpecializationInfo
-    if not configID and type(S) == "table" then
-        local group = nth(1, S.GetActiveSpecGroup)
-        if group then configID = nth(1, S.GetCombatConfigIDForSpecGroup, group) end
+-- Talent text arrives late from the server; keep what was read so a later
+-- empty answer does not blank it.
+local descCache = {}
+local function SpellDesc(spellID)
+    if not spellID then return nil end
+    local text
+    if type(C_Spell) == "table" then
+        text = nth(1, C_Spell.GetSpellDescription, spellID)
+        if type(text) ~= "string" or text == "" then call(C_Spell.RequestLoadSpellData, spellID) end
     end
-    if not configID then return nil end
+    if type(text) ~= "string" or text == "" then text = nth(1, GetSpellDescription, spellID) end
+    if type(text) == "string" and text ~= "" then descCache[spellID] = text end
+    return descCache[spellID]
+end
+
+-- Turns raw tree coordinates into 1, 2, 3... by their sorted order.
+local function Ranked(values)
+    local list, seen, rank = {}, {}, {}
+    for _, v in ipairs(values) do
+        if not seen[v] then seen[v] = true list[#list + 1] = v end
+    end
+    table.sort(list)
+    for i, v in ipairs(list) do rank[v] = i end
+    return rank
+end
+
+-- WoW Forever keeps talents in the trait tree: one tree per class, with the
+-- three talent trees as its groups. Every visible talent is recorded, taken
+-- or not, with its text, so an adviser can see what is still on offer.
+local function TraitTrees(configID)
+    local T = C_Traits
+    if type(T) ~= "table" or not configID then return nil end
     local config = nth(1, T.GetConfigInfo, configID)
     local treeID = type(config) == "table" and type(config.treeIDs) == "table" and clean(config.treeIDs[1])
     if not treeID then return nil end
@@ -290,15 +350,15 @@ local function TraitTalents()
     if #groups == 0 then return nil end
     for _, nodeID in ipairs(nodeIDs) do
         local info = nth(1, T.GetNodeInfo, configID, nodeID)
-        if type(info) == "table" then
-            local rank = tonumber(clean(info.ranksPurchased)) or 0
-            if rank <= 0 then rank = tonumber(clean(info.activeRank)) or 0 end
+        if type(info) == "table" and clean(info.isVisible) ~= false then
             local g
             for _, groupID in ipairs(type(info.groupIDs) == "table" and info.groupIDs or {}) do
                 g = byID[groupID]
                 if g then break end
             end
-            if g and rank > 0 then
+            if g then
+                local rank = tonumber(clean(info.ranksPurchased)) or 0
+                if rank <= 0 then rank = tonumber(clean(info.activeRank)) or 0 end
                 local entryID = type(info.activeEntry) == "table" and clean(info.activeEntry.entryID)
                     or type(info.entryIDs) == "table" and clean(info.entryIDs[1])
                 local entry = entryID and nth(1, T.GetEntryInfo, configID, entryID)
@@ -306,22 +366,172 @@ local function TraitTalents()
                 local spellID = type(def) == "table" and (clean(def.spellID) or clean(def.overriddenSpellID)) or nil
                 g.points = g.points + rank
                 g.talents[#g.talents + 1] = { name = SpellName(spellID), spellID = spellID, node = nodeID,
-                    rank = rank, max = clean(info.maxRanks) }
+                    rank = rank, max = clean(info.maxRanks), desc = SpellDesc(spellID),
+                    y = tonumber(clean(info.posY)) or 0, x = tonumber(clean(info.posX)) or 0 }
             end
         end
     end
     table.sort(groups, function(a, b) return a.order < b.order end)
     for _, g in ipairs(groups) do
         g.order = nil
-        table.sort(g.talents, function(a, b) return tostring(a.name or a.node) < tostring(b.name or b.node) end)
+        local ys, xs = {}, {}
+        for i, t in ipairs(g.talents) do ys[i], xs[i] = t.y, t.x end
+        local rowOf, colOf = Ranked(ys), Ranked(xs)
+        for _, t in ipairs(g.talents) do
+            t.row, t.col, t.y, t.x = rowOf[t.y], colOf[t.x], nil, nil
+        end
+        table.sort(g.talents, function(a, b)
+            if a.row ~= b.row then return a.row < b.row end
+            if a.col ~= b.col then return a.col < b.col end
+            return a.node < b.node
+        end)
     end
-    return groups
+    return groups, treeID
 end
 
 local function Talents()
     local ok, trees = pcall(LegacyTalents)
-    if not (ok and trees) then ok, trees = pcall(TraitTalents) end
-    if ok and trees then char.talents = trees end
+    if ok and trees then
+        char.talents = trees
+        local unspent = nth(1, UnitCharacterPoints, "player")
+        if unspent then char.talentPoints = { unspent = unspent } end
+        return
+    end
+    local S = C_SpecializationInfo
+    local active = type(S) == "table" and nth(1, S.GetActiveSpecGroup) or nil
+    local configID
+    if type(C_ClassTalents) == "table" then configID = nth(1, C_ClassTalents.GetActiveConfigID) end
+    if not configID and active then configID = nth(1, S.GetCombatConfigIDForSpecGroup, active) end
+    local treeID
+    trees, treeID = TraitTrees(configID)
+    if not trees then return end
+    char.talents = trees
+    local currencies = nth(1, C_Traits.GetTreeCurrencyInfo, configID, treeID, false)
+    local first = type(currencies) == "table" and currencies[1]
+    if type(first) == "table" then
+        char.talentPoints = { unspent = clean(first.quantity), spent = clean(first.spent), max = clean(first.maxQuantity) }
+    end
+    -- Dual spec: the other spec group, when the client will show it.
+    if active then
+        char.activeSpecGroup = active
+        for group = 1, 2 do
+            if group ~= active then
+                local other = nth(1, S.GetCombatConfigIDForSpecGroup, group)
+                local otherTrees = other and other ~= configID and TraitTrees(other) or nil
+                if otherTrees then char.talentsOtherSpec = otherTrees end
+            end
+        end
+    end
+end
+
+---------------------------------------------------------------- sheet stats, reputation, travel, recipes
+
+local function Round(v)
+    return type(v) == "number" and math.floor(v * 100 + 0.5) / 100 or nil
+end
+
+local function Stats()
+    local s = char.stats or {}
+    local function set(key, value) if value ~= nil then s[key] = value end end
+    for i, statName in ipairs({ "Strength", "Agility", "Stamina", "Intellect", "Spirit" }) do
+        set(statName, nth(2, UnitStat, "player", i))
+    end
+    set("Health", nth(1, UnitHealthMax, "player"))
+    set("Mana", nth(1, UnitPowerMax, "player", 0))
+    set("Armor", nth(2, UnitArmor, "player"))
+    local ap = call(UnitAttackPower, "player")
+    if ap and type(ap[1]) == "number" then set("AttackPower", ap[1] + (tonumber(ap[2]) or 0) + (tonumber(ap[3]) or 0)) end
+    set("SpellPowerHoly", nth(1, GetSpellBonusDamage, 2))
+    set("Healing", nth(1, GetSpellBonusHealing))
+    set("DodgePct", Round(nth(1, GetDodgeChance)))
+    set("ParryPct", Round(nth(1, GetParryChance)))
+    set("BlockPct", Round(nth(1, GetBlockChance)))
+    set("CritPct", Round(nth(1, GetCritChance)))
+    if next(s) then char.stats = s end
+end
+
+local function Reputation()
+    local out = {}
+    local R = type(C_Reputation) == "table" and C_Reputation or {}
+    local count = nth(1, R.GetNumFactions) or nth(1, GetNumFactions) or 0
+    for i = 1, count do
+        local name, standing, value, low, high, isHeader, id
+        local data = nth(1, R.GetFactionDataByIndex, i)
+        if type(data) == "table" then
+            name, standing, value = clean(data.name), clean(data.reaction), clean(data.currentStanding)
+            low, high, id = clean(data.currentReactionThreshold), clean(data.nextReactionThreshold), clean(data.factionID)
+            isHeader = clean(data.isHeader) and not clean(data.isHeaderWithRep)
+        else
+            local r = call(GetFactionInfo, i)
+            if r then
+                name, standing, low, high, value, id = r[1], r[3], r[4], r[5], r[6], r[14]
+                isHeader = r[9] and not r[11]
+            end
+        end
+        if type(name) == "string" and not isHeader and type(standing) == "number" then
+            local label = clean(_G["FACTION_STANDING_LABEL" .. standing])
+            local entry = { name = name, id = id, standing = type(label) == "string" and label or standing }
+            if type(value) == "number" and type(low) == "number" and type(high) == "number" then
+                entry.have, entry.need = value - low, high - low
+            end
+            out[#out + 1] = entry
+        end
+    end
+    if #out > 0 then char.reputation = out end
+end
+
+local function Travel()
+    char.hearth = nth(1, GetBindLocation) or char.hearth
+end
+
+-- Only readable while the flight map is open.
+local function FlightPoints()
+    local known = type(char.flights) == "table" and char.flights or {}
+    local found = false
+    for i = 1, nth(1, NumTaxiNodes) or 0 do
+        local name, kind = nth(1, TaxiNodeName, i), nth(1, TaxiNodeGetType, i)
+        if type(name) == "string" and name ~= "" and kind ~= "NONE" then known[name] = true found = true end
+    end
+    if not found and type(C_TaxiMap) == "table" and type(C_Map) == "table" then
+        local map = nth(1, C_Map.GetBestMapForUnit, "player")
+        local nodes = map and nth(1, C_TaxiMap.GetAllTaxiNodes, map)
+        for _, node in ipairs(type(nodes) == "table" and nodes or {}) do
+            local name, state = clean(node.name), clean(node.state)
+            if type(name) == "string" and name ~= "" and state ~= 2 then known[name] = true found = true end
+        end
+    end
+    if found then char.flights = known end
+end
+
+-- Only readable while a profession window is open.
+local function Recipes()
+    local T = C_TradeSkillUI
+    local prof, list = nil, {}
+    if type(T) == "table" and type(T.GetAllRecipeIDs) == "function" then
+        local base = nth(1, T.GetBaseProfessionInfo)
+        prof = type(base) == "table" and clean(base.professionName) or nil
+        local ids = nth(1, T.GetAllRecipeIDs)
+        for _, id in ipairs(type(ids) == "table" and ids or {}) do
+            local info = nth(1, T.GetRecipeInfo, id)
+            if type(info) == "table" and clean(info.learned) and type(clean(info.name)) == "string" then
+                list[#list + 1] = { name = info.name, id = id, canMake = clean(info.numAvailable),
+                    difficulty = clean(info.relativeDifficulty) }
+            end
+        end
+    end
+    if #list == 0 and type(GetNumTradeSkills) == "function" then
+        prof = nth(1, GetTradeSkillLine)
+        for i = 1, nth(1, GetNumTradeSkills) or 0 do
+            local r = call(GetTradeSkillInfo, i)
+            if r and type(r[1]) == "string" and r[2] ~= "header" then
+                list[#list + 1] = { name = r[1], difficulty = r[2], canMake = r[3] }
+            end
+        end
+    end
+    if type(prof) ~= "string" or prof == "" or #list == 0 then return end
+    table.sort(list, function(a, b) return a.name < b.name end)
+    if type(char.recipes) ~= "table" then char.recipes = {} end
+    char.recipes[prof] = { list = list, seen = now(), seenText = nth(1, date, "%Y-%m-%d %H:%M:%S") }
 end
 
 ---------------------------------------------------------------- quests
@@ -415,7 +625,7 @@ end
 
 ---------------------------------------------------------------- snapshot
 
-local SECTIONS = { Basics, Equipped, Bags, Bank, Professions, Talents, QuestLog, QuestsDone }
+local SECTIONS = { Basics, Stats, Equipped, Bags, Bank, Professions, Talents, Reputation, Travel, QuestLog, QuestsDone }
 
 local function Snapshot()
     pending = false
@@ -459,6 +669,8 @@ local EVENTS = {
     "SKILL_LINES_CHANGED", "CHARACTER_POINTS_CHANGED", "PLAYER_TALENT_UPDATE",
     "BANKFRAME_OPENED", "BANKFRAME_CLOSED", "PLAYERBANKSLOTS_CHANGED",
     "ENCOUNTER_END", "BOSS_KILL",
+    "UPDATE_FACTION", "HEARTHSTONE_BOUND", "TRAIT_CONFIG_UPDATED", "ACTIVE_TALENT_GROUP_CHANGED",
+    "TAXIMAP_OPENED", "TRADE_SKILL_SHOW", "TRADE_SKILL_LIST_UPDATE",
 }
 for _, event in ipairs(EVENTS) do pcall(frame.RegisterEvent, frame, event) end
 
@@ -478,6 +690,10 @@ frame:SetScript("OnEvent", function(_, event, ...)
     elseif event == "BANKFRAME_CLOSED" then
         pcall(Bank) -- last look before it closes
         bankOpen = false
+    elseif event == "TAXIMAP_OPENED" then
+        pcall(FlightPoints)
+    elseif event == "TRADE_SKILL_SHOW" or event == "TRADE_SKILL_LIST_UPDATE" then
+        pcall(Recipes)
     elseif event == "QUEST_TURNED_IN" or event == "PLAYER_ENTERING_WORLD" then
         questsDoneStale = true
     elseif event == "ENCOUNTER_END" then

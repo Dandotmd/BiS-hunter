@@ -41,21 +41,25 @@ The server only listens on this PC.
 
 ## Character data from the game (ForeverTracker addon)
 
-The `ForeverTracker` addon records every character you log in: level, XP, gold, zone, equipped gear, bag
-contents, bank contents, professions, talents, the quest log with objective progress, every completed quest
-ID, and dungeon boss kills. It has no window. `/ft` prints a status line, `/ft save` reloads the UI so the
+The goal: give Claude, or any other AI, everything it needs to advise on talents, gear, gold and what to do
+next, without you typing it out. The `ForeverTracker` addon records every character you log in: level, XP,
+gold, zone, hearth, sheet stats, equipped gear with each item's tooltip text, bag and bank contents,
+professions and known recipes, every talent (taken or not) with its description, reputation, flight points,
+the quest log with objective progress, every completed quest ID, and dungeon boss kills. It has no window. `/ft` prints a status line, `/ft save` reloads the UI so the
 game writes the data to disk now.
 
 ```powershell
 .\install-addon.ps1          # copy addon\ForeverTracker into the WoW AddOns folder (after any addon change)
-python tools/snapshot.py     # read the game's saved file, write characters.json, print a summary
+python tools/snapshot.py     # read the game's saved file, write characters.json + context.md, print a summary
 ```
 
 | File | What it holds |
 |---|---|
 | `addon/ForeverTracker/` | Addon source (the one source of truth; the copy in the WoW folder is installed from it) |
 | `tools/snapshot.py` | Reads `WTF/Account/*/SavedVariables/ForeverTracker.lua`, writes `characters.json` |
-| `characters.json` | Generated, git-ignored. One entry per character, keyed `Name-Realm` |
+| `characters.json` | Generated, git-ignored. One entry per character, keyed by name (the realm is empty on Forever) |
+| `context.md` | Generated, git-ignored. The briefing: paste or hand this one file to an AI |
+| `briefing-intro.md` | Hand-written top of the briefing: what the game is, who the player is, how to advise |
 | `tools/test_snapshot.py` | Tests: the reader, and the addon run against a mock game client |
 
 Limits to remember when reading `characters.json`:
@@ -63,6 +67,11 @@ Limits to remember when reading `characters.json`:
 - The game only writes addon data on `/reload`, logout or exit. Each character is as fresh as its
   `lastSeenText`; an alt that has not been logged in since the install is missing.
 - `bank` is only read while the bank window is open. `bank.seenText` says when; no `bank` key means never.
+  The same goes for `flights` (open a flight master's map) and `recipes` (open each profession window).
+- `context.md` takes the plan, preferences and milestones from `data.js` and the ticks from `state.json`.
+  `data.js` is JavaScript, so `node` reads it; without `node` the briefing is written without the plan.
+- `context.md` and `characters.json` stay on this PC (owner, 2026-11-27). Do not commit or publish them.
+- At logout the client reports 0 gold, 0 XP, no gear and empty bags. The addon only stamps the time then.
 - `kills` only has bosses killed since the install. Earlier dungeon ticks in `state.json` stand.
 - The addon does not touch `state.json`. Claude updates the tracker from the snapshot when planning.
 - The client hides some values from addons ("secret" values). Those fields are left out, never guessed.
