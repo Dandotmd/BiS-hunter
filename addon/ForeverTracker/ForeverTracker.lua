@@ -520,17 +520,21 @@ end
 -- Only readable while the flight map is open.
 local function FlightPoints()
     local known = type(char.flights) == "table" and char.flights or {}
+    -- What the client called each node (CURRENT, REACHABLE, DISTANT, a state number), kept so a
+    -- wrong list can be diagnosed: on 2026-11-27 a level 10 character listed far-off nodes.
+    local kinds = type(char.flightKinds) == "table" and char.flightKinds or {}
+    char.flightKinds = kinds
     local found = false
     for i = 1, nth(1, NumTaxiNodes) or 0 do
         local name, kind = nth(1, TaxiNodeName, i), nth(1, TaxiNodeGetType, i)
-        if type(name) == "string" and name ~= "" and kind ~= "NONE" then known[name] = true found = true end
+        if type(name) == "string" and name ~= "" and kind ~= "NONE" then known[name] = true kinds[name] = kind or "?" found = true end
     end
     if not found and type(C_TaxiMap) == "table" and type(C_Map) == "table" then
         local map = nth(1, C_Map.GetBestMapForUnit, "player")
         local nodes = map and nth(1, C_TaxiMap.GetAllTaxiNodes, map)
         for _, node in ipairs(type(nodes) == "table" and nodes or {}) do
             local name, state = clean(node.name), clean(node.state)
-            if type(name) == "string" and name ~= "" and state ~= 2 then known[name] = true found = true end
+            if type(name) == "string" and name ~= "" and state ~= 2 then known[name] = true kinds[name] = state or "?" found = true end
         end
     end
     if found then char.flights = known end
