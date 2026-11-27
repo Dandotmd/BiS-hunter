@@ -39,6 +39,41 @@ The server only listens on this PC.
 | `launch.pyw`, `install-shortcuts.ps1`, `tracker.ico` | PC-wide launcher and its shortcuts | Rarely |
 | `HANDOFF.md` | Character, preferences, current status and routes for a new Claude session | Claude, at the end of each session |
 
+## Character data from the game (ForeverTracker addon)
+
+The `ForeverTracker` addon records every character you log in: level, XP, gold, zone, equipped gear, bag
+contents, bank contents, professions, talents, the quest log with objective progress, every completed quest
+ID, and dungeon boss kills. It has no window. `/ft` prints a status line, `/ft save` reloads the UI so the
+game writes the data to disk now.
+
+```powershell
+.\install-addon.ps1          # copy addon\ForeverTracker into the WoW AddOns folder (after any addon change)
+python tools/snapshot.py     # read the game's saved file, write characters.json, print a summary
+```
+
+| File | What it holds |
+|---|---|
+| `addon/ForeverTracker/` | Addon source (the one source of truth; the copy in the WoW folder is installed from it) |
+| `tools/snapshot.py` | Reads `WTF/Account/*/SavedVariables/ForeverTracker.lua`, writes `characters.json` |
+| `characters.json` | Generated, git-ignored. One entry per character, keyed `Name-Realm` |
+| `tools/test_snapshot.py` | Tests: the reader, and the addon run against a mock game client |
+
+Limits to remember when reading `characters.json`:
+
+- The game only writes addon data on `/reload`, logout or exit. Each character is as fresh as its
+  `lastSeenText`; an alt that has not been logged in since the install is missing.
+- `bank` is only read while the bank window is open. `bank.seenText` says when; no `bank` key means never.
+- `kills` only has bosses killed since the install. Earlier dungeon ticks in `state.json` stand.
+- The addon does not touch `state.json`. Claude updates the tracker from the snapshot when planning.
+- The client hides some values from addons ("secret" values). Those fields are left out, never guessed.
+
+Verify:
+
+```bash
+python -m pip install lupa            # once; without it the addon tests are skipped, the reader tests still run
+python -m unittest tools/test_snapshot.py -v
+```
+
 ## state.json keys
 
 - `character`: `level`, `mining`, `blacksmithing`, `firstAid` (numbers).

@@ -8,6 +8,11 @@ Open a session in `D:\ScratchPad\WoW-Forever-Tracker` and say:
 
 > Continue as my WoW Forever planning assistant. Read HANDOFF.md, treat Section 3 as current status, and verify quest facts with Firecrawl before giving me routes.
 
+**Character data (added 2026-11-26):** run `python tools/snapshot.py` first, then read `characters.json`. It
+holds every logged-in character's level, gold, gear, bags, bank, skills, quest log, completed quest IDs and
+boss kills, straight from the game (README, "Character data from the game"). Where it disagrees with the
+sections below, the snapshot wins if its `lastSeenText` is newer. Not yet confirmed in game as of this note.
+
 The tracker lives in this folder (Section 7). Edit `data.js` / `state.json` in place; see `README.md`.
 
 Goal (user's words): *"a solid tracker where you help me determine what I should focus / target on for wow forever."*
