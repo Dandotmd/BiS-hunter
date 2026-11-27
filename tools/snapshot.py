@@ -289,21 +289,31 @@ def _items(items):
                      for i in items) or "empty"
 
 
+def _talent_text(t):
+    """': text at the rank held. At N/N: text at full rank.' with a warning when the numbers are not rank-aware."""
+    if not t.get("desc"):
+        return ""
+    text = f": {t['desc']}"
+    if t.get("descMax"):
+        text += f" At {t.get('max')}/{t.get('max')}: {t['descMax']}"
+    if t.get("descFrom") == "spell":
+        text += " (numbers unreliable: this text ignores the rank)"
+    return text
+
+
 def _talent_lines(trees, out):
     for tree in trees:
         talents = _list(tree.get("talents"))
         out.append(f"- **{tree.get('tab')}**: {tree.get('points', 0)} points")
         for t in talents:
             if t.get("rank"):
-                desc = f": {t['desc']}" if t.get("desc") else ""
-                out.append(f"  - {t.get('name') or 'node ' + str(t.get('node'))} {t['rank']}/{t.get('max', '?')}{desc}")
+                out.append(f"  - {t.get('name') or 'node ' + str(t.get('node'))} {t['rank']}/{t.get('max', '?')}{_talent_text(t)}")
         open_ones = [t for t in talents if not t.get("rank")]
         if open_ones:
-            out.append("  - Not taken:")
+            out.append("  - Not taken (text shown is for rank 1):")
             for t in open_ones:
-                desc = f": {t['desc']}" if t.get("desc") else ""
                 row = f"row {t['row']}, " if t.get("row") else ""
-                out.append(f"    - {t.get('name') or 'node ' + str(t.get('node'))} ({row}max {t.get('max', '?')}){desc}")
+                out.append(f"    - {t.get('name') or 'node ' + str(t.get('node'))} ({row}max {t.get('max', '?')}){_talent_text(t)}")
 
 
 def _plan_lines(tracker, state, out):

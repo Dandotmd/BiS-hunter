@@ -334,6 +334,7 @@ class AddonTests(unittest.TestCase):
                 [12] = { groupIDs = { 2 }, ranksPurchased = 0, activeRank = 0, maxRanks = 3, entryIDs = { 112 }, posX = 100, posY = 200 },
                 [15] = { groupIDs = { 2 }, ranksPurchased = 1, maxRanks = 1, entryIDs = { 115 }, posX = 100, posY = 100, isVisible = false },
                 [13] = { groupIDs = { 1 }, ranksPurchased = 0, activeRank = 2, maxRanks = 5, activeEntry = { entryID = 113 } },
+                [16] = { groupIDs = { 1 }, ranksPurchased = 2, maxRanks = 5, entryIDs = { 116 }, posX = 500, posY = 0 },
                 [14] = { groupIDs = { 99 }, ranksPurchased = 1, maxRanks = 1, entryIDs = { 114 } },
             }
             C_Traits = {
@@ -342,7 +343,7 @@ class AddonTests(unittest.TestCase):
                     { groupID = 2, displayName = "Protection", orderIndex = 2 },
                     { groupID = 1, displayName = "Holy", orderIndex = 1 },
                 } end,
-                GetTreeNodes = function() return { 12, 11, 13, 14, 15 } end,
+                GetTreeNodes = function() return { 12, 11, 13, 14, 15, 16 } end,
                 GetTreeCurrencyInfo = function() return { { quantity = 3, spent = 7, maxQuantity = 10 } } end,
                 GetNodeInfo = function(_, id) return nodes[id] end,
                 GetEntryInfo = function(_, id) return { definitionID = id + 1000 } end,
@@ -350,20 +351,42 @@ class AddonTests(unittest.TestCase):
             }
             C_Spell = {
                 GetSpellName = function(id) return id == 11111 and "Redoubt" or "Spell " .. id end,
-                GetSpellDescription = function(id) return id == 11111 and "Raises your block chance." or "" end,
+                GetSpellDescription = function(id)
+                    if id == 11116 then return "Armor +2%." end
+                    return id == 11111 and "Raises your block chance." or ""
+                end,
             }
+            -- The talent window's text, per rank. Entry 116 has none, so it falls back to the spell text.
+            C_TooltipInfo.GetTraitEntry = function(entryID, rank)
+                if entryID == 116 then return nil end
+                local name = entryID == 111 and "Redoubt" or ("Spell " .. (entryID + 11000))
+                return { lines = { { leftText = name }, { leftText = "|cffffd100Block +" .. rank * 6 .. "%.|r" }, { leftText = " " } } }
+            end
         ''')
         self.maxDiff = None
         c = self.char()
         self.assertEqual(c["talents"], [
-            {"tab": "Holy", "points": 2,
-             "talents": [{"name": "Spell 11113", "spellID": 11113, "node": 13, "rank": 2, "max": 5, "row": 1, "col": 1}]},
+            {"tab": "Holy", "points": 4,
+             "talents": [
+                 {"name": "Spell 11113", "spellID": 11113, "node": 13, "rank": 2, "max": 5, "row": 1, "col": 1,
+                  "desc": "Block +12%.", "descMax": "Block +30%."},
+                 # no talent-window text for this one: spell text, flagged because it has several ranks
+                 {"name": "Spell 11116", "spellID": 11116, "node": 16, "rank": 2, "max": 5, "row": 1, "col": 2,
+                  "desc": "Armor +2%.", "descFrom": "spell"},
+             ]},
             {"tab": "Protection", "points": 5, "talents": [
                 {"name": "Redoubt", "spellID": 11111, "node": 11, "rank": 5, "max": 5, "row": 1, "col": 2,
-                 "desc": "Raises your block chance."},
-                {"name": "Spell 11112", "spellID": 11112, "node": 12, "rank": 0, "max": 3, "row": 2, "col": 1},
+                 "desc": "Block +30%."},
+                {"name": "Spell 11112", "spellID": 11112, "node": 12, "rank": 0, "max": 3, "row": 2, "col": 1,
+                 "desc": "Block +6%.", "descMax": "Block +18%."},
             ]},
         ])
+        c["talents"][0]["points"] = 4
+        text = snapshot.render_context({"generated": "now", "characters": {"Danadin": c}})
+        self.assertIn("  - Spell 11113 2/5: Block +12%. At 5/5: Block +30%.\n", text)
+        self.assertIn("  - Spell 11116 2/5: Armor +2%. (numbers unreliable: this text ignores the rank)\n", text)
+        self.assertIn("  - Redoubt 5/5: Block +30%.\n", text)
+        self.assertIn("    - Spell 11112 (row 2, max 3): Block +6%. At 3/3: Block +18%.\n", text)
         self.assertEqual(c["talentPoints"], {"unspent": 3, "spent": 7, "max": 10})
 
     def test_basics(self):

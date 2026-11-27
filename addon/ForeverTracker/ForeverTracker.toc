@@ -2,6 +2,6 @@
 ## Title: ForeverTracker
 ## Notes: Records each character (gear, bags, bank, gold, skills, quests, boss kills) for the WoW Forever Tracker
 ## Author: Dan
-## Version: 1.1.0
+## Version: 1.1.1
 ## SavedVariables: ForeverTrackerDB
 ForeverTracker.lua

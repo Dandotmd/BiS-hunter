@@ -314,6 +314,24 @@ local function SpellDesc(spellID)
     return descCache[spellID]
 end
 
+-- A talent's text at one rank, as the talent window shows it. The plain spell
+-- description (SpellDesc) ignores the rank: seen in game 2026-11-27, Redoubt
+-- 5/5 read "block by 0%" and Toughness 2/5 read its rank 1 value.
+local function TraitText(entryID, rank, talentName)
+    if type(C_TooltipInfo) ~= "table" or not entryID then return nil end
+    local data = nth(1, C_TooltipInfo.GetTraitEntry, entryID, rank)
+    if type(data) ~= "table" or type(data.lines) ~= "table" then return nil end
+    local out = {}
+    for _, line in ipairs(data.lines) do
+        local text = type(line) == "table" and clean(line.leftText)
+        if type(text) == "string" then
+            text = text:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):gsub("^%s+", ""):gsub("%s+$", "")
+            if text ~= "" and text ~= talentName then out[#out + 1] = text end
+        end
+    end
+    return #out > 0 and table.concat(out, " ") or nil
+end
+
 -- Turns raw tree coordinates into 1, 2, 3... by their sorted order.
 local function Ranked(values)
     local list, seen, rank = {}, {}, {}
@@ -365,8 +383,23 @@ local function TraitTrees(configID)
                 local def = type(entry) == "table" and entry.definitionID and nth(1, T.GetDefinitionInfo, entry.definitionID)
                 local spellID = type(def) == "table" and (clean(def.spellID) or clean(def.overriddenSpellID)) or nil
                 g.points = g.points + rank
-                g.talents[#g.talents + 1] = { name = SpellName(spellID), spellID = spellID, node = nodeID,
-                    rank = rank, max = clean(info.maxRanks), desc = SpellDesc(spellID),
+                local talentName = SpellName(spellID)
+                local max = tonumber(clean(info.maxRanks)) or 1
+                -- desc: the text at the rank held (rank 1 when none is held). descMax: at full rank, when that differs.
+                local shown = rank > 0 and rank or 1
+                local desc, descMax, descFrom = TraitText(entryID, shown, talentName), nil, nil
+                if desc then
+                    if max > shown then
+                        descMax = TraitText(entryID, max, talentName)
+                        if descMax == desc then descMax = nil end
+                    end
+                else
+                    desc = SpellDesc(spellID)
+                    -- Not rank-aware: the numbers are only right for a one-rank talent.
+                    if desc and max > 1 then descFrom = "spell" end
+                end
+                g.talents[#g.talents + 1] = { name = talentName, spellID = spellID, node = nodeID,
+                    rank = rank, max = max, desc = desc, descMax = descMax, descFrom = descFrom,
                     y = tonumber(clean(info.posY)) or 0, x = tonumber(clean(info.posX)) or 0 }
             end
         end
