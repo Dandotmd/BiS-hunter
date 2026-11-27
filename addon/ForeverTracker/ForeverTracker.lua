@@ -76,12 +76,18 @@ local function Basics()
     char.race = nth(2, UnitRace, "player") or char.race
     char.faction = nth(1, UnitFactionGroup, "player") or char.faction
     char.level = nth(1, UnitLevel, "player") or char.level
-    char.xp = nth(1, UnitXP, "player")
-    char.xpMax = nth(1, UnitXPMax, "player")
-    char.rested = nth(1, GetXPExhaustion) or 0
+    local xpMax = nth(1, UnitXPMax, "player")
+    if type(xpMax) == "number" and xpMax > 0 then
+        char.xp = nth(1, UnitXP, "player")
+        char.xpMax = xpMax
+        char.rested = nth(1, GetXPExhaustion) or 0
+    end
     char.money = nth(1, GetMoney) or char.money
-    char.zone = nth(1, GetRealZoneText) or char.zone
-    char.subzone = nth(1, GetSubZoneText)
+    local zone = nth(1, GetRealZoneText)
+    if type(zone) == "string" and zone ~= "" then
+        char.zone = zone
+        char.subzone = nth(1, GetSubZoneText)
+    end
     char.guild = nth(1, GetGuildInfo, "player")
     char.lastSeen = now()
     char.lastSeenText = nth(1, date, "%Y-%m-%d %H:%M:%S")
@@ -106,7 +112,7 @@ local function Equipped()
             gear[slotName] = { id = id, name = name, ilvl = ItemLevel(link) }
         end
     end
-    char.equipped = gear
+    if next(gear) or not char.equipped then char.equipped = gear end
 end
 
 ---------------------------------------------------------------- bags and bank
@@ -182,6 +188,7 @@ end
 
 local function Bags()
     local items, total, used = ScanBags((CarriedBags()))
+    if total == 0 then return end -- bags not readable right now; keep the last good scan
     char.bags = { items = items, slots = total, used = used }
 end
 
@@ -220,9 +227,9 @@ local function Professions()
     if #list > 0 then char.professions = list end
 end
 
-local function Talents()
+local function LegacyTalents()
     local tabs = nth(1, GetNumTalentTabs)
-    if type(tabs) ~= "number" or type(GetTalentInfo) ~= "function" then return end
+    if type(tabs) ~= "number" or type(GetTalentInfo) ~= "function" then return nil end
     local out = {}
     for tab = 1, tabs do
         local info = call(GetTalentTabInfo, tab) or {}
@@ -241,7 +248,80 @@ local function Talents()
         end
         out[#out + 1] = entry
     end
-    if #out > 0 then char.talents = out end
+    return #out > 0 and out or nil
+end
+
+local function SpellName(spellID)
+    if not spellID then return nil end
+    local name
+    if type(C_Spell) == "table" then name = nth(1, C_Spell.GetSpellName, spellID) end
+    return name or nth(1, GetSpellInfo, spellID)
+end
+
+-- WoW Forever keeps talents in the trait tree: one tree per class, with the
+-- three talent trees as its groups.
+local function TraitTalents()
+    local T = C_Traits
+    if type(T) ~= "table" then return nil end
+    local configID
+    if type(C_ClassTalents) == "table" then configID = nth(1, C_ClassTalents.GetActiveConfigID) end
+    local S = C_SpecializationInfo
+    if not configID and type(S) == "table" then
+        local group = nth(1, S.GetActiveSpecGroup)
+        if group then configID = nth(1, S.GetCombatConfigIDForSpecGroup, group) end
+    end
+    if not configID then return nil end
+    local config = nth(1, T.GetConfigInfo, configID)
+    local treeID = type(config) == "table" and type(config.treeIDs) == "table" and clean(config.treeIDs[1])
+    if not treeID then return nil end
+    local displays = nth(1, T.GetGroupDisplayInfoByTreeID, treeID)
+    local nodeIDs = nth(1, T.GetTreeNodes, treeID)
+    if type(displays) ~= "table" or type(nodeIDs) ~= "table" then return nil end
+    local groups, byID = {}, {}
+    for _, d in ipairs(displays) do
+        local id = type(d) == "table" and clean(d.groupID)
+        if id then
+            local g = { tab = clean(d.displayName) or tostring(id), order = tonumber(clean(d.orderIndex)) or #groups,
+                points = 0, talents = {} }
+            groups[#groups + 1] = g
+            byID[id] = g
+        end
+    end
+    if #groups == 0 then return nil end
+    for _, nodeID in ipairs(nodeIDs) do
+        local info = nth(1, T.GetNodeInfo, configID, nodeID)
+        if type(info) == "table" then
+            local rank = tonumber(clean(info.ranksPurchased)) or 0
+            if rank <= 0 then rank = tonumber(clean(info.activeRank)) or 0 end
+            local g
+            for _, groupID in ipairs(type(info.groupIDs) == "table" and info.groupIDs or {}) do
+                g = byID[groupID]
+                if g then break end
+            end
+            if g and rank > 0 then
+                local entryID = type(info.activeEntry) == "table" and clean(info.activeEntry.entryID)
+                    or type(info.entryIDs) == "table" and clean(info.entryIDs[1])
+                local entry = entryID and nth(1, T.GetEntryInfo, configID, entryID)
+                local def = type(entry) == "table" and entry.definitionID and nth(1, T.GetDefinitionInfo, entry.definitionID)
+                local spellID = type(def) == "table" and (clean(def.spellID) or clean(def.overriddenSpellID)) or nil
+                g.points = g.points + rank
+                g.talents[#g.talents + 1] = { name = SpellName(spellID), spellID = spellID, node = nodeID,
+                    rank = rank, max = clean(info.maxRanks) }
+            end
+        end
+    end
+    table.sort(groups, function(a, b) return a.order < b.order end)
+    for _, g in ipairs(groups) do
+        g.order = nil
+        table.sort(g.talents, function(a, b) return tostring(a.name or a.node) < tostring(b.name or b.node) end)
+    end
+    return groups
+end
+
+local function Talents()
+    local ok, trees = pcall(LegacyTalents)
+    if not (ok and trees) then ok, trees = pcall(TraitTalents) end
+    if ok and trees then char.talents = trees end
 end
 
 ---------------------------------------------------------------- quests
@@ -283,6 +363,7 @@ local function QuestLog()
         if isHeader then
             header = title
         elseif questID and title then
+            if level == 0 then level = nil end -- no fixed level on this client
             log[#log + 1] = { id = questID, title = title, level = level, zone = header,
                 complete = (complete == true or complete == 1) and true or false,
                 failed = (complete == -1) and true or nil,
@@ -360,7 +441,12 @@ local function Init()
     if type(db.chars) ~= "table" then db.chars = {} end
     local name = nth(1, UnitName, "player") or "Unknown"
     local realm = nth(1, GetRealmName) or "Forever"
-    local key = name .. "-" .. realm
+    -- The realm is empty on WoW Forever: key by name alone, and move a record saved as "Name-".
+    local key = realm ~= "" and (name .. "-" .. realm) or name
+    if realm == "" and type(db.chars[name .. "-"]) == "table" then
+        if type(db.chars[key]) ~= "table" then db.chars[key] = db.chars[name .. "-"] end
+        db.chars[name .. "-"] = nil
+    end
     if type(db.chars[key]) ~= "table" then db.chars[key] = {} end
     char = db.chars[key]
     db.lastChar = key
@@ -382,8 +468,10 @@ frame:SetScript("OnEvent", function(_, event, ...)
     elseif not char then
         return
     elseif event == "PLAYER_LOGOUT" then
-        questsDoneStale = true
-        Snapshot()
+        -- Gold, XP, gear and bags already read as empty here; the last
+        -- snapshot (at most 2 seconds after the last change) is the good one.
+        char.lastSeen = now()
+        char.lastSeenText = nth(1, date, "%Y-%m-%d %H:%M:%S")
         return
     elseif event == "BANKFRAME_OPENED" then
         bankOpen = true

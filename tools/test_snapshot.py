@@ -229,20 +229,99 @@ class AddonTests(unittest.TestCase):
     """Runs the real addon file against the mock client, then reads what it saved."""
 
     def setUp(self):
+        self.boot()
+
+    def boot(self, before_addon=""):
+        """Start a fresh client; before_addon is Lua run after the mock and before the addon loads."""
         self.lua = _lua.LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         self.lua.execute(SERIALIZE)
+        if before_addon:
+            self.lua.execute(before_addon)
         with open(ADDON, encoding="utf-8") as f:
             self.lua.execute(f.read())
         self.fire = self.lua.globals().Fire
         self.fire("PLAYER_LOGIN")
         self.fire("PLAYER_ENTERING_WORLD")
 
-    def char(self):
+    def char(self, key="Danadin-Forever"):
         saved = snapshot.parse_saved_variables(self.lua.globals().SavedFile())
         doc = snapshot.build(saved["ForeverTrackerDB"], now=1795000000)
-        self.assertEqual(doc["lastChar"], "Danadin-Forever")
-        return doc["characters"]["Danadin-Forever"]
+        self.assertEqual(doc["lastChar"], key)
+        self.assertEqual(list(doc["characters"]), [key])
+        return doc["characters"][key]
+
+    def test_logout_does_not_wipe_gold_gear_or_bags(self):
+        # Seen in game 2026-11-27: at PLAYER_LOGOUT the client answers 0 gold, 0 XP, no gear, 0 bag slots.
+        before = self.char()
+        self.lua.execute('''
+            clock = clock + 300
+            function GetMoney() return 0 end
+            function UnitXP() return 0 end
+            function UnitXPMax() return 0 end
+            function GetInventoryItemLink() return nil end
+            function GetRealZoneText() return "" end
+            C_Container.GetContainerNumSlots = function() return 0 end
+            C_QuestLog.GetQuestObjectives = function() return {} end
+        ''')
+        self.fire("PLAYER_LOGOUT")
+        after = self.char()
+        self.assertEqual(after["lastSeen"], before["lastSeen"] + 300)
+        for field in ("money", "xp", "xpMax", "zone", "equipped", "bags", "questLog"):
+            self.assertEqual(after[field], before[field], field)
+        self.assertEqual(after["money"], 1234567)
+
+    def test_empty_bag_or_gear_answer_keeps_the_last_good_scan(self):
+        self.lua.execute('''
+            function GetInventoryItemLink() return nil end
+            function UnitXPMax() return 0 end
+            C_Container.GetContainerNumSlots = function() return 0 end
+        ''')
+        self.fire("BAG_UPDATE_DELAYED")
+        c = self.char()
+        self.assertEqual(len(c["equipped"]), 2)
+        self.assertEqual(len(c["bags"]["items"]), 3)
+        self.assertEqual(c["xpMax"], 9000)
+
+    def test_empty_realm_keys_by_name_and_adopts_the_old_record(self):
+        self.boot('''
+            function GetRealmName() return "" end
+            ForeverTrackerDB = { chars = { ["Danadin-"] = { kills = { { boss = "Old Kill", time = 1 } }, money = 0 } } }
+        ''')
+        c = self.char("Danadin")
+        self.assertEqual(c["kills"][0]["boss"], "Old Kill")
+        self.assertEqual(c["money"], 1234567)
+
+    def test_trait_tree_talents_when_the_old_talent_api_is_missing(self):
+        self.boot('''
+            GetNumTalentTabs, GetTalentTabInfo, GetNumTalents, GetTalentInfo = nil, nil, nil, nil
+            C_ClassTalents = { GetActiveConfigID = function() return 7 end }
+            local nodes = {
+                [11] = { groupIDs = { 2 }, ranksPurchased = 5, maxRanks = 5, entryIDs = { 111 } },
+                [12] = { groupIDs = { 2 }, ranksPurchased = 0, activeRank = 0, maxRanks = 3, entryIDs = { 112 } },
+                [13] = { groupIDs = { 1 }, ranksPurchased = 0, activeRank = 2, maxRanks = 5, activeEntry = { entryID = 113 } },
+                [14] = { groupIDs = { 99 }, ranksPurchased = 1, maxRanks = 1, entryIDs = { 114 } },
+            }
+            C_Traits = {
+                GetConfigInfo = function(id) return { treeIDs = { 40 } } end,
+                GetGroupDisplayInfoByTreeID = function() return {
+                    { groupID = 2, displayName = "Protection", orderIndex = 2 },
+                    { groupID = 1, displayName = "Holy", orderIndex = 1 },
+                } end,
+                GetTreeNodes = function() return { 11, 12, 13, 14 } end,
+                GetNodeInfo = function(_, id) return nodes[id] end,
+                GetEntryInfo = function(_, id) return { definitionID = id + 1000 } end,
+                GetDefinitionInfo = function(id) return { spellID = id + 10000 } end,
+            }
+            C_Spell = { GetSpellName = function(id) return id == 11111 and "Redoubt" or "Spell " .. id end }
+        ''')
+        self.maxDiff = None
+        self.assertEqual(self.char()["talents"], [
+            {"tab": "Holy", "points": 2,
+             "talents": [{"name": "Spell 11113", "spellID": 11113, "node": 13, "rank": 2, "max": 5}]},
+            {"tab": "Protection", "points": 5,
+             "talents": [{"name": "Redoubt", "spellID": 11111, "node": 11, "rank": 5, "max": 5}]},
+        ])
 
     def test_basics(self):
         c = self.char()
